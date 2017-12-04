@@ -3,6 +3,97 @@
   
     
     <entry>
+      <title><![CDATA[Hexo搭建个人博客（三）]]></title>
+      <url>/2017/12/04/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%B8%89%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>看了之前的文章，博客已经配置完成，你自己写文章已经OK了。如果你想把博客变得<code>更炫酷</code>，做一些不在官方文档中的个性配置，可以往后看。我会教大家一步步把博客变成我现在的样子。我推荐看<a href="https://segmentfault.com/a/1190000009544924" target="_blank" rel="noopener">这篇文章</a>，我也是看的这个配置的，写的很好。</p>
+<a id="more"></a>
+<hr>
+<h1 id="修改标题栏背景及字体"><a href="#修改标题栏背景及字体" class="headerlink" title="修改标题栏背景及字体"></a>修改标题栏背景及字体</h1><p>实现效果：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/header.png" alt="img"></p>
+<h2 id="修改标题栏背景"><a href="#修改标题栏背景" class="headerlink" title="修改标题栏背景"></a>修改标题栏背景</h2><p>首先将要使用的背景图片<code>header_background.jpg</code>保存至<code>\themes\next\source\images</code>文件夹下，方便后面引用。</p>
+<p>然后在<code>\themes\next\source\css_common\components\header</code>路径下找到header.styl文件，将其中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.header &#123; background: xxxxxxxxxx; &#125;</span><br></pre></td></tr></table></figure>
+<p>改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.header &#123; background: url(/images/header_background.jpg); &#125;</span><br></pre></td></tr></table></figure>
+<p>标题栏背景被修改成功！</p>
+<h2 id="修改标题栏字体"><a href="#修改标题栏字体" class="headerlink" title="修改标题栏字体"></a>修改标题栏字体</h2><p>同样的，在<code>\themes\next\source\css_common\components\header</code>路径下找到site-meta.styl文件，修改如下字段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.brand &#123;</span><br><span class="line">  position: relative;</span><br><span class="line">  display: inline-block;</span><br><span class="line">  padding: 0 40px;</span><br><span class="line">  color: $brand-color;</span><br><span class="line">  background: none;                   # 新设置（去除标题字体背景）</span><br><span class="line">  /*background: $brand-bg;*/          # 原设置（已注释）</span><br><span class="line">  border-bottom: none;</span><br><span class="line">  &amp;:hover &#123; color: $brand-hover-color; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.site-title &#123;</span><br><span class="line">  display: inline-block;</span><br><span class="line">  vertical-align: top;</span><br><span class="line">  line-height: 36px;</span><br><span class="line">  font-size: 44px;                      # 新设置（修改标题字号）</span><br><span class="line">  /*font-size: $logo-font-size;*/       # 原设置（已注释）</span><br><span class="line">  font-weight: normal;</span><br><span class="line">  font-family: $font-family-logo;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>菜单栏：</p>
+<p>同样的，在<code>\themes\next\source\css_common\components\header</code>路径下找到menu.styl文件，修改如下字段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.menu &#123;</span><br><span class="line">  margin-top: 20px;</span><br><span class="line">  padding-left: 0;</span><br><span class="line">  text-align: center;</span><br><span class="line">  background: rgba(255,255,255,0.65);</span><br><span class="line">  margin-left: auto;                   # 居中</span><br><span class="line">  margin-right: auto;                  # 居中</span><br><span class="line">  width: 450px;                        # 菜单栏长度</span><br><span class="line">  border-radius: initial;              # 新设置</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h1><p>打开<code>主题配置文件</code>，找到这个：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Local search</span><br><span class="line"># Dependencies: https://github.com/flashlab/hexo-generator-search</span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # if auto, trigger search by changing input</span><br><span class="line">  # if manual, trigger search by pressing enter key or search button</span><br><span class="line">  trigger: auto</span><br><span class="line">  # show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br></pre></td></tr></table></figure>
+<p><code>enable</code>默认为false，改为true。可以看到本地search依赖一个包，需要<code>npm install</code>一下。</p>
+<p>博客根目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br></pre></td></tr></table></figure>
+<p>即可安装依赖包。</p>
+<p><code>博客配置文件</code>中加入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  # 如只想索引文章，可设置为post</span><br><span class="line">  field: post</span><br></pre></td></tr></table></figure>
+<p>这样，<code>搜索功能</code>就加入了~</p>
+<h1 id="修改文章内链接文本样式"><a href="#修改文章内链接文本样式" class="headerlink" title="修改文章内链接文本样式"></a>修改文章内链接文本样式</h1><p><strong>实现效果图</strong></p>
+<p><img src="https://segmentfault.com/img/remote/1460000009544935?w=318&amp;h=61" alt="img"></p>
+<p><strong>具体实现方法</strong></p>
+<p>修改文件 <code>themes\next\source\css\_common\components\post\post.styl</code>，在末尾添加如下css样式，：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 文章内链接文本样式</span><br><span class="line">.post-body p a&#123;</span><br><span class="line">  color: #0593d3;</span><br><span class="line">  border-bottom: none;</span><br><span class="line">  border-bottom: 1px solid #0593d3;</span><br><span class="line">  &amp;:hover &#123;</span><br><span class="line">    color: #fc6423;</span><br><span class="line">    border-bottom: none;</span><br><span class="line">    border-bottom: 1px solid #fc6423;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中选择<code>.post-body</code> 是为了不影响标题，选择 <code>p</code> 是为了不影响首页“阅读全文”的显示样式,颜色可以自己定义。</p>
+<h1 id="修改文章底部的那个带-号的标签"><a href="#修改文章底部的那个带-号的标签" class="headerlink" title="修改文章底部的那个带#号的标签"></a>修改文章底部的那个带#号的标签</h1><p><strong>实现效果图</strong></p>
+<p><img src="https://segmentfault.com/img/remote/1460000009544936?w=94&amp;h=64" alt="img"></p>
+<p><strong>具体实现方法</strong></p>
+<p>修改模板<code>/themes/next/layout/_macro/post.swig</code>，搜索 <code>rel=&quot;tag&quot;&gt;#</code>，将 # 换成</p>
+<h1 id="修改-代码块自定义样式"><a href="#修改-代码块自定义样式" class="headerlink" title="修改``代码块自定义样式"></a>修改``代码块自定义样式</h1><p><strong>实现效果图</strong></p>
+<p><img src="https://segmentfault.com/img/remote/1460000009544941?w=584&amp;h=50" alt="img"></p>
+<p><strong>具体实现方法</strong></p>
+<p>打开<code>\themes\next\source\css\_custom\custom.styl</code>,向里面加入：(颜色可以自己定义)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// Custom styles.</span><br><span class="line">code &#123;</span><br><span class="line">    color: #ff7600;</span><br><span class="line">    background: #fbf7f8;</span><br><span class="line">    margin: 2px;</span><br><span class="line">&#125;</span><br><span class="line">// 大代码块的自定义样式</span><br><span class="line">.highlight, pre &#123;</span><br><span class="line">    margin: 5px 0;</span><br><span class="line">    padding: 5px;</span><br><span class="line">    border-radius: 3px;</span><br><span class="line">&#125;</span><br><span class="line">.highlight, code, pre &#123;</span><br><span class="line">    border: 1px solid #d6d6d6;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="添加文章评论区"><a href="#添加文章评论区" class="headerlink" title="添加文章评论区"></a>添加文章评论区</h1><p><strong>实现效果图</strong></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%96%87%E7%AB%A0%E8%AF%84%E8%AE%BA.png" alt="img"></p>
+<p>最近因为各种你知道的原因，不少第三方评论插件都停止了运营，在这里我用暂时还没有受到影响的<a href="https://valine.js.org/#/" target="_blank" rel="noopener">Valine</a> 做介绍。</p>
+<h2 id="Leancloud"><a href="#Leancloud" class="headerlink" title="Leancloud"></a>Leancloud</h2><p>先登录<a href="http://leancloud.cn/" target="_blank" rel="noopener">Leancloud官网</a></p>
+<h2 id="获取appid和appkey"><a href="#获取appid和appkey" class="headerlink" title="获取appid和appkey"></a>获取appid和appkey</h2><p>请先<a href="https://leancloud.cn/dashboard/login.html#/signin" target="_blank" rel="noopener">登录</a>或<a href="https://leancloud.cn/dashboard/login.html#/signup" target="_blank" rel="noopener">注册</a> <code>LeanCloud</code>, 进入<a href="https://leancloud.cn/dashboard/applist.html#/apps" target="_blank" rel="noopener">控制台</a>后点击左下角<a href="https://leancloud.cn/dashboard/applist.html#/newapp" target="_blank" rel="noopener">创建应用</a>：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006qRazegy1fkwo2fpoetj30h40coaak.jpg" alt="img"></p>
+<p>应用创建好以后，进入刚刚创建的应用，选择左下角的<code>设置</code>&gt;<code>应用Key</code>，然后就能看到你的<code>appid</code>和<code>appkey</code>了：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006qRazegy1fkwo6w2b6uj30xe0etjt4.jpg" alt="img"></p>
+<p>为了您的数据安全，请注意设置自己的<code>安全域名</code>：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006qRazegy1fkxqmddfh1j30qd0go40h.jpg" alt="设置安全域名"></p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p> 打开<code>主题配置文件</code>，搜索以下字段：<code>Valine</code>，并修改相应配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Valine.</span><br><span class="line"># You can get your appid and appkey from https://leancloud.cn</span><br><span class="line"># more info please open https://valine.js.org</span><br><span class="line">valine:</span><br><span class="line">  enable: ture</span><br><span class="line">  appid: cBBhByL05OPQ0U2iEYevPbBO-gzGzoHsz  # 填写上面的appid</span><br><span class="line">  appkey: 8xukFA5M2WEeFUUWalVjSYY5          # 填写上面的appkey</span><br><span class="line">  notify: true                              # 邮件提醒  https://github.com/xCss/Valine/wiki</span><br><span class="line">  verify: true                              # Verification code</span><br><span class="line">  placeholder: 在这里填写评论...        # comment box placeholder</span><br><span class="line">  avatar: mm # gravatar style</span><br><span class="line">  guest_info: nick,mail,link # custom comment header</span><br><span class="line">  pageSize: 10 # pagination size</span><br></pre></td></tr></table></figure>
+<p>评论区添加完成！</p>
+<h1 id="第三方图床设置"><a href="#第三方图床设置" class="headerlink" title="第三方图床设置"></a>第三方图床设置</h1><p>第三方图床其实我推荐使用<a href="https://www.qiniu.com/" target="_blank" rel="noopener">七牛云</a>。</p>
+<p>使用也十分简单，首先注册登录并新建应用，之后：</p>
+<p>选择<code>对象存储</code>：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171204232142.png" alt="img"></p>
+<p>选择<code>内容管理</code>：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171204232214.png" alt="img"></p>
+<p>选择<code>上传文件</code>：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171204232301.png" alt="img"></p>
+<p>选择需要引用的资源上传后，在<code>内容管理</code>列表中找到相应资源即可<code>复制外链</code></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171204232351.png" alt="img"></p>
+<p>这样我们在我们的博客中就可以利用其URL链接直接引用这些资源了。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> node.js </tag>
+            
+            <tag> git </tag>
+            
+            <tag> 博客 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Hexo搭建个人博客（二）]]></title>
       <url>/2017/12/03/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
       <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>如果看过<code>Hexo搭建个人博客（一）</code>并且成功的，可以往后看，我会教大家一步步把博客变成我现在的样子。本篇文章主要介绍如何配置Hexo博客和配置Next主题，以及如何写作并发布文章。</p>
@@ -87,7 +178,7 @@
       <title><![CDATA[Hexo搭建个人博客（一）]]></title>
       <url>/2017/12/02/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%B8%80%EF%BC%89/</url>
       <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近几个月自学python的过程中，搜索资料的时候收藏了很多大神的的博客，为我开启了一片新世界，之后在经历了各种挖坑爬坑苦逼造轮子的毁灭经历后。搭建一个自己博客的萌芽也悄然种下，不仅仅是记录自己的技术路线，也是想和各方朋友一起探讨交流。</p>
-<p>经过几天不懈的没日没夜的努力，解决了各种问题，终于把自己的博客搭建成功。接下来我就把我走过N多弯路后的经验传授给大家，让大家少走弯路轻松愉快地搭建自己的Hexo博客。</p>
+<p>经过几天不懈的没日没夜的努力，解决了各种问题，终于把自己（彻）的（底）博（逼）客（疯）搭（了）建成功。接下来我就把我走过N多弯路后的经验传授给大家，让大家少走弯路轻松愉快地搭建自己的Hexo博客。</p>
 <a id="more"></a>
 <hr>
 <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><ol>
