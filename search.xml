@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[基于mimics的椎弓根钉导板建立]]></title>
       <url>/2017/12/07/%E5%9F%BA%E4%BA%8Emimics%E7%9A%84%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF%E5%BB%BA%E7%AB%8B/</url>
-      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近一个神外的朋友强烈推荐我做一些关于骨科导板这方面的模型。考虑到目前利用mimics进行术前导板设计和规划的需求越来越多，经过了一段时间的摸索，在这里写一个椎弓根钉导板的建立方法，供大家参考，欢迎讨论交流和各种指正。</p>
+      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近一个神外的朋友强烈推荐我做一些关于骨科导板这方面的模型。考虑到目前利用<code>mimics</code>进行术前导板设计和规划的需求越来越多，经过了一段时间的摸索，在这里写一个<code>椎弓根钉导板</code>的建立方法，供大家参考，欢迎讨论交流和各种指正。</p>
 <a id="more"></a>
 <hr>
 <h1 id="建立目标骨骼mask（L1-L6）"><a href="#建立目标骨骼mask（L1-L6）" class="headerlink" title="建立目标骨骼mask（L1-L6）"></a>建立目标骨骼mask（L1-L6）</h1><p>本次建模的目标是颈椎L4的椎弓根钉导板</p>
@@ -13,8 +13,7 @@
 <p>确定目标骨骼<code>阈值</code>区间，<code>区域增长</code>，<code>填充孔隙</code>后<code>分割</code>颅骨和颈1（懒癌犯了…..其中细节我就不在这里说了）</p>
 <p>分割后并生成3D：</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/2.png" alt="img"><strong>整个的建模过程中要注意：我们不要使用<code>smooth</code>或者<code>warp</code>等功能修改骨骼表面形态，无论是mask还是生成3D后。因为我们要保持骨骼表面最真实的形态用以生成相应导板。</strong></p>
-<p>#制作导板基底</p>
-<h2 id="利用Morphology功能生成导板壁厚"><a href="#利用Morphology功能生成导板壁厚" class="headerlink" title="利用Morphology功能生成导板壁厚"></a>利用Morphology功能生成导板壁厚</h2><p>选择颈椎mask</p>
+<h1 id="制作导板基底"><a href="#制作导板基底" class="headerlink" title="制作导板基底"></a>制作导板基底</h1><h2 id="利用Morphology功能生成导板壁厚"><a href="#利用Morphology功能生成导板壁厚" class="headerlink" title="利用Morphology功能生成导板壁厚"></a>利用Morphology功能生成导板壁厚</h2><p>选择颈椎mask</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/3.png" alt="img"></p>
 <p>点击Morphology工具</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF4.png" alt="img"></p>
@@ -22,19 +21,18 @@
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/5.png" alt="img"></p>
 <p>点击<code>Apply</code>后可以看到生成的蓝色部分，可作为导板外壁，后期我们用<code>bool</code>减去里面的颈椎即可得到导板。</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/6.png" alt="img"></p>
-<p>##修剪导板</p>
-<p>在<code>Edit mask in 3D</code>模式下打开L4导板mask，将导板的外形修出。</p>
+<h2 id="修剪导板"><a href="#修剪导板" class="headerlink" title="修剪导板"></a>修剪导板</h2><p>在<code>Edit mask in 3D</code>模式下打开L4导板mask，将导板的外形修出。</p>
 <p><strong>注意，在这里要考虑导板的可装配性和定位性。模板必须是手术中能暴露到骨面的部分，否则术中无法放置。面积一般不小于4平方厘米，并且有骨性突起最好。我们尽量选择大且突出的特征进行包覆。</strong></p>
 <p>另外，保留导板下和颈椎重合的多余部分，方便后期布尔减生成接触面。</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimicszhuigonggendingdaoban7.png" alt="img"></p>
 <h2 id="在3-matic下平滑导板"><a href="#在3-matic下平滑导板" class="headerlink" title="在3-matic下平滑导板"></a>在3-matic下平滑导板</h2><p>将修剪后的导板<code>Calculate 3D</code>（生成3D模型）并导入<code>3-matic</code>。</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF8.png" alt="img"></p>
-<p>在3-matic中用smooth工具进行平滑。</p>
+<p>在3-matic中用<code>smooth</code>工具进行平滑。</p>
 <p>平滑前：</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF9.png" alt="img"></p>
 <p>N次平滑后：（是不是好看不少？）</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF10.png" alt="img"></p>
-<p>然后将平滑后的导板导回mimics。（快捷键Ctrl+C，Ctrl+V）</p>
+<p>然后将平滑后的导板导回<code>mimics</code>。（快捷键Ctrl+C，Ctrl+V）</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/11.png" alt="img"></p>
 <p>看看这颜值！！Ok，导板的基底就完成了，下面就是钉孔的设计了。</p>
 <h1 id="设计骨钉导向套"><a href="#设计骨钉导向套" class="headerlink" title="设计骨钉导向套"></a>设计骨钉导向套</h1><p>椎弓根钉之所以需要导板的辅助是因为这个过程对其精准度有极高的要求，骨钉穿入偏差1-2mm就有可能损伤中间的脊髓，造成严重后果。骨钉导向器可以帮助医生在术前规划好入钉路径，减少术中风险。</p>
