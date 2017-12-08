@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[基于mimics的椎弓根钉导板建立]]></title>
       <url>/2017/12/07/%E5%9F%BA%E4%BA%8Emimics%E7%9A%84%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF%E5%BB%BA%E7%AB%8B/</url>
-      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近一个神外的朋友强烈推荐我做一些关于骨科导板制作这方面的模型。考虑到目前利用mimics进行术前导板设计和规划的需求越来越多，经过了一段时间的摸索，在这里写一个椎弓根钉导板的建立方法，供大家参考。</p>
+      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近一个神外的朋友强烈推荐我做一些关于骨科导板这方面的模型。考虑到目前利用mimics进行术前导板设计和规划的需求越来越多，经过了一段时间的摸索，在这里写一个椎弓根钉导板的建立方法，供大家参考，欢迎讨论交流和各种指正。</p>
 <a id="more"></a>
 <hr>
 <h1 id="建立目标骨骼mask（L1-L6）"><a href="#建立目标骨骼mask（L1-L6）" class="headerlink" title="建立目标骨骼mask（L1-L6）"></a>建立目标骨骼mask（L1-L6）</h1><p>本次建模的目标是颈椎L4的椎弓根钉导板</p>
