@@ -10,7 +10,7 @@
 <hr>
 <h1 id="建立目标骨骼mask（L1-L6）"><a href="#建立目标骨骼mask（L1-L6）" class="headerlink" title="建立目标骨骼mask（L1-L6）"></a>建立目标骨骼mask（L1-L6）</h1><p>本次建模的目标是颈椎L4的椎弓根钉导板</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%9B%BE%E7%89%871.png" alt="img"></p>
-<p>确定目标骨骼<code>阈值</code>区间，<code>区域增长</code>，<code>填充孔隙</code>后<code>分割</code>颅骨和颈1（懒癌犯了…..其中细节我就不在这里说了）</p>
+<p>确定目标骨骼<code>阈值区间</code>，<code>区域增长</code>，<code>填充孔隙</code>后<code>分割</code>颅骨和颈1（懒癌犯了…..其中细节我就不在这里说了）</p>
 <p>分割后并生成3D：</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/2.png" alt="img"><strong>整个的建模过程中要注意：我们不要使用<code>smooth</code>或者<code>warp</code>等功能修改骨骼表面形态，无论是mask还是生成3D后。因为我们要保持骨骼表面最真实的形态用以生成相应导板。</strong></p>
 <h1 id="制作导板基底"><a href="#制作导板基底" class="headerlink" title="制作导板基底"></a>制作导板基底</h1><h2 id="利用Morphology功能生成导板壁厚"><a href="#利用Morphology功能生成导板壁厚" class="headerlink" title="利用Morphology功能生成导板壁厚"></a>利用Morphology功能生成导板壁厚</h2><p>选择颈椎mask</p>
