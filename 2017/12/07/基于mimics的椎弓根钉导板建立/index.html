@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="hahajoker" />
+  <meta name="keywords" content="mimics,3D打印,导板," />
 
 
 
@@ -79,16 +79,47 @@
 
 
 
-<meta name="description" content="一只热爱编程的3D打印攻城狮">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/archives/2017/11/index.html">
+<meta name="description" content="前言最近一个神外的朋友强烈推荐我做一些关于骨科导板制作这方面的模型。考虑到目前利用mimics进行术前导板设计和规划的需求越来越多，经过了一段时间的摸索，在这里写一个椎弓根钉导板的建立方法，供大家参考。">
+<meta name="keywords" content="mimics,3D打印,导板">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于mimics的椎弓根钉导板建立">
+<meta property="og:url" content="http://yoursite.com/2017/12/07/基于mimics的椎弓根钉导板建立/index.html">
 <meta property="og:site_name" content="Hello World">
-<meta property="og:description" content="一只热爱编程的3D打印攻城狮">
+<meta property="og:description" content="前言最近一个神外的朋友强烈推荐我做一些关于骨科导板制作这方面的模型。考虑到目前利用mimics进行术前导板设计和规划的需求越来越多，经过了一段时间的摸索，在这里写一个椎弓根钉导板的建立方法，供大家参考。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%9B%BE%E7%89%871.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/2.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/3.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF4.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/5.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/6.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/mimicszhuigonggendingdaoban7.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF8.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF9.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF10.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/11.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/12.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/13.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/14.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF15.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF16.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/17.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF18.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/19.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/20.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/21.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171208113142.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171208113510.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171208113532.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171208113632.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/23.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20171208120130_%E7%9C%8B%E5%9B%BE%E7%8E%8B.jpg">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/22.png">
+<meta property="og:updated_time" content="2017-12-08T04:30:34.584Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="一只热爱编程的3D打印攻城狮">
+<meta name="twitter:title" content="基于mimics的椎弓根钉导板建立">
+<meta name="twitter:description" content="前言最近一个神外的朋友强烈推荐我做一些关于骨科导板制作这方面的模型。考虑到目前利用mimics进行术前导板设计和规划的需求越来越多，经过了一段时间的摸索，在这里写一个椎弓根钉导板的建立方法，供大家参考。">
+<meta name="twitter:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%9B%BE%E7%89%871.png">
 
 
 
@@ -118,13 +149,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2017/11/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/07/基于mimics的椎弓根钉导板建立/"/>
 
 
 
 
 
-  <title>归档 | Hello World</title>
+  <title>基于mimics的椎弓根钉导板建立 | Hello World</title>
   
 
 
@@ -143,7 +174,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -281,74 +312,303 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 5 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/07/基于mimics的椎弓根钉导板建立/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hahajoker">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my_logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello World">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/11/29/hello-world/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">基于mimics的椎弓根钉导板建立</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-29T13:28:16+08:00"
-              content="2017-11-29" >
-          11-29
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-07T16:53:07+08:00">
+                2017-12-07
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/3D打印/" itemprop="url" rel="index">
+                    <span itemprop="name">3D打印</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/07/基于mimics的椎弓根钉导板建立/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/12/07/基于mimics的椎弓根钉导板建立/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近一个神外的朋友强烈推荐我做一些关于骨科导板制作这方面的模型。考虑到目前利用mimics进行术前导板设计和规划的需求越来越多，经过了一段时间的摸索，在这里写一个椎弓根钉导板的建立方法，供大家参考。</p>
+<a id="more"></a>
+<hr>
+<h1 id="建立目标骨骼mask（L1-L6）"><a href="#建立目标骨骼mask（L1-L6）" class="headerlink" title="建立目标骨骼mask（L1-L6）"></a>建立目标骨骼mask（L1-L6）</h1><p>本次建模的目标是颈椎L4的椎弓根钉导板</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%9B%BE%E7%89%871.png" alt="img"></p>
+<p>确定目标骨骼<code>阈值</code>区间，<code>区域增长</code>，<code>填充孔隙</code>后<code>分割</code>颅骨和颈1（懒癌犯了…..其中细节我就不在这里说了）</p>
+<p>分割后并生成3D：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/2.png" alt="img"><strong>整个的建模过程中要注意：我们不要使用<code>smooth</code>或者<code>warp</code>等功能修改骨骼表面形态，无论是mask还是生成3D后。因为我们要保持骨骼表面最真实的形态用以生成相应导板。</strong></p>
+<p>#制作导板基底</p>
+<h2 id="利用Morphology功能生成导板壁厚"><a href="#利用Morphology功能生成导板壁厚" class="headerlink" title="利用Morphology功能生成导板壁厚"></a>利用Morphology功能生成导板壁厚</h2><p>选择颈椎mask</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/3.png" alt="img"></p>
+<p>点击Morphology工具</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF4.png" alt="img"></p>
+<p>在<code>Morphology</code>工具条中选择<code>Dilat</code>（扩张），扩张系数选择5，新mask命名“L4导板”，然后<code>Apply</code>。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/5.png" alt="img"></p>
+<p>点击<code>Apply</code>后可以看到生成的蓝色部分，可作为导板外壁，后期我们用<code>bool</code>减去里面的颈椎即可得到导板。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/6.png" alt="img"></p>
+<p>##修剪导板</p>
+<p>在<code>Edit mask in 3D</code>模式下打开L4导板mask，将导板的外形修出。</p>
+<p><strong>注意，在这里要考虑导板的可装配性和定位性。模板必须是手术中能暴露到骨面的部分，否则术中无法放置。面积一般不小于4平方厘米，并且有骨性突起最好。我们尽量选择大且突出的特征进行包覆。</strong></p>
+<p>另外，保留导板下和颈椎重合的多余部分，方便后期布尔减生成接触面。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimicszhuigonggendingdaoban7.png" alt="img"></p>
+<h2 id="在3-matic下平滑导板"><a href="#在3-matic下平滑导板" class="headerlink" title="在3-matic下平滑导板"></a>在3-matic下平滑导板</h2><p>将修剪后的导板<code>Calculate 3D</code>（生成3D模型）并导入<code>3-matic</code>。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF8.png" alt="img"></p>
+<p>在3-matic中用smooth工具进行平滑。</p>
+<p>平滑前：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF9.png" alt="img"></p>
+<p>N次平滑后：（是不是好看不少？）</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF10.png" alt="img"></p>
+<p>然后将平滑后的导板导回mimics。（快捷键Ctrl+C，Ctrl+V）</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/11.png" alt="img"></p>
+<p>看看这颜值！！Ok，导板的基底就完成了，下面就是钉孔的设计了。</p>
+<h1 id="设计骨钉导向套"><a href="#设计骨钉导向套" class="headerlink" title="设计骨钉导向套"></a>设计骨钉导向套</h1><p>椎弓根钉之所以需要导板的辅助是因为这个过程对其精准度有极高的要求，骨钉穿入偏差1-2mm就有可能损伤中间的脊髓，造成严重后果。骨钉导向器可以帮助医生在术前规划好入钉路径，减少术中风险。</p>
+<p>所以在设计引导孔之前我们要先设计好骨钉的穿刺路径</p>
+<h2 id="设计钉道"><a href="#设计钉道" class="headerlink" title="设计钉道"></a>设计钉道</h2><p>在横断位图上找到L4椎弓根，找到椎弓根直径最宽层面</p>
+<p>利用<code>Madcad</code>工具栏下<code>cylinder</code>（圆柱）工具绘制椎孔（三点绘制：起点、终点、半径）</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/12.png" alt="img"><strong>注意：这里入钉角度和钉型要与主刀医生沟通，严格按照其手术计划设计，为了保证钉子的稳固性，神外医生一般会选择直径3mm以上的钉子插入，所以下图的圆柱半径一般不小于1.5mm</strong></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/13.png" alt="img"></p>
+<p>同时我们也可在矢状位上调整钉子的俯仰角度，一般的椎弓根钉都是先两侧旁开再向上有个仰角。</p>
+<p>建议：圆柱在骨外需留够3cm左右的长度</p>
+<p>两侧都绘制完成后：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/14.png" alt="img"></p>
+<p>在<code>CAD Objects</code>栏目中我们可以看见刚才创建的钉孔</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF15.png" alt="img"></p>
+<h2 id="设计导向孔"><a href="#设计导向孔" class="headerlink" title="设计导向孔"></a>设计导向孔</h2><p>思路：将钉孔复制一下，扩大其中一组的直径，再布尔减去原来的钉孔即可得到导向套</p>
+<p>首先在<code>CAD Objects</code>栏目中选择钉孔右击，利用<code>Duplicat</code>功能将两个钉孔复制一份，并重新命名修改颜色方便区分</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF16.png" alt="img"></p>
+<p>修改直径：</p>
+<p><strong>这里要注意，如果你的模型要3D打印，为满足3D打印的要求（壁厚不能低于1mm），导向套的半径至少要比钉孔半径扩大1mm</strong></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/17.png" alt="img"></p>
+<p>结果为：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF18.png" alt="img"></p>
+<p>这时我们发现导向套太长了，可利用<code>simulation</code>–&gt;<code>cut</code>–&gt;<code>Orthogonal to Screen</code>工具切割并删除多余部分</p>
+<p><strong>注意：切割时要画出一个封闭线框，最后一个点一定要双击，以封闭线框。</strong></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/19.png" alt="img"></p>
+<p>导向套设计完成。</p>
+<h1 id="布尔并生成导板"><a href="#布尔并生成导板" class="headerlink" title="布尔并生成导板"></a>布尔并生成导板</h1><p>布尔工具</p>
+<p><code>simulation</code>–&gt;<code>boolean</code></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/20.png" alt="img"></p>
+<p>从上至下：减，加，相交</p>
+<p><strong>注意：为了防止混乱，每一步结束后都要合理命名，以及删除无用项目。</strong></p>
+<p>最后的几步：</p>
+<ul>
+<li>1.合并所有导向套</li>
+</ul>
+<ul>
+<li>2.用合并后的导向套依次减去钉孔1和钉孔2</li>
+</ul>
+<ul>
+<li>3.合并导板基底和导向套。</li>
+</ul>
+<ul>
+<li>4.整体导向器再减去原始颈椎模型。</li>
+</ul>
+<ul>
+<li>5.导入3-matic中去除掉零星的小碎渣</li>
+</ul>
+<p>ok，导板的建立就完成了，来看看最终效果：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/21.png" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171208113142.png" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171208113510.png" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171208113532.png" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171208113632.png" alt="img"></p>
+<h2 id="聊聊关于其他的建模方式"><a href="#聊聊关于其他的建模方式" class="headerlink" title="聊聊关于其他的建模方式"></a>聊聊关于其他的建模方式</h2><p>之前看资料的时候发现了一个问题，很多的资料上都采用的都是：在mask的层面上进行合并和加减，最后再生成3D的策略，在这里我并不认同。</p>
+<p>Mask的相减是基于体素的减法，精度比较低，出来的导板往往与骨的接触的表面较粗糙，这时再生成3D平滑处理的话就肯定失真。所以我并不推荐这种做法，我现在采用的是生成3D后再bool的方法。</p>
+<p>欢迎讨论交流和各种指正。</p>
+<h1 id="关于3D打印"><a href="#关于3D打印" class="headerlink" title="关于3D打印"></a>关于3D打印</h1><p>这个模型我最后并没有3D打印，所以我没图发给你们，但在这里我可以给出一些建议：</p>
+<p>导板在术中需要直接接触患者创面，最好采用专用的<code>医用陶瓷材料</code>打印，这种材料属于医用二级材料可直接高温消毒，比较安全，打印方式为<code>SLS（选择性激光烧结）</code>，缺点是比较贵，赶得上羟基磷灰石了T_T。</p>
+<p>有很多人问我用光敏树脂打印行不行。<code>光固化打印（SLA）</code>虽然成型快精度高，但是超过55℃即发生形变，达到80℃你就可以任意捏它了。而且，光敏树脂是出了名的不耐腐蚀，所以光敏树脂类3D打印术中导板是肯定不行的。</p>
+<p>不过，你可以用光敏树脂打印的导板动物实验啊！我就用过，还不错！</p>
+<p>－－－－－－－－－－－－－<strong>下图可能引起不适！！！圣母请自觉退散。。。</strong>－－－－－－－－－－－</p>
+<p>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊</p>
+<p>－－－－－－－－－－－－－－－－－－－<strong>我是邪恶的分割线</strong>－－－－－－－－－－－－－－－－－－－</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/23.png" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20171208120130_%E7%9C%8B%E5%9B%BE%E7%8E%8B.jpg" alt="img"></p>
+<p>最后，来一张上台前的自拍美照。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/22.png" alt="img"></p>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>用钱砸我，不要停！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="hahajoker 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mimics/" rel="tag"><i class="fa fa-tag"></i> mimics</a>
+          
+            <a href="/tags/3D打印/" rel="tag"><i class="fa fa-tag"></i> 3D打印</a>
+          
+            <a href="/tags/导板/" rel="tag"><i class="fa fa-tag"></i> 导板</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/04/Hexo搭建个人博客（三）/" rel="next" title="Hexo搭建个人博客（三）">
+                <i class="fa fa-chevron-left"></i> Hexo搭建个人博客（三）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -356,6 +616,17 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -376,8 +647,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -469,6 +749,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#建立目标骨骼mask（L1-L6）"><span class="nav-number">2.</span> <span class="nav-text">建立目标骨骼mask（L1-L6）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#利用Morphology功能生成导板壁厚"><span class="nav-number">2.1.</span> <span class="nav-text">利用Morphology功能生成导板壁厚</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在3-matic下平滑导板"><span class="nav-number">2.2.</span> <span class="nav-text">在3-matic下平滑导板</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计骨钉导向套"><span class="nav-number">3.</span> <span class="nav-text">设计骨钉导向套</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设计钉道"><span class="nav-number">3.1.</span> <span class="nav-text">设计钉道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计导向孔"><span class="nav-number">3.2.</span> <span class="nav-text">设计导向孔</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#布尔并生成导板"><span class="nav-number">4.</span> <span class="nav-text">布尔并生成导板</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#聊聊关于其他的建模方式"><span class="nav-number">4.1.</span> <span class="nav-text">聊聊关于其他的建模方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于3D打印"><span class="nav-number">5.</span> <span class="nav-text">关于3D打印</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -612,6 +908,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -658,6 +958,30 @@
 
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'hahajoker',
+            repo: 'hahajoker.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'a4cc73894ff6349277afdcc373a01c4db1179e3e',
+            
+                client_id: 'c6704b6424cdc0c80f5c'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 
