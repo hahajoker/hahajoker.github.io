@@ -3,6 +3,66 @@
   
     
     <entry>
+      <title><![CDATA[习大大十九大讲话词云分析]]></title>
+      <url>/2017/12/09/%E4%B9%A0%E5%A4%A7%E5%A4%A7%E5%8D%81%E4%B9%9D%E5%A4%A7%E8%AE%B2%E8%AF%9D%E8%AF%8D%E4%BA%91%E5%88%86%E6%9E%90/</url>
+      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>10月18日上午9:00，中国共产党第十九次全国代表大会开幕会在人民大会堂大礼堂举行，习近平总书记代表十八届中央委员会向大会作了报告。报告全文3万多字，讲话时长3个多小时，铿锵有力，振奋人心。</p>
+<p>会后，本着认证学习并贯彻十九大精神的目的，本人使用用<code>jieba</code>+<code>wordcloud</code>对习总书记在十九大开幕式上的发言做了词云分析，以作为学习资料。</p>
+<a id="more"></a>
+<hr>
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
+<li>Python 3.6.1</li>
+<li>Windows 7  64位</li>
+<li>PyCharm 2017.1.4</li>
+</ul>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>首先获取分析文本，然后使用<code>jieba</code>包进行分词，最后用<code>wordcloud</code>包生成词云图。</p>
+<h1 id="获取分析文本"><a href="#获取分析文本" class="headerlink" title="获取分析文本"></a>获取分析文本</h1><p>讲话当天很多网站便刊登了报告全文，在这里我选择了其中公信力较强的<a href="http://www.china.com.cn/" target="_blank" rel="noopener">中国网</a>发表的文章<a href="http://www.china.com.cn/cppcc/2017-10/18/content_41752399.htm" target="_blank" rel="noopener">《中共十九大开幕，习近平代表十八届中央委员会作报告（直播全文）》</a>作为文本来源</p>
+<p>首先复制文本并转存为<code>习近平十九大报告全文.txt</code>文件，放入根目录下待处理。</p>
+<h1 id="jieba分词"><a href="#jieba分词" class="headerlink" title="jieba分词"></a>jieba分词</h1><p>“结巴”中文分词：做最好的 Python 中文分词组件。</p>
+<p><a href="https://github.com/fxsjy/jieba" target="_blank" rel="noopener">jieba官方文档查看点这里</a></p>
+<p>“Jieba” (Chinese for “to stutter”) Chinese text segmentation: built to be the best Python Chinese word segmentation module.</p>
+<ul>
+<li><em>Scroll down for English documentation.</em></li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>代码对 Python 2/3 均兼容</p>
+<p>安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install jieba</span><br></pre></td></tr></table></figure>
+<h2 id="开始分词"><a href="#开始分词" class="headerlink" title="开始分词"></a>开始分词</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import jieba</span><br><span class="line"></span><br><span class="line">text = open(u&apos;习近平十九大报告全文.txt&apos;,&apos;r&apos;).read()  #以只读模式打开.txt</span><br><span class="line">wordlist_after_jieba =jieba.cut(text,cut_all=True)</span><br><span class="line">wl_space_split =&quot; &quot;.join(wordlist_after_jieba)</span><br></pre></td></tr></table></figure>
+<h1 id="wordcloud词云"><a href="#wordcloud词云" class="headerlink" title="wordcloud词云"></a>wordcloud词云</h1><p>构建词云的方法很多, 但是个人觉得python的wordcloud包功能最为强大,可以自定义图片.<br>官网: <a href="https://amueller.github.io/word_cloud/" target="_blank" rel="noopener">https://amueller.github.io/word_cloud/</a><br>github: <a href="https://github.com/amueller/word_cloud" target="_blank" rel="noopener">https://github.com/amueller/word_cloud</a></p>
+<h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><p>方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install wordcloud</span><br></pre></td></tr></table></figure>
+<p><strong>如果使用pip安装时出现以下错误</strong></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/20170629180712520.jpg" alt="这里写图片描述"></p>
+<p><strong>解决方案</strong></p>
+<p>在<a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#wordcloud" target="_blank" rel="noopener">http://www.lfd.uci.edu/~gohlke/pythonlibs/#wordcloud</a>下载<br>wrapt‑1.10.10‑cp36‑cp36m‑win_amd64.whl文件,然后到本文件所在目录执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install wrapt‑1.10.10‑cp36‑cp36m‑win_amd64.whl</span><br></pre></td></tr></table></figure>
+<p>即可安装。</p>
+<h2 id="生成词云"><a href="#生成词云" class="headerlink" title="生成词云"></a>生成词云</h2><p>首先我们把想要设置的词云背景图片存入根目录下（在这里我采用的是党徽）</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171210104456.png" alt="img"></p>
+<p>生成词云的代码，具体逻辑看代码注释：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import os</span><br><span class="line">from wordcloud import WordCloud, ImageColorGenerator</span><br><span class="line">import numpy as np</span><br><span class="line">import PIL.Image as Image</span><br><span class="line"></span><br><span class="line"># 获取当前文件路径</span><br><span class="line"># __file__为当前文件，在ide中运行时会报错，可改为</span><br><span class="line"># d = os.path.dirname(&apos;.&apos;)</span><br><span class="line">d = os.path.dirname(__file__)</span><br><span class="line"># 设置背景图片</span><br><span class="line">alice_coloring = np.array(Image.open(os.path.join(d, &quot;党徽.jpg&quot;)))</span><br><span class="line"># 词云参数设置</span><br><span class="line"># win的字体在c:/windows／Fonts中</span><br><span class="line">my_wordcloud = WordCloud(font_path=&quot;HYQiHei-65J.ttf&quot;, # 设置字体</span><br><span class="line">                         background_color=&quot;white&quot;, # 背景颜色</span><br><span class="line">                         max_words=2000, # 词云显示的最大词数</span><br><span class="line">                         mask=alice_coloring, # 设置背景图片</span><br><span class="line">                         max_font_size=70, # 字体最大值</span><br><span class="line">                         random_state=42, # 随机程度</span><br><span class="line">                         ).generate(wl_space_split) # 生成词云, 可以用generate输入全部文本</span><br><span class="line"># 从背景图片生成颜色值</span><br><span class="line">image_colors = ImageColorGenerator(alice_coloring)</span><br><span class="line"># 采用颜色值生成图片</span><br><span class="line">plt.imshow(my_wordcloud.recolor(color_func=image_colors))</span><br><span class="line"></span><br><span class="line">plt.imshow(my_wordcloud)</span><br><span class="line">plt.axis(&quot;off&quot;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">my_wordcloud.to_file(os.path.join(d, &quot;nineteen_cloud.png&quot;)) #保存图片</span><br></pre></td></tr></table></figure>
+<h1 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h1><p>生成的过程可能较慢（我的笔记本大概花了1mins）中间会生成一个预览窗口，关闭后才会将.png保存出来</p>
+<p>最后出来的效果：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/nineteen_cloud.png" alt="img"></p>
+<p><strong>注：关于图中出现的错误分词可在jieba分词的设置中逐个忽略掉。</strong></p>
+<p>最后，还是那句话：认证学习贯彻党的十九大精神，把学习作为自己的重要任务，不断在汲取各方面的知识，并在实践中不断磨练自己！（认真脸）</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 编程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[基于mimics的椎弓根钉导板建立]]></title>
       <url>/2017/12/07/%E5%9F%BA%E4%BA%8Emimics%E7%9A%84%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF%E5%BB%BA%E7%AB%8B/</url>
       <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近一个神外的朋友强烈推荐我做一些关于骨科导板这方面的模型。考虑到目前利用<code>mimics</code>进行术前导板设计和规划的需求越来越多，经过了一段时间的摸索，在这里写一个<code>椎弓根钉导板</code>的建立方法，供大家参考，欢迎讨论交流和各种指正。</p>
