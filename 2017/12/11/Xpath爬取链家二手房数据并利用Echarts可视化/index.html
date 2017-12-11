@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python,爬虫,xpath,javascript,echarts," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言最近在自学python语言的过程中，接触了多种爬虫的手段，我本爱挑剔私以为Requests+Xpath是用起来最优雅的，可惜一直没有找到称手的可视化工具。前两天在读知乎的高赞回答有哪些值得推荐的数据可视化工具？时发现了Echarts，非常惊艳，遂决定爬取链家二手房数据进行可视化，在测试自己爬虫实力的同时检验下Ech">
+<meta name="keywords" content="python,爬虫,xpath,javascript,echarts">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Xpath爬取链家二手房数据并利用Echarts可视化">
+<meta property="og:url" content="http://yoursite.com/2017/12/11/Xpath爬取链家二手房数据并利用Echarts可视化/index.html">
+<meta property="og:site_name" content="Hello World">
+<meta property="og:description" content="前言最近在自学python语言的过程中，接触了多种爬虫的手段，我本爱挑剔私以为Requests+Xpath是用起来最优雅的，可惜一直没有找到称手的可视化工具。前两天在读知乎的高赞回答有哪些值得推荐的数据可视化工具？时发现了Echarts，非常惊艳，遂决定爬取链家二手房数据进行可视化，在测试自己爬虫实力的同时检验下Echarts的实际效果。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/Xpath%E7%88%AC%E5%8F%96%E9%93%BE%E5%AE%B6%E4%BA%8C%E6%89%8B%E6%88%BF%E6%95%B0%E6%8D%AE%E5%B9%B6%E5%88%A9%E7%94%A8Echarts%E5%8F%AF%E8%A7%86%E5%8C%96.gif">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/2Dbeijingershoufang.gif">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171211173314.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171211181744.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171211182348.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171211182644.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171211183123.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171211183545.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171211185925.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/2Dbeijingershoufang.gif">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/Xpath%E7%88%AC%E5%8F%96%E9%93%BE%E5%AE%B6%E4%BA%8C%E6%89%8B%E6%88%BF%E6%95%B0%E6%8D%AE%E5%B9%B6%E5%88%A9%E7%94%A8Echarts%E5%8F%AF%E8%A7%86%E5%8C%96.gif">
+<meta property="og:updated_time" content="2017-12-11T15:33:48.807Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Xpath爬取链家二手房数据并利用Echarts可视化">
+<meta name="twitter:description" content="前言最近在自学python语言的过程中，接触了多种爬虫的手段，我本爱挑剔私以为Requests+Xpath是用起来最优雅的，可惜一直没有找到称手的可视化工具。前两天在读知乎的高赞回答有哪些值得推荐的数据可视化工具？时发现了Echarts，非常惊艳，遂决定爬取链家二手房数据进行可视化，在测试自己爬虫实力的同时检验下Echarts的实际效果。">
+<meta name="twitter:image" content="http://p0cgjzhqf.bkt.clouddn.com/Xpath%E7%88%AC%E5%8F%96%E9%93%BE%E5%AE%B6%E4%BA%8C%E6%89%8B%E6%88%BF%E6%95%B0%E6%8D%AE%E5%B9%B6%E5%88%A9%E7%94%A8Echarts%E5%8F%AF%E8%A7%86%E5%8C%96.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/11/Xpath爬取链家二手房数据并利用Echarts可视化/"/>
+
+
+
+
+
+  <title>Xpath爬取链家二手房数据并利用Echarts可视化 | Hello World</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hello World</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/11/Xpath爬取链家二手房数据并利用Echarts可视化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hahajoker">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my_logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Xpath爬取链家二手房数据并利用Echarts可视化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T15:37:20+08:00">
+                2017-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/11/Xpath爬取链家二手房数据并利用Echarts可视化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/12/11/Xpath爬取链家二手房数据并利用Echarts可视化/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近在自学python语言的过程中，接触了多种爬虫的手段，我本爱挑剔私以为<code>Requests</code>+<code>Xpath</code>是用起来最优雅的，可惜一直没有找到称手的可视化工具。前两天在读知乎的高赞回答<a href="https://www.zhihu.com/question/19929609" target="_blank" rel="noopener">有哪些值得推荐的数据可视化工具？</a>时发现了<code>Echarts</code>，非常惊艳，遂决定爬取链家二手房数据进行可视化，在测试自己爬虫实力的同时检验下Echarts的实际效果。</p>
+<a id="more"></a>
+<hr>
+<h1 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h1><ul>
+<li><strong>采用<code>Requests</code>+<code>Xpath</code>工具采集链家网北京二手房前100页信息，数据标签：<code>名称</code>、<code>地址</code>、<code>每平米单价</code>、<code>网址</code>、<code>总价</code>，并保存为<code>CSV</code>（表格）</strong></li>
+</ul>
+<ul>
+<li><strong>调用百度地图API ：实现具体地址到地图经纬度换算，并提取<code>名称</code>、<code>每平米单价</code>、<code>地址经纬度</code>三个标签保存为<code>json</code>格式（Echarts的数据导入只识别<code>json</code>格式）</strong></li>
+</ul>
+<ul>
+<li><p><strong>将数据导入<code>Echarts</code>，设置图标样式，导入第三方地图脚本，完成！</strong></p>
+<p> （这步虽然写得最短，但是我爬最多坑的地方，主要原因是这货是纯<code>Javascript</code>写的，还好官网提供了大量案例，这才摸着石头过了河）</p>
+<p>来看下最终结果:</p>
+<p><strong>3D图表：</strong><a href="http://gallery.echartsjs.com/preview.html?c=xSkIekbnuW&amp;v=2" target="_blank" rel="noopener">点此预览</a></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/Xpath%E7%88%AC%E5%8F%96%E9%93%BE%E5%AE%B6%E4%BA%8C%E6%89%8B%E6%88%BF%E6%95%B0%E6%8D%AE%E5%B9%B6%E5%88%A9%E7%94%A8Echarts%E5%8F%AF%E8%A7%86%E5%8C%96.gif" alt="img"></p>
+<p><strong>2D图表：</strong><a href="http://gallery.echartsjs.com/preview.html?c=xH1_0oxh_b&amp;v=5" target="_blank" rel="noopener">点此预览</a></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/2Dbeijingershoufang.gif" alt="img"></p>
+</li>
+</ul>
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
+<li>Python 3.6.1</li>
+<li>Windows 7  64位</li>
+<li>PyCharm 2017.1.4</li>
+</ul>
+<h1 id="爬取数据"><a href="#爬取数据" class="headerlink" title="爬取数据"></a>爬取数据</h1><h2 id="检查目标网页"><a href="#检查目标网页" class="headerlink" title="检查目标网页"></a>检查目标网页</h2><p>我们先来看看目标网页的情况</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171211173314.png" alt="img"></p>
+<p>发现：</p>
+<ul>
+<li>链家不需要登录即可查阅二手房信息</li>
+<li>用chrome检查网页请求，也没有<code>cookie</code>和<code>token</code>等一类变态的反爬手段</li>
+</ul>
+<p>至此，放心了一大半，说明我们不需要做太多的伪装即可直接获取到我们的目标数据</p>
+<h2 id="定位目标数据"><a href="#定位目标数据" class="headerlink" title="定位目标数据"></a>定位目标数据</h2><p>下面我们来看下目标数据的页面格式</p>
+<h3 id="翻页逻辑"><a href="#翻页逻辑" class="headerlink" title="翻页逻辑"></a>翻页逻辑</h3><p>链家二手房第一页的URL是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://bj.lianjia.com/ershoufang/</span><br></pre></td></tr></table></figure>
+<p>这个url中并没有带有明显的页面标识，别急，我们来看看第二页的url：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://bj.lianjia.com/ershoufang/pg2/</span><br></pre></td></tr></table></figure>
+<p>这下翻页逻辑就暴露了，这个<code>pg</code>后面的数字可能指代的就是页数，我们再看看后面的页数加以验证：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">https://bj.lianjia.com/ershoufang/pg3/</span><br><span class="line">https://bj.lianjia.com/ershoufang/pg4/</span><br><span class="line">https://bj.lianjia.com/ershoufang/pg5/</span><br><span class="line">.......</span><br></pre></td></tr></table></figure>
+<p>看来我们判断的没错，按照这个逻辑我们来看看/pg1/能不能打开第一页：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://bj.lianjia.com/ershoufang/pg1/</span><br></pre></td></tr></table></figure>
+<p>打开没有问题！看来依次增加<code>pg</code>后面的数字即可实现翻页。</p>
+<h3 id="数据定位"><a href="#数据定位" class="headerlink" title="数据定位"></a>数据定位</h3><p>用chrome右击的<code>检查</code>（Ctrl+shift+I）功能，我们可以方便地查看和定位网页元素：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171211181744.png" alt="img"></p>
+<h4 id="名称"><a href="#名称" class="headerlink" title="名称"></a>名称</h4><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171211182348.png" alt="img"></p>
+<h4 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h4><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171211182644.png" alt="img"></p>
+<h4 id="每平米单价"><a href="#每平米单价" class="headerlink" title="每平米单价"></a>每平米单价</h4><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171211183123.png" alt="img"></p>
+<h4 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h4><p>查看网页代码发现详情页面的网址就藏在之前存放名称的<code>&lt;a&gt;</code> 标签下的 <code>&lt;herf&gt;</code>标签内。</p>
+<h4 id="总价"><a href="#总价" class="headerlink" title="总价"></a>总价</h4><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171211183545.png" alt="img"></p>
+<h2 id="编写爬虫代码"><a href="#编写爬虫代码" class="headerlink" title="编写爬虫代码"></a>编写爬虫代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"># coding:utf-8</span><br><span class="line"></span><br><span class="line">import requests</span><br><span class="line">import csv</span><br><span class="line">from lxml import html</span><br><span class="line"></span><br><span class="line">url=&apos;https://bj.lianjia.com/ershoufang/pg&#123;page&#125;/&apos;  #目标网页</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    start_page=0</span><br><span class="line">    end_page=100                                   #爬取终止页数</span><br><span class="line">    with open(&apos;bjrent.csv&apos;,&apos;w&apos;,newline=&apos;&apos;) as f:   #以读写模式打开CSV</span><br><span class="line">        csv_writer=csv.writer(f)</span><br><span class="line">        print(&apos;start.....&apos;)</span><br><span class="line">        while start_page&lt;=end_page:                #循环页数终止判断</span><br><span class="line">            start_page+=1</span><br><span class="line">            print(&apos;get:&#123;0&#125;&apos;.format(url.format(page=start_page)))</span><br><span class="line">            response=requests.get(url.format(page=start_page))</span><br><span class="line">            tree = html.fromstring(response.text)</span><br><span class="line">            el = tree.xpath(&apos;//div[@class=&quot;info clear&quot;]&apos;)</span><br><span class="line">            for house in el:                       #遍历每个房产项目</span><br><span class="line">                house_title = house.xpath(&apos;div[@class=&quot;title&quot;]/a/text()&apos;) #名称</span><br><span class="line">                house_addr = house.xpath(&apos;div[@class=&quot;address&quot;]/div[@class=&quot;houseInfo&quot;]/a/text()&apos;)[0] #地址</span><br><span class="line">                house_totalprice = house.xpath(&apos;div[@class=&quot;priceInfo&quot;]/div[@class=&quot;totalPrice&quot;]/span/text()&apos;) #单价</span><br><span class="line">                house_unitprice = house.xpath(&apos;div[@class=&quot;priceInfo&quot;]/div[@class=&quot;unitPrice&quot;]/span/text()&apos;)   #总价</span><br><span class="line">                house_url = house.xpath(&apos;div[@class=&quot;title&quot;]/a/@href&apos;)   #详情页url网址</span><br><span class="line">                #整理数据</span><br><span class="line">                house_title = &apos;&apos;.join(house_title)</span><br><span class="line">                house_addr = &apos;&apos;.join(house_addr)</span><br><span class="line">                house_totalprice = &apos;&apos;.join(house_totalprice)</span><br><span class="line">                house_unitprice = &apos;&apos;.join(house_unitprice)</span><br><span class="line">                house_url = &apos;&apos;.join(house_url)</span><br><span class="line"></span><br><span class="line">                #数据写入CSV</span><br><span class="line">                csv_writer.writerow([house_title, house_addr, house_unitprice, house_url, house_totalprice+str(&apos;万&apos;)])</span><br><span class="line">        print(&apos;end.....&apos;)</span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong></p>
+<ul>
+<li><strong><code>.join()</code>函数作用：<a href="http://blog.csdn.net/he_jian1/article/details/40980049" target="_blank" rel="noopener">Python ‘’.JOIN()的作用</a></strong></li>
+<li><a href="http://www.w3school.com.cn/xpath/index.asp" target="_blank" rel="noopener">Xpath教程(W3C)</a></li>
+</ul>
+<h2 id="查看数据"><a href="#查看数据" class="headerlink" title="查看数据"></a>查看数据</h2><p>爬取完成后会在指定目录下生成一个<code>.csv</code>文件，我们可以打开它来查看爬取的数据。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171211185925.png" alt="img"></p>
+<p>链家100页的爬取我们得到了3000个房源数据，实际上看链家的年销售数据，它的房源数据肯定是3W+的，也许我们可以通过在100页上继续叠加爬取实现，而事实也是这样的。</p>
+<p>只不过我们目前的3000个样本数据已经很能说明问题了，在这里我就不全部爬完了。</p>
+<h1 id="调用百度地图API实现经纬度换算"><a href="#调用百度地图API实现经纬度换算" class="headerlink" title="调用百度地图API实现经纬度换算"></a>调用百度地图API实现经纬度换算</h1><p>百度API的调用方法可看<a href="http://www.jianshu.com/p/773ff5f08a2c" target="_blank" rel="noopener">这篇文章</a>，写得很好。</p>
+<h2 id="获取密匙（AK）"><a href="#获取密匙（AK）" class="headerlink" title="获取密匙（AK）"></a>获取密匙（AK）</h2><p>经纬度换算前，需要注册百度地图api（你要用百度的账号）以获取免费的密钥，才能完全使用该api。登录网址：<a href="https://link.jianshu.com/?t=http://lbsyun.baidu.com/" target="_blank" rel="noopener">百度开放平台</a></p>
+<p>首页点击申请密钥按钮，经过填写个人信息、邮箱注册等，成功之后在开放平台上点击“创建应用”，填写相关信息，在这里特别说明的是，在IP白名单框里，如果不清楚自己的IP地址，最好设置为：0.0.0.0/0，虽然百度提醒它会有泄露使用的风险，但是有时候你把你自己的IP地址输进去可能也不行。提交后，在你创建应用的访问应用（AK）那一栏就是你的密钥。</p>
+<h2 id="经纬度换算"><a href="#经纬度换算" class="headerlink" title="经纬度换算"></a>经纬度换算</h2><p>注册密钥后就可以在百度Web服务API下的Geocoding API接口来获取你所需要地址的经纬度坐标并转化为json结构的数据。</p>
+<p>官方API文档：<a href="http://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding" target="_blank" rel="noopener">点这里</a></p>
+<p>多的不说，直接上代码，每一步注释都写在后面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"># coding:utf-8</span><br><span class="line"></span><br><span class="line">import json</span><br><span class="line">from urllib.request import urlopen, quote</span><br><span class="line">import csv</span><br><span class="line"></span><br><span class="line">def getlnglat(address):</span><br><span class="line">    url = &apos;http://api.map.baidu.com/geocoder/v2/&apos;</span><br><span class="line">    output = &apos;json&apos;</span><br><span class="line">    ak = &apos;***************&apos;                  #在这里填写你的密匙</span><br><span class="line">    add = quote(str(&apos;北京市&apos;) + address)    #由于本文城市变量为中文，为防止乱码，先用quote进行编码</span><br><span class="line">    uri = url + &apos;?&apos; + &apos;address=&apos; + add  + &apos;&amp;output=&apos; + output + &apos;&amp;ak=&apos; + ak   #传参指定格式，见API文档</span><br><span class="line">    req = urlopen(uri)</span><br><span class="line">    res = req.read().decode() #将其他编码的字符串解码成unicode</span><br><span class="line">    temp = json.loads(res) #对json数据进行解析</span><br><span class="line">    return temp</span><br><span class="line"></span><br><span class="line">file = open(r&apos;D:\demo\tanjinhouse\beijinghouse\point.json&apos;,&apos;w&apos;,encoding=&apos;utf-8&apos;) #建立json数据文件</span><br><span class="line">with open(r&apos;D:\demo\tanjinhouse\beijinghouse\bjrent.csv&apos;, &apos;r&apos;) as csvfile: #打开上一步爬取出来csv保存地址</span><br><span class="line">    reader = csv.reader(csvfile)</span><br><span class="line">    for line in reader: #读取csv里的数据</span><br><span class="line">        try:</span><br><span class="line">            # 忽略第一行</span><br><span class="line">            # if reader.line_num == 1: #由于第一行为变量名称，故忽略掉</span><br><span class="line">            #    continue</span><br><span class="line">            # line是个list，取得所有需要的值</span><br><span class="line">            b = line[1].strip()  # 将第二列addr读取出来并清除不需要字符</span><br><span class="line">            c = line[2].strip(&apos;单价元/平米&apos;)  # 将第三列price读取出来并清除不需要字符</span><br><span class="line">            lng = getlnglat(b)[&apos;result&apos;][&apos;location&apos;][&apos;lng&apos;]  # 采用构造的函数来获取经度</span><br><span class="line">            lat = getlnglat(b)[&apos;result&apos;][&apos;location&apos;][&apos;lat&apos;]  # 获取纬度</span><br><span class="line">            # str_temp = &apos;&#123;&quot;lat&quot;:&apos; + str(lat) + &apos;,&quot;lng&quot;:&apos; + str(lng) + &apos;,&quot;count&quot;:&apos; + str(c) +&apos;&#125;,&apos;</span><br><span class="line">            str_temp = &apos;&#123;&quot;name&quot;:&quot;&apos; + str(b) + &apos;&quot;,&quot;value&quot;:[&apos; + str(lng) + &apos;,&apos; + str(lat) + &apos;,&apos; + str(c) + &apos;]&#125;,&apos;</span><br><span class="line">            # print(str_temp) #也可以通过打印出来，把数据copy到百度热力地图api的相应位置上</span><br><span class="line">            file.write(str_temp)  # 写入文档</span><br><span class="line">        except:</span><br><span class="line">            print(&quot;something wrong about city:&quot; + str(b))   #转换失败即打印错误项目</span><br><span class="line">file.close() #保存</span><br></pre></td></tr></table></figure>
+<p><strong>注：百度开发平台的经纬度转换对于免费账户来说每天是有上限的，如果你的转换出现了连续的报错，有可能就是这个原因。</strong></p>
+<p>最终保存出来的是<code>json</code>文档。</p>
+<h1 id="使用Echarts实现可视化"><a href="#使用Echarts实现可视化" class="headerlink" title="使用Echarts实现可视化"></a>使用Echarts实现可视化</h1><p><code>ECharts</code>是一个免费的，功能强大的图表和可视化库，为您的提供了一种简单的方法，即添加直观，交互式和高度可定制的图表。它是用纯<code>JavaScript</code>编写的，基于<a href="https://github.com/ecomfe/zrender" target="_blank" rel="noopener">zrender</a>，这是一个全新的轻量图表库。</p>
+<p>使用前请看：</p>
+<ul>
+<li><a href="http://echarts.baidu.com/feature.html" target="_blank" rel="noopener">Echarts官方文档</a></li>
+</ul>
+<p>当你发现看不进去（和我一样），趁早看这个：</p>
+<ul>
+<li><a href="http://echarts.baidu.com/examples.html" target="_blank" rel="noopener">Echarts官方实例</a></li>
+</ul>
+<p>ECharts 提供了常规的<a href="http://echarts.baidu.com/option.html#series-line" target="_blank" rel="noopener">折线图</a>，<a href="http://echarts.baidu.com/option.html#series-line" target="_blank" rel="noopener">柱状图</a>，<a href="http://echarts.baidu.com/option.html#series-scatter" target="_blank" rel="noopener">散点图</a>，<a href="http://echarts.baidu.com/option.html#series-pie" target="_blank" rel="noopener">饼图</a>，<a href="http://echarts.baidu.com/option.html#series-candlestick" target="_blank" rel="noopener">K线图</a>，用于统计的<a href="http://echarts.baidu.com/option.html#series-boxplot" target="_blank" rel="noopener">盒形图</a>，用于地理数据可视化的<a href="http://echarts.baidu.com/option.html#series-map" target="_blank" rel="noopener">地图</a>，<a href="http://echarts.baidu.com/option.html#series-heatmap" target="_blank" rel="noopener">热力图</a>，<a href="http://echarts.baidu.com/option.html#series-lines" target="_blank" rel="noopener">线图</a>，用于关系数据可视化的<a href="http://echarts.baidu.com/option.html#series-graph" target="_blank" rel="noopener">关系图</a>，<a href="http://echarts.baidu.com/option.html#series-treemap" target="_blank" rel="noopener">treemap</a>，多维数据可视化的<a href="http://echarts.baidu.com/option.html#series-parallel" target="_blank" rel="noopener">平行坐标</a>，还有用于 BI 的<a href="http://echarts.baidu.com/option.html#series-funnel" target="_blank" rel="noopener">漏斗图</a>，<a href="http://echarts.baidu.com/option.html#series-gauge" target="_blank" rel="noopener">仪表盘</a>。</p>
+<p><strong>但这都不是其最强大之处，ECharts最让人惊艳之处在于其图表的超高交互性和可定制性，以及最新的多维可视化图表（GL图表）。</strong></p>
+<p>感受一下：</p>
+<p>来自<a href="http://gallery.echartsjs.com/explore.html?u=bd-2215764494" target="_blank" rel="noopener">pissang</a>的 <a href="http://gallery.echartsjs.com/editor.html?c=xSyMekmcTx" target="_blank" rel="noopener">Bar3D - Global Population</a>图表（我也是参考了他的GL图表）</p>
+<p>ECharts图表的制作过程分为以下几步:</p>
+<ul>
+<li>首先我们需注册ECharts账号（百度账号）</li>
+<li>创建一个新的图表</li>
+<li>导入数据</li>
+<li>编写图表设置代码（JavaScript）</li>
+<li>添加第三方脚本</li>
+<li>保存分享</li>
+</ul>
+<h2 id="制作2D图表"><a href="#制作2D图表" class="headerlink" title="制作2D图表"></a>制作2D图表</h2><p>新建图表后，点击<code>导入数据</code>将我们之前保存的<code>json</code>数据导入</p>
+<p>然后编写图表设置代码</p>
+<p>这里我直接上代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br></pre></td><td class="code"><pre><span class="line">var uploadedDataURL = &quot;/asset/get/s/data-1503645606962-ryy3JIad-.json&quot;; # 导入的数据</span><br><span class="line"></span><br><span class="line">var t_pos = &#123;</span><br><span class="line">    left: 0,</span><br><span class="line">    top: 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var last_point = [0, 0];</span><br><span class="line">var counter = 0;</span><br><span class="line">myChart.showLoading();</span><br><span class="line">myChart.setOption(option = &#123;</span><br><span class="line">    title: &#123;</span><br><span class="line">        x: &apos;right&apos;,</span><br><span class="line">        text: &quot;北京房价可视化&quot;,</span><br><span class="line">        subtext: &apos;数据提取自链家 By--Hahajoker&apos;,</span><br><span class="line">        textStyle: &#123;</span><br><span class="line">            color: &apos;#fff&apos;,</span><br><span class="line">            fontSize: 30</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    tooltip: &#123;</span><br><span class="line">        trigger: &apos;item&apos;,</span><br><span class="line">        transitionDuration: 0,</span><br><span class="line">        position: function(point, params, dom, rect, size) &#123;</span><br><span class="line">            var least_area = 20;</span><br><span class="line">            var offset_x = 30; /* 相对于point的偏移 */</span><br><span class="line">            var offset_y = 30;</span><br><span class="line"></span><br><span class="line">            /* last_point的least_area范围内不会产生新的t_pos */</span><br><span class="line">            if (Math.abs(point[0] - last_point[0]) &lt; least_area &amp;&amp;</span><br><span class="line">                Math.abs(point[1] - last_point[1]) &lt; least_area &amp;&amp;</span><br><span class="line">                counter &gt;= 2) &#123;</span><br><span class="line">                return t_pos;</span><br><span class="line">            &#125;</span><br><span class="line">            if (Math.abs(point[0] - last_point[0]) &gt;= least_area ||</span><br><span class="line">                Math.abs(point[1] - last_point[1]) &gt;= least_area) &#123;</span><br><span class="line">                counter = 0;</span><br><span class="line">            &#125;</span><br><span class="line">            counter += 1;</span><br><span class="line">            /* 使real_x,real_y有数值 */</span><br><span class="line">            if (counter == 1) &#123;</span><br><span class="line">                t_pos.left = point[0] + offset_x;</span><br><span class="line">                t_pos.top = point[1] + offset_y;</span><br><span class="line">                last_point = [point[0], point[1]];</span><br><span class="line">            &#125;</span><br><span class="line">            /* 此处进行修正tooltip的位置 */</span><br><span class="line">            if (counter == 2) &#123;</span><br><span class="line">                var real_x = $(dom).position().left;</span><br><span class="line">                var real_y = $(dom).position().top;</span><br><span class="line">                t_pos.left += point[0] - real_x + offset_x;</span><br><span class="line">                t_pos.top += point[1] - real_y + offset_y;</span><br><span class="line">            &#125;</span><br><span class="line">            return t_pos;</span><br><span class="line">        &#125;,</span><br><span class="line">        formatter: function(params) &#123;</span><br><span class="line">            return params.name + &apos; : &apos; + params.value[2] + &apos;元/平方米&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    animation: false,</span><br><span class="line">    bmap: &#123;</span><br><span class="line">        center: [116.39, 39.90],             # 地图中心坐标</span><br><span class="line">        zoom: 11,                            # 地图大小</span><br><span class="line">        roam: true,</span><br><span class="line">        mapStyle: &#123;</span><br><span class="line">            &apos;styleJson&apos;: [&#123;</span><br><span class="line">                &quot;featureType&quot;: &quot;water&quot;,</span><br><span class="line">                &quot;elementType&quot;: &quot;all&quot;,</span><br><span class="line">                &quot;stylers&quot;: &#123;</span><br><span class="line">                    &quot;color&quot;: &quot;#021019&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">                &quot;featureType&quot;: &quot;highway&quot;,</span><br><span class="line">                &quot;elementType&quot;: &quot;geometry.fill&quot;,</span><br><span class="line">                &quot;stylers&quot;: &#123;</span><br><span class="line">                    &quot;color&quot;: &quot;#000000&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">                &quot;featureType&quot;: &quot;highway&quot;,</span><br><span class="line">                &quot;elementType&quot;: &quot;geometry.stroke&quot;,</span><br><span class="line">                &quot;stylers&quot;: &#123;</span><br><span class="line">                    &quot;color&quot;: &quot;#147a92&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">                &quot;featureType&quot;: &quot;arterial&quot;,</span><br><span class="line">                &quot;elementType&quot;: &quot;geometry.fill&quot;,</span><br><span class="line">                &quot;stylers&quot;: &#123;</span><br><span class="line">                    &quot;color&quot;: &quot;#000000&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">                &quot;featureType&quot;: &quot;arterial&quot;,</span><br><span class="line">                &quot;elementType&quot;: &quot;geometry.stroke&quot;,</span><br><span class="line">                &quot;stylers&quot;: &#123;</span><br><span class="line">                    &quot;color&quot;: &quot;#0b3d51&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">                &quot;featureType&quot;: &quot;local&quot;,</span><br><span class="line">                &quot;elementType&quot;: &quot;geometry&quot;,</span><br><span class="line">                &quot;stylers&quot;: &#123;</span><br><span class="line">                    &quot;color&quot;: &quot;#000000&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">                &quot;featureType&quot;: &quot;land&quot;,</span><br><span class="line">                &quot;elementType&quot;: &quot;all&quot;,</span><br><span class="line">                &quot;stylers&quot;: &#123;</span><br><span class="line">                    &quot;color&quot;: &quot;#08304b&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">                &quot;featureType&quot;: &quot;railway&quot;,</span><br><span class="line">                &quot;elementType&quot;: &quot;geometry.fill&quot;,</span><br><span class="line">                &quot;stylers&quot;: &#123;</span><br><span class="line">                    &quot;color&quot;: &quot;#000000&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">                &quot;featureType&quot;: &quot;railway&quot;,</span><br><span class="line">                &quot;elementType&quot;: &quot;geometry.stroke&quot;,</span><br><span class="line">                &quot;stylers&quot;: &#123;</span><br><span class="line">                    &quot;color&quot;: &quot;#08304b&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">                &quot;featureType&quot;: &quot;subway&quot;,</span><br><span class="line">                &quot;elementType&quot;: &quot;geometry&quot;,</span><br><span class="line">                &quot;stylers&quot;: &#123;</span><br><span class="line">                    &quot;lightness&quot;: -70</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">                &quot;featureType&quot;: &quot;building&quot;,</span><br><span class="line">                &quot;elementType&quot;: &quot;geometry.fill&quot;,</span><br><span class="line">                &quot;stylers&quot;: &#123;</span><br><span class="line">                    &quot;color&quot;: &quot;#000000&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">                &quot;featureType&quot;: &quot;all&quot;,</span><br><span class="line">                &quot;elementType&quot;: &quot;labels.text.fill&quot;,</span><br><span class="line">                &quot;stylers&quot;: &#123;</span><br><span class="line">                    &quot;color&quot;: &quot;#857f7f&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">                &quot;featureType&quot;: &quot;all&quot;,</span><br><span class="line">                &quot;elementType&quot;: &quot;labels.text.stroke&quot;,</span><br><span class="line">                &quot;stylers&quot;: &#123;</span><br><span class="line">                    &quot;color&quot;: &quot;#000000&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">                &quot;featureType&quot;: &quot;building&quot;,</span><br><span class="line">                &quot;elementType&quot;: &quot;geometry&quot;,</span><br><span class="line">                &quot;stylers&quot;: &#123;</span><br><span class="line">                    &quot;color&quot;: &quot;#022338&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">                &quot;featureType&quot;: &quot;green&quot;,</span><br><span class="line">                &quot;elementType&quot;: &quot;geometry&quot;,</span><br><span class="line">                &quot;stylers&quot;: &#123;</span><br><span class="line">                    &quot;color&quot;: &quot;#062032&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">                &quot;featureType&quot;: &quot;boundary&quot;,</span><br><span class="line">                &quot;elementType&quot;: &quot;all&quot;,</span><br><span class="line">                &quot;stylers&quot;: &#123;</span><br><span class="line">                    &quot;color&quot;: &quot;#1e1c1c&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">                &quot;featureType&quot;: &quot;manmade&quot;,</span><br><span class="line">                &quot;elementType&quot;: &quot;all&quot;,</span><br><span class="line">                &quot;stylers&quot;: &#123;</span><br><span class="line">                    &quot;color&quot;: &quot;#022338&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    visualMap: &#123;</span><br><span class="line">        //type: &apos;piecewise&apos;,</span><br><span class="line">        top: &apos;5%&apos;,</span><br><span class="line">        splitNumber: 5,</span><br><span class="line">        min: 0,</span><br><span class="line">        max: 10,</span><br><span class="line">        seriesIndex: 0,</span><br><span class="line">        calculable: true,</span><br><span class="line">        inRange: &#123;</span><br><span class="line">            color: [&apos;green&apos;, &apos;#eac736&apos;, &apos;#d94e5d&apos;]</span><br><span class="line">        &#125;,</span><br><span class="line">        textStyle: &#123;</span><br><span class="line">            color: &apos;#fff&apos;,</span><br><span class="line">            formatter: &apos;aaaa&#123;value&#125;bbbb&#123;value2&#125;&apos; // 范围标签显示内容。</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">    series: [&#123;</span><br><span class="line">        type: &apos;scatter&apos;,</span><br><span class="line">        coordinateSystem: &apos;bmap&apos;,</span><br><span class="line">        symbolSize: 8,</span><br><span class="line">        label: &#123;</span><br><span class="line">            normal: &#123;</span><br><span class="line">                show: false</span><br><span class="line">            &#125;,</span><br><span class="line">            emphasis: &#123;</span><br><span class="line">                show: false</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;);</span><br><span class="line">if (!app.inNode) &#123;</span><br><span class="line">    // 添加百度地图插件</span><br><span class="line">    var bmap = myChart.getModel().getComponent(&apos;bmap&apos;).getBMap();</span><br><span class="line">    bmap.addControl(new BMap.MapTypeControl());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if (option &amp;&amp; typeof option === &quot;object&quot;) &#123;</span><br><span class="line">    myChart.setOption(option, true);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">;</span><br><span class="line">$.getJSON(uploadedDataURL, function(linedata) &#123;</span><br><span class="line"></span><br><span class="line">    myChart.hideLoading();</span><br><span class="line">    myChart.setOption(&#123;</span><br><span class="line"></span><br><span class="line">        visualMap: &#123;</span><br><span class="line">            max: linedata[1]</span><br><span class="line">        &#125;,</span><br><span class="line">        series: [&#123;</span><br><span class="line">            data: linedata[0]</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>在这个图表中我们引入了两个第三方脚本url：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://api.map.baidu.com/api?v=2.0&amp;ak=ZUONbpqGBsYGXNIYHicvbAbM</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dep/echarts/latest/extension/bmap.min.js</span><br></pre></td></tr></table></figure>
+<p>在<code>脚本</code>选项中将他们依次添加</p>
+<p>点击<code>刷新</code>即可生成图表：</p>
+<p><a href="http://gallery.echartsjs.com/preview.html?c=xH1_0oxh_b&amp;v=5" target="_blank" rel="noopener">点此预览</a></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/2Dbeijingershoufang.gif" alt="img"></p>
+<h2 id="制作3D图表"><a href="#制作3D图表" class="headerlink" title="制作3D图表"></a>制作3D图表</h2><p>新建图表后，点击<code>导入数据</code>将我们之前保存的<code>json</code>数据导入</p>
+<p>然后编写图表设置代码</p>
+<p>我的图表代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">var uploadedDataURL = &quot;/asset/get/s/data-1503645606962-ryy3JIad-.json&quot;;   #导入数据</span><br><span class="line"></span><br><span class="line">mapboxgl.accessToken = mapboxglToken;</span><br><span class="line"></span><br><span class="line">myChart.showLoading();</span><br><span class="line"></span><br><span class="line">$.getJSON(uploadedDataURL, function(linedata) &#123;</span><br><span class="line">    </span><br><span class="line">    myChart.hideLoading();</span><br><span class="line">    </span><br><span class="line">    myChart.setOption(&#123;</span><br><span class="line"></span><br><span class="line">        visualMap: &#123;</span><br><span class="line">            show: false,</span><br><span class="line">            calculable: true,</span><br><span class="line">            realtime: false,</span><br><span class="line">            inRange: &#123;</span><br><span class="line">                color: [&apos;#313695&apos;, &apos;#4575b4&apos;, &apos;#74add1&apos;, &apos;#abd9e9&apos;, &apos;#e0f3f8&apos;, &apos;#ffffbf&apos;, &apos;#fee090&apos;, &apos;#fdae61&apos;, &apos;#f46d43&apos;, &apos;#d73027&apos;, &apos;#a50026&apos;]</span><br><span class="line">            &#125;,</span><br><span class="line">            outOfRange: &#123;</span><br><span class="line">                colorAlpha: 0</span><br><span class="line">            &#125;,</span><br><span class="line">            max: linedata[1]</span><br><span class="line">        &#125;,</span><br><span class="line">        mapbox: &#123;</span><br><span class="line">            center: [116.39, 39.90],           #地图中心坐标</span><br><span class="line">            zoom: 10,</span><br><span class="line">            pitch: 50,</span><br><span class="line">            bearing: -10,</span><br><span class="line">            style: &apos;mapbox://styles/mapbox/light-v9&apos;,</span><br><span class="line">            boxHeight: 50,</span><br><span class="line">            // altitudeScale: 3e2,</span><br><span class="line">            postEffect: &#123;</span><br><span class="line">                enable: true,</span><br><span class="line">                SSAO: &#123;</span><br><span class="line">                    enable: true,</span><br><span class="line">                    radius: 2,</span><br><span class="line">                    intensity: 1.5</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            light: &#123;</span><br><span class="line">                main: &#123;</span><br><span class="line">                    intensity: 1,</span><br><span class="line">                    shadow: true,</span><br><span class="line">                    shadowQuality: &apos;high&apos;</span><br><span class="line">                &#125;,</span><br><span class="line">                ambient: &#123;</span><br><span class="line">                    intensity: 0.</span><br><span class="line">                &#125;,</span><br><span class="line">                ambientCubemap: &#123;</span><br><span class="line">                    texture: &apos;/asset/get/s/data-1491896094618-H1DmP-5px.hdr&apos;,</span><br><span class="line">                    exposure: 1,</span><br><span class="line">                    diffuseIntensity: 0.5</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;,</span><br><span class="line">        series: [&#123;</span><br><span class="line">            type: &apos;bar3D&apos;,</span><br><span class="line">            shading: &apos;realistic&apos;,</span><br><span class="line">            coordinateSystem: &apos;mapbox&apos;,</span><br><span class="line">            barSize: 0.2,</span><br><span class="line">            silent: true,</span><br><span class="line">            data: linedata[0]</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>在这个图表中我们引入了三个第三方脚本url：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://echarts.baidu.com/resource/echarts-gl-latest/mapboxgl-token.js</span><br></pre></td></tr></table></figure>
+<p>在<code>脚本</code>选项中将他们依次添加</p>
+<p>点击<code>刷新</code>即可生成图表：</p>
+<p><a href="http://gallery.echartsjs.com/preview.html?c=xSkIekbnuW&amp;v=2" target="_blank" rel="noopener">点此预览</a></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/Xpath%E7%88%AC%E5%8F%96%E9%93%BE%E5%AE%B6%E4%BA%8C%E6%89%8B%E6%88%BF%E6%95%B0%E6%8D%AE%E5%B9%B6%E5%88%A9%E7%94%A8Echarts%E5%8F%AF%E8%A7%86%E5%8C%96.gif" alt="img"></p>
+<p>在这里，我本来在考虑看能不能有方法将3D图表的三维数据导出，这样我就能利用3D打印将这个图表实体化了打印出来了，可惜Echarts并没有给出这样的接口，如果你们有好的建议请告诉我，不胜感激。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>用钱砸我，不要停！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="hahajoker 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          
+            <a href="/tags/爬虫/" rel="tag"><i class="fa fa-tag"></i> 爬虫</a>
+          
+            <a href="/tags/xpath/" rel="tag"><i class="fa fa-tag"></i> xpath</a>
+          
+            <a href="/tags/javascript/" rel="tag"><i class="fa fa-tag"></i> javascript</a>
+          
+            <a href="/tags/echarts/" rel="tag"><i class="fa fa-tag"></i> echarts</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/09/习大大十九大讲话词云分析/" rel="next" title="习大大十九大讲话词云分析">
+                <i class="fa fa-chevron-left"></i> 习大大十九大讲话词云分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/my_logo.jpg"
+                alt="hahajoker" />
+            
+              <p class="site-author-name" itemprop="name">hahajoker</p>
+              <p class="site-description motion-element" itemprop="description">一只热爱编程的3D打印攻城狮</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                    
+                      <i class="fa fa-fw fa-google"></i>Google</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/yourname" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yourname@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#策略"><span class="nav-number">2.</span> <span class="nav-text">策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境"><span class="nav-number">3.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#爬取数据"><span class="nav-number">4.</span> <span class="nav-text">爬取数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#检查目标网页"><span class="nav-number">4.1.</span> <span class="nav-text">检查目标网页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定位目标数据"><span class="nav-number">4.2.</span> <span class="nav-text">定位目标数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#翻页逻辑"><span class="nav-number">4.2.1.</span> <span class="nav-text">翻页逻辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据定位"><span class="nav-number">4.2.2.</span> <span class="nav-text">数据定位</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#名称"><span class="nav-number">4.2.2.1.</span> <span class="nav-text">名称</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#地址"><span class="nav-number">4.2.2.2.</span> <span class="nav-text">地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#每平米单价"><span class="nav-number">4.2.2.3.</span> <span class="nav-text">每平米单价</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网址"><span class="nav-number">4.2.2.4.</span> <span class="nav-text">网址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总价"><span class="nav-number">4.2.2.5.</span> <span class="nav-text">总价</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写爬虫代码"><span class="nav-number">4.3.</span> <span class="nav-text">编写爬虫代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看数据"><span class="nav-number">4.4.</span> <span class="nav-text">查看数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调用百度地图API实现经纬度换算"><span class="nav-number">5.</span> <span class="nav-text">调用百度地图API实现经纬度换算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取密匙（AK）"><span class="nav-number">5.1.</span> <span class="nav-text">获取密匙（AK）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经纬度换算"><span class="nav-number">5.2.</span> <span class="nav-text">经纬度换算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Echarts实现可视化"><span class="nav-number">6.</span> <span class="nav-text">使用Echarts实现可视化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#制作2D图表"><span class="nav-number">6.1.</span> <span class="nav-text">制作2D图表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作3D图表"><span class="nav-number">6.2.</span> <span class="nav-text">制作3D图表</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahajoker</span>
+
+  
+</div>
+
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+-->
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'hahajoker',
+            repo: 'hahajoker.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'a4cc73894ff6349277afdcc373a01c4db1179e3e',
+            
+                client_id: 'c6704b6424cdc0c80f5c'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
