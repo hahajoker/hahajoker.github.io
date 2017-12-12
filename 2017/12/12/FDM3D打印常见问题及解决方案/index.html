@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="hahajoker" />
+  <meta name="keywords" content="3D打印,FDM," />
 
 
 
@@ -81,17 +81,45 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troublesho">
+<meta name="description" content="前言接触并使用FDM（熔融沉积）3D打印机已有三年的时间，前前后后打印过的模型估计有几百件，还做过一段时间的硬件开发，对于这种打印机不敢说精通，但算是个老玩家了了。说实话，相对于其他3D打印技术，FDM打印机在稳定性和打印精度上是不理想的，但是它的长处在于性价比，其低廉的价格使其成为了目前保有量最高的3D打印机类型。 ">
+<meta name="keywords" content="3D打印,FDM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/11/29/hello-world/index.html">
+<meta property="og:title" content="FDM3D打印常见问题及解决方案">
+<meta property="og:url" content="http://yoursite.com/2017/12/12/FDM3D打印常见问题及解决方案/index.html">
 <meta property="og:site_name" content="Hello World">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="前言接触并使用FDM（熔融沉积）3D打印机已有三年的时间，前前后后打印过的模型估计有几百件，还做过一段时间的硬件开发，对于这种打印机不敢说精通，但算是个老玩家了了。说实话，相对于其他3D打印技术，FDM打印机在稳定性和打印精度上是不理想的，但是它的长处在于性价比，其低廉的价格使其成为了目前保有量最高的3D打印机类型。 在这里把我遇到过的FDM 3D打印常见问题，以及解决处理方法做了个总结，方便随时">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-04T15:53:58.663Z">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/FDM%203D%E6%89%93%E5%8D%B0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/FDM%203D%E6%89%93%E5%8D%B0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98_%E7%A1%AC%E6%80%A7%E9%97%AE%E9%A2%98.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212181313.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182537.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182604.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182624.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182649.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182715.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182729.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182742.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182803.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182815.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182836.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/ext_020161130133951172.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/FDM%203D%E6%89%93%E5%8D%B0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98_%E6%89%93%E5%8D%B0%E4%BC%98%E5%8C%96.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183043.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212190102.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183123.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183141.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183156.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183208.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183224.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183237.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183251.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183303.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183317.png">
+<meta property="og:updated_time" content="2017-12-12T11:19:27.706Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="twitter:title" content="FDM3D打印常见问题及解决方案">
+<meta name="twitter:description" content="前言接触并使用FDM（熔融沉积）3D打印机已有三年的时间，前前后后打印过的模型估计有几百件，还做过一段时间的硬件开发，对于这种打印机不敢说精通，但算是个老玩家了了。说实话，相对于其他3D打印技术，FDM打印机在稳定性和打印精度上是不理想的，但是它的长处在于性价比，其低廉的价格使其成为了目前保有量最高的3D打印机类型。 在这里把我遇到过的FDM 3D打印常见问题，以及解决处理方法做了个总结，方便随时">
+<meta name="twitter:image" content="http://p0cgjzhqf.bkt.clouddn.com/FDM%203D%E6%89%93%E5%8D%B0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.png">
 
 
 
@@ -121,13 +149,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/29/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/12/FDM3D打印常见问题及解决方案/"/>
 
 
 
 
 
-  <title>Hello World | Hello World</title>
+  <title>FDM3D打印常见问题及解决方案 | Hello World</title>
   
 
 
@@ -298,7 +326,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/29/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/12/FDM3D打印常见问题及解决方案/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hahajoker">
@@ -315,7 +343,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">FDM3D打印常见问题及解决方案</h1>
         
 
         <div class="post-meta">
@@ -327,8 +355,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-29T13:28:16+08:00">
-                2017-11-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T17:18:03+08:00">
+                2017-12-12
               </time>
             
 
@@ -338,6 +366,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/3D打印/" itemprop="url" rel="index">
+                    <span itemprop="name">3D打印</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -346,8 +396,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/29/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/11/29/hello-world/" itemprop="commentsCount"></span>
+                <a href="/2017/12/12/FDM3D打印常见问题及解决方案/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/12/12/FDM3D打印常见问题及解决方案/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -375,16 +425,41 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>接触并使用<code>FDM</code>（熔融沉积）3D打印机已有三年的时间，前前后后打印过的模型估计有几百件，还做过一段时间的硬件开发，对于这种打印机不敢说精通，但算是个老玩家了了。说实话，相对于其他3D打印技术，FDM打印机在稳定性和打印精度上是不理想的，但是它的长处在于性价比，其低廉的价格使其成为了目前保有量最高的3D打印机类型。</p>
+<p>在这里把我遇到过的FDM 3D打印常见问题，以及解决处理方法做了个总结，方便随时查看，让大家少走弯路轻松愉快地使用3D打印机。</p>
 <a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<hr>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><img src="http://p0cgjzhqf.bkt.clouddn.com/FDM%203D%E6%89%93%E5%8D%B0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.png" alt="img"></p>
+<p>我将这个目录内的常见问题及解决方案利用<a href="http://www.focusky.com.cn/" target="_blank" rel="noopener">focusky</a>做成了动画展示，方便大家查看和分享。</p>
+<p>点此查看完整预览：<a href="http://fs.focusky.com.cn/wwdb/tcfa/index.html" target="_blank" rel="noopener">http://fs.focusky.com.cn/wwdb/tcfa/index.html</a></p>
+<p><strong>注：建议大家收藏上面的网址，方便遇到问题随时查看</strong></p>
+<h1 id="硬性问题"><a href="#硬性问题" class="headerlink" title="硬性问题"></a>硬性问题</h1><p>硬性问题是指3D打印机出现了较严重的问题，如果不解决问题就无法完成打印过程。我们可以根据打印中出现的问题现象来判断问题原因，找到对应的解决方案。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/FDM%203D%E6%89%93%E5%8D%B0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98_%E7%A1%AC%E6%80%A7%E9%97%AE%E9%A2%98.png" alt="img"></p>
+<h2 id="3D打印开始后，耗材挤不出如何解决？"><a href="#3D打印开始后，耗材挤不出如何解决？" class="headerlink" title="3D打印开始后，耗材挤不出如何解决？"></a>3D打印开始后，耗材挤不出如何解决？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212181313.png" alt="img"></p>
+<h2 id="如何解决3D打印出现刨料问题？"><a href="#如何解决3D打印出现刨料问题？" class="headerlink" title="如何解决3D打印出现刨料问题？"></a>如何解决3D打印出现刨料问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182537.png" alt="img"></p>
+<h2 id="如何解决喷头堵塞问题？"><a href="#如何解决喷头堵塞问题？" class="headerlink" title="如何解决喷头堵塞问题？"></a>如何解决喷头堵塞问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182604.png" alt="img"></p>
+<h2 id="怎么解决打印的耗材没法粘到平台上？"><a href="#怎么解决打印的耗材没法粘到平台上？" class="headerlink" title="怎么解决打印的耗材没法粘到平台上？"></a>怎么解决打印的耗材没法粘到平台上？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182624.png" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182649.png" alt="img"></p>
+<h2 id="如何解决打印中途，挤出停止"><a href="#如何解决打印中途，挤出停止" class="headerlink" title="如何解决打印中途，挤出停止"></a>如何解决打印中途，挤出停止</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182715.png" alt="img"></p>
+<h2 id="如何解决3D打印出现层错位问题？"><a href="#如何解决3D打印出现层错位问题？" class="headerlink" title="如何解决3D打印出现层错位问题？"></a>如何解决3D打印出现层错位问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182729.png" alt="img"></p>
+<h2 id="如何解决过热问题"><a href="#如何解决过热问题" class="headerlink" title="如何解决过热问题"></a>如何解决过热问题</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182742.png" alt="img"></p>
+<h2 id="如何解决挤出不稳定问题？"><a href="#如何解决挤出不稳定问题？" class="headerlink" title="如何解决挤出不稳定问题？"></a>如何解决挤出不稳定问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182803.png" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182815.png" alt="img"></p>
+<h2 id="什么3D建模软件可以支持3D打印？"><a href="#什么3D建模软件可以支持3D打印？" class="headerlink" title="什么3D建模软件可以支持3D打印？"></a>什么3D建模软件可以支持3D打印？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182836.png" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/ext_020161130133951172.png" alt="img"></p>
+<h1 id="打印优化"><a href="#打印优化" class="headerlink" title="打印优化"></a>打印优化</h1><p>打印优化问题一般是指打印机可以完成打印过程，但打印出的模型出现了不理想的偏差，我们可以根据模型呈现出的不同状态来判断和调整切片参数或者修复打印机，以达到模型打印的最优状态。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/FDM%203D%E6%89%93%E5%8D%B0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98_%E6%89%93%E5%8D%B0%E4%BC%98%E5%8C%96.png" alt="img"></p>
+<h2 id="打印件边角卷曲和毛糙解决方法"><a href="#打印件边角卷曲和毛糙解决方法" class="headerlink" title="打印件边角卷曲和毛糙解决方法"></a>打印件边角卷曲和毛糙解决方法</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183043.png" alt="img"></p>
+<h2 id="如何解决3D打印中出现拉丝和垂料问题？"><a href="#如何解决3D打印中出现拉丝和垂料问题？" class="headerlink" title="如何解决3D打印中出现拉丝和垂料问题？"></a>如何解决3D打印中出现拉丝和垂料问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212190102.png" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183123.png" alt="img"></p>
+<h2 id="如何解决3D打印出现振动和回环纹理"><a href="#如何解决3D打印出现振动和回环纹理" class="headerlink" title="如何解决3D打印出现振动和回环纹理"></a>如何解决3D打印出现振动和回环纹理</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183141.png" alt="img"></p>
+<h2 id="如何解决填充不牢问题"><a href="#如何解决填充不牢问题" class="headerlink" title="如何解决填充不牢问题"></a>如何解决填充不牢问题</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183156.png" alt="img"></p>
+<h2 id="如何解决底面边角上的孔洞和间隙"><a href="#如何解决底面边角上的孔洞和间隙" class="headerlink" title="如何解决底面边角上的孔洞和间隙"></a>如何解决底面边角上的孔洞和间隙</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183208.png" alt="img"></p>
+<h2 id="如何解决侧面线性纹理问题？"><a href="#如何解决侧面线性纹理问题？" class="headerlink" title="如何解决侧面线性纹理问题？"></a>如何解决侧面线性纹理问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183224.png" alt="img"></p>
+<h2 id="如何解决填充与轮廓之间出现间隙现象？"><a href="#如何解决填充与轮廓之间出现间隙现象？" class="headerlink" title="如何解决填充与轮廓之间出现间隙现象？"></a>如何解决填充与轮廓之间出现间隙现象？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183237.png" alt="img"></p>
+<h2 id="如何解决细节打印不出来？"><a href="#如何解决细节打印不出来？" class="headerlink" title="如何解决细节打印不出来？"></a>如何解决细节打印不出来？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183251.png" alt="img"></p>
+<h2 id="如何解决层开裂或断开问题？"><a href="#如何解决层开裂或断开问题？" class="headerlink" title="如何解决层开裂或断开问题？"></a>如何解决层开裂或断开问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183303.png" alt="img"></p>
+<h2 id="如何处理短线轴"><a href="#如何处理短线轴" class="headerlink" title="如何处理短线轴?"></a>如何处理短线轴?</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183317.png" alt="img"></p>
 
       
     </div>
@@ -424,6 +499,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/3D打印/" rel="tag"><i class="fa fa-tag"></i> 3D打印</a>
+          
+            <a href="/tags/FDM/" rel="tag"><i class="fa fa-tag"></i> FDM</a>
+          
+        </div>
+      
 
       
       
@@ -433,15 +516,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/12/11/Xpath爬取链家二手房数据并利用Echarts可视化/" rel="next" title="Xpath爬取链家二手房数据并利用Echarts可视化">
+                <i class="fa fa-chevron-left"></i> Xpath爬取链家二手房数据并利用Echarts可视化
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/02/Hexo搭建个人博客（一）/" rel="prev" title="Hexo搭建个人博客（一）">
-                Hexo搭建个人博客（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -619,7 +702,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#硬性问题"><span class="nav-number">3.</span> <span class="nav-text">硬性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3D打印开始后，耗材挤不出如何解决？"><span class="nav-number">3.1.</span> <span class="nav-text">3D打印开始后，耗材挤不出如何解决？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决3D打印出现刨料问题？"><span class="nav-number">3.2.</span> <span class="nav-text">如何解决3D打印出现刨料问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决喷头堵塞问题？"><span class="nav-number">3.3.</span> <span class="nav-text">如何解决喷头堵塞问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么解决打印的耗材没法粘到平台上？"><span class="nav-number">3.4.</span> <span class="nav-text">怎么解决打印的耗材没法粘到平台上？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决打印中途，挤出停止"><span class="nav-number">3.5.</span> <span class="nav-text">如何解决打印中途，挤出停止</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决3D打印出现层错位问题？"><span class="nav-number">3.6.</span> <span class="nav-text">如何解决3D打印出现层错位问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决过热问题"><span class="nav-number">3.7.</span> <span class="nav-text">如何解决过热问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决挤出不稳定问题？"><span class="nav-number">3.8.</span> <span class="nav-text">如何解决挤出不稳定问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么3D建模软件可以支持3D打印？"><span class="nav-number">3.9.</span> <span class="nav-text">什么3D建模软件可以支持3D打印？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打印优化"><span class="nav-number">4.</span> <span class="nav-text">打印优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#打印件边角卷曲和毛糙解决方法"><span class="nav-number">4.1.</span> <span class="nav-text">打印件边角卷曲和毛糙解决方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决3D打印中出现拉丝和垂料问题？"><span class="nav-number">4.2.</span> <span class="nav-text">如何解决3D打印中出现拉丝和垂料问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决3D打印出现振动和回环纹理"><span class="nav-number">4.3.</span> <span class="nav-text">如何解决3D打印出现振动和回环纹理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决填充不牢问题"><span class="nav-number">4.4.</span> <span class="nav-text">如何解决填充不牢问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决底面边角上的孔洞和间隙"><span class="nav-number">4.5.</span> <span class="nav-text">如何解决底面边角上的孔洞和间隙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决侧面线性纹理问题？"><span class="nav-number">4.6.</span> <span class="nav-text">如何解决侧面线性纹理问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决填充与轮廓之间出现间隙现象？"><span class="nav-number">4.7.</span> <span class="nav-text">如何解决填充与轮廓之间出现间隙现象？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决细节打印不出来？"><span class="nav-number">4.8.</span> <span class="nav-text">如何解决细节打印不出来？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决层开裂或断开问题？"><span class="nav-number">4.9.</span> <span class="nav-text">如何解决层开裂或断开问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何处理短线轴"><span class="nav-number">4.10.</span> <span class="nav-text">如何处理短线轴?</span></a></li></ol></li></ol></div>
             
 
           </div>

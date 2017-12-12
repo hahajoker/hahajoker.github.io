@@ -3,6 +3,63 @@
   
     
     <entry>
+      <title><![CDATA[FDM3D打印常见问题及解决方案]]></title>
+      <url>/2017/12/12/FDM3D%E6%89%93%E5%8D%B0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>接触并使用<code>FDM</code>（熔融沉积）3D打印机已有三年的时间，前前后后打印过的模型估计有几百件，还做过一段时间的硬件开发，对于这种打印机不敢说精通，但算是个老玩家了了。说实话，相对于其他3D打印技术，FDM打印机在稳定性和打印精度上是不理想的，但是它的长处在于性价比，其低廉的价格使其成为了目前保有量最高的3D打印机类型。</p>
+<p>在这里把我遇到过的FDM 3D打印常见问题，以及解决处理方法做了个总结，方便随时查看，让大家少走弯路轻松愉快地使用3D打印机。</p>
+<a id="more"></a>
+<hr>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><img src="http://p0cgjzhqf.bkt.clouddn.com/FDM%203D%E6%89%93%E5%8D%B0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.png" alt="img"></p>
+<p>我将这个目录内的常见问题及解决方案利用<a href="http://www.focusky.com.cn/" target="_blank" rel="noopener">focusky</a>做成了动画展示，方便大家查看和分享。</p>
+<p>点此查看完整预览：<a href="http://fs.focusky.com.cn/wwdb/tcfa/index.html" target="_blank" rel="noopener">http://fs.focusky.com.cn/wwdb/tcfa/index.html</a></p>
+<p><strong>注：建议大家收藏上面的网址，方便遇到问题随时查看</strong></p>
+<h1 id="硬性问题"><a href="#硬性问题" class="headerlink" title="硬性问题"></a>硬性问题</h1><p>硬性问题是指3D打印机出现了较严重的问题，如果不解决问题就无法完成打印过程。我们可以根据打印中出现的问题现象来判断问题原因，找到对应的解决方案。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/FDM%203D%E6%89%93%E5%8D%B0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98_%E7%A1%AC%E6%80%A7%E9%97%AE%E9%A2%98.png" alt="img"></p>
+<h2 id="3D打印开始后，耗材挤不出如何解决？"><a href="#3D打印开始后，耗材挤不出如何解决？" class="headerlink" title="3D打印开始后，耗材挤不出如何解决？"></a>3D打印开始后，耗材挤不出如何解决？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212181313.png" alt="img"></p>
+<h2 id="如何解决3D打印出现刨料问题？"><a href="#如何解决3D打印出现刨料问题？" class="headerlink" title="如何解决3D打印出现刨料问题？"></a>如何解决3D打印出现刨料问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182537.png" alt="img"></p>
+<h2 id="如何解决喷头堵塞问题？"><a href="#如何解决喷头堵塞问题？" class="headerlink" title="如何解决喷头堵塞问题？"></a>如何解决喷头堵塞问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182604.png" alt="img"></p>
+<h2 id="怎么解决打印的耗材没法粘到平台上？"><a href="#怎么解决打印的耗材没法粘到平台上？" class="headerlink" title="怎么解决打印的耗材没法粘到平台上？"></a>怎么解决打印的耗材没法粘到平台上？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182624.png" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182649.png" alt="img"></p>
+<h2 id="如何解决打印中途，挤出停止"><a href="#如何解决打印中途，挤出停止" class="headerlink" title="如何解决打印中途，挤出停止"></a>如何解决打印中途，挤出停止</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182715.png" alt="img"></p>
+<h2 id="如何解决3D打印出现层错位问题？"><a href="#如何解决3D打印出现层错位问题？" class="headerlink" title="如何解决3D打印出现层错位问题？"></a>如何解决3D打印出现层错位问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182729.png" alt="img"></p>
+<h2 id="如何解决过热问题"><a href="#如何解决过热问题" class="headerlink" title="如何解决过热问题"></a>如何解决过热问题</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182742.png" alt="img"></p>
+<h2 id="如何解决挤出不稳定问题？"><a href="#如何解决挤出不稳定问题？" class="headerlink" title="如何解决挤出不稳定问题？"></a>如何解决挤出不稳定问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182803.png" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182815.png" alt="img"></p>
+<h2 id="什么3D建模软件可以支持3D打印？"><a href="#什么3D建模软件可以支持3D打印？" class="headerlink" title="什么3D建模软件可以支持3D打印？"></a>什么3D建模软件可以支持3D打印？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182836.png" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/ext_020161130133951172.png" alt="img"></p>
+<h1 id="打印优化"><a href="#打印优化" class="headerlink" title="打印优化"></a>打印优化</h1><p>打印优化问题一般是指打印机可以完成打印过程，但打印出的模型出现了不理想的偏差，我们可以根据模型呈现出的不同状态来判断和调整切片参数或者修复打印机，以达到模型打印的最优状态。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/FDM%203D%E6%89%93%E5%8D%B0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98_%E6%89%93%E5%8D%B0%E4%BC%98%E5%8C%96.png" alt="img"></p>
+<h2 id="打印件边角卷曲和毛糙解决方法"><a href="#打印件边角卷曲和毛糙解决方法" class="headerlink" title="打印件边角卷曲和毛糙解决方法"></a>打印件边角卷曲和毛糙解决方法</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183043.png" alt="img"></p>
+<h2 id="如何解决3D打印中出现拉丝和垂料问题？"><a href="#如何解决3D打印中出现拉丝和垂料问题？" class="headerlink" title="如何解决3D打印中出现拉丝和垂料问题？"></a>如何解决3D打印中出现拉丝和垂料问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212190102.png" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183123.png" alt="img"></p>
+<h2 id="如何解决3D打印出现振动和回环纹理"><a href="#如何解决3D打印出现振动和回环纹理" class="headerlink" title="如何解决3D打印出现振动和回环纹理"></a>如何解决3D打印出现振动和回环纹理</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183141.png" alt="img"></p>
+<h2 id="如何解决填充不牢问题"><a href="#如何解决填充不牢问题" class="headerlink" title="如何解决填充不牢问题"></a>如何解决填充不牢问题</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183156.png" alt="img"></p>
+<h2 id="如何解决底面边角上的孔洞和间隙"><a href="#如何解决底面边角上的孔洞和间隙" class="headerlink" title="如何解决底面边角上的孔洞和间隙"></a>如何解决底面边角上的孔洞和间隙</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183208.png" alt="img"></p>
+<h2 id="如何解决侧面线性纹理问题？"><a href="#如何解决侧面线性纹理问题？" class="headerlink" title="如何解决侧面线性纹理问题？"></a>如何解决侧面线性纹理问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183224.png" alt="img"></p>
+<h2 id="如何解决填充与轮廓之间出现间隙现象？"><a href="#如何解决填充与轮廓之间出现间隙现象？" class="headerlink" title="如何解决填充与轮廓之间出现间隙现象？"></a>如何解决填充与轮廓之间出现间隙现象？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183237.png" alt="img"></p>
+<h2 id="如何解决细节打印不出来？"><a href="#如何解决细节打印不出来？" class="headerlink" title="如何解决细节打印不出来？"></a>如何解决细节打印不出来？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183251.png" alt="img"></p>
+<h2 id="如何解决层开裂或断开问题？"><a href="#如何解决层开裂或断开问题？" class="headerlink" title="如何解决层开裂或断开问题？"></a>如何解决层开裂或断开问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183303.png" alt="img"></p>
+<h2 id="如何处理短线轴"><a href="#如何处理短线轴" class="headerlink" title="如何处理短线轴?"></a>如何处理短线轴?</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183317.png" alt="img"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 3D打印 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 3D打印 </tag>
+            
+            <tag> FDM </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Xpath爬取链家二手房数据并利用Echarts可视化]]></title>
       <url>/2017/12/11/Xpath%E7%88%AC%E5%8F%96%E9%93%BE%E5%AE%B6%E4%BA%8C%E6%89%8B%E6%88%BF%E6%95%B0%E6%8D%AE%E5%B9%B6%E5%88%A9%E7%94%A8Echarts%E5%8F%AF%E8%A7%86%E5%8C%96/</url>
       <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近在自学python语言的过程中，接触了多种爬虫的手段，我本爱挑剔私以为<code>Requests</code>+<code>Xpath</code>是用起来最优雅的，可惜一直没有找到称手的可视化工具。前两天在读知乎的高赞回答<a href="https://www.zhihu.com/question/19929609" target="_blank" rel="noopener">有哪些值得推荐的数据可视化工具？</a>时发现了<code>Echarts</code>，非常惊艳，遂决定爬取链家二手房数据进行可视化，在测试自己爬虫实力的同时检验下Echarts的实际效果。</p>
@@ -313,11 +370,11 @@
         
         <tags>
             
+            <tag> 3D打印 </tag>
+            
             <tag> mimics </tag>
             
             <tag> 导板 </tag>
-            
-            <tag> 3D打印 </tag>
             
         </tags>
         
@@ -380,6 +437,7 @@
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p> 打开<code>主题配置文件</code>，搜索以下字段：<code>Valine</code>，并修改相应配置：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Valine.</span><br><span class="line"># You can get your appid and appkey from https://leancloud.cn</span><br><span class="line"># more info please open https://valine.js.org</span><br><span class="line">valine:</span><br><span class="line">  enable: ture</span><br><span class="line">  appid: cBBhByL05OPQ0U2iEYevPbBO-gzGzoHsz  # 填写上面的appid</span><br><span class="line">  appkey: 8xukFA5M2WEeFUUWalVjSYY5          # 填写上面的appkey</span><br><span class="line">  notify: true                              # 邮件提醒  https://github.com/xCss/Valine/wiki</span><br><span class="line">  verify: true                              # Verification code</span><br><span class="line">  placeholder: 在这里填写评论...        # comment box placeholder</span><br><span class="line">  avatar: mm # gravatar style</span><br><span class="line">  guest_info: nick,mail,link # custom comment header</span><br><span class="line">  pageSize: 10 # pagination size</span><br></pre></td></tr></table></figure>
 <p>评论区添加完成！</p>
+<p><strong>如需取消某个 页面/文章 的评论，在 md 文件的 <a href="https://hexo.io/docs/front-matter.html" target="_blank" rel="noopener">front-matter </a>中增加 <code>comments: false</code></strong></p>
 <h1 id="第三方图床设置"><a href="#第三方图床设置" class="headerlink" title="第三方图床设置"></a>第三方图床设置</h1><p>第三方图床其实我推荐使用<a href="https://www.qiniu.com/" target="_blank" rel="noopener">七牛云</a>。</p>
 <p>使用也十分简单，首先注册登录并新建应用，之后：</p>
 <p>选择<code>对象存储</code>：</p>
