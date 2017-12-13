@@ -3,6 +3,54 @@
   
     
     <entry>
+      <title><![CDATA[解决三维重建中CT各期数据不匹配问题]]></title>
+      <url>/2017/12/13/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA%E4%B8%ADCT%E5%90%84%E6%9C%9F%E6%95%B0%E6%8D%AE%E4%B8%8D%E5%8C%B9%E9%85%8D%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这个情况一般出现在需要多组CT数据混合式三维建模中，即先分别从不同期的CT数据中提取相应的部分的3D模型，最后合并所有三维模型完成建模。但是出现各期CT数据不匹配的情况时（一般是患者在CT扫描的过程中出现了移位的现象），最后合并模型时就出现了问题。</p>
+<p>在这里我将自己用Geomagic解决以上问题的方案分享一下，如果大家有更好的解决方案，欢迎讨论！</p>
+<a id="more"></a>
+<hr>
+<h1 id="情况说明"><a href="#情况说明" class="headerlink" title="情况说明"></a>情况说明</h1><p>最近的一个病例正好出现了这个问题，在这里我先做下情况介绍：病例诊断为肝细胞癌，肿瘤位于肝脏右后叶下段，病人在两天前做了增强CT检查，由于肝硬化较严重，CT影像效果不是太理想。</p>
+<p>CT三维建模提取要求为：肝实质、动脉、门脉、腔静脉以及肿瘤。</p>
+<p>我先分别从CT各期数据中将肝脏、动脉、门脉、腔静脉以及肿瘤三维数据提取了出来，但是在合并的时候出现了问题：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171213172005.png" alt="img"></p>
+<p>如图，当我要在输尿管期下导入之前建模出来的模型准备合并的时候，肝脏、门脉、腔静脉、肿瘤模型都是匹配的，但是动脉（红色部分）发生了位移。<img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171213173336.png" alt="img"></p>
+<p>动脉（红色部分）是我从动脉期中提取出来的，和输尿管期的动脉（黄色部分）进行比较，动脉期的模型提取效果更加完整充盈，并且体现出了肿瘤（蓝色部分）的动脉供血支。</p>
+<p>据此，我们确定目标：将动脉期的动脉（红色）匹配至输尿管期的动脉（黄色）。</p>
+<h1 id="利用Geomagic进行全局注册"><a href="#利用Geomagic进行全局注册" class="headerlink" title="利用Geomagic进行全局注册"></a>利用Geomagic进行全局注册</h1><p>将两个动脉模型分别从mimics中导出，并保存为<code>动脉期.stl</code>和<code>输尿管期.stl</code></p>
+<p>然后将它们导入Geomagic studio 软件：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171213193930.png" alt="img"></p>
+<p>按住<code>Ctrl</code>将左侧模型管理器中的两个模型都选中。</p>
+<p>然后在工具栏中找到<code>对齐</code>–&gt;<code>全局注册</code>，并点击。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171213194541.png" alt="img"></p>
+<p>进入全局注册模式后，点击<code>应用</code>按钮。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%85%A8%E5%B1%80%E6%B3%A8%E5%86%8C.gif" alt="img"></p>
+<p>全局注册工具会自动计算并拟合两个模型的相似特征，如上图，点击<code>确定</code>按钮即可保存并退出全局注册。</p>
+<p>如果这一步全局注册的效果不理想，我们还可以使用旁边的<code>手动注册</code>工具</p>
+<p><code>手动注册</code>就是手动分别在两个模型上选取对应的特征点，系统会根据对应点拟合两个模型，如下图。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171213223643.png" alt="img"></p>
+<p>最后将调整后的<code>动脉期.stl</code>保存出来，导回到<code>mimics</code>重新合并即可</p>
+<p>最终效果：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/ddfdfdfdfdfdfdf.png" alt="img"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 3D打印 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> mimics </tag>
+            
+            <tag> Geomagic </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[FDM3D打印常见问题及解决方案]]></title>
       <url>/2017/12/12/FDM3D%E6%89%93%E5%8D%B0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
       <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>接触并使用<code>FDM</code>（熔融沉积）3D打印机已有三年的时间，前前后后打印过的模型估计有几百件，还做过一段时间的硬件开发，对于这种打印机不敢说精通，但算是个老玩家了了。说实话，相对于其他3D打印技术，FDM打印机在稳定性和打印精度上是不理想的，但是它的长处在于性价比，其低廉的价格使其成为了目前保有量最高的3D打印机类型。</p>

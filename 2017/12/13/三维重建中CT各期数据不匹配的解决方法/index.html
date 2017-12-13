@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="hahajoker" />
+  <meta name="keywords" content="mimics,Geomagic," />
 
 
 
@@ -81,16 +81,26 @@
 
 
 
-<meta name="description" content="一只热爱编程的3D打印攻城狮">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/tags/博客/index.html">
+<meta name="description" content="前言这个情况一般出现在需要多组CT数据混合式三维建模中，即先分别从不同期的CT数据中提取相应的部分的3D模型，最后合并所有三维模型完成建模。但是出现各期CT数据不匹配的情况时（一般是患者在CT扫描的过程中出现了移位的现象），最后合并模型时就出现了问题。 在这里我将自己用Geomagic解决以上问题的方案分享一下，如果大">
+<meta name="keywords" content="mimics,Geomagic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决三维重建中CT各期数据不匹配问题">
+<meta property="og:url" content="http://yoursite.com/2017/12/13/三维重建中CT各期数据不匹配的解决方法/index.html">
 <meta property="og:site_name" content="Hello World">
-<meta property="og:description" content="一只热爱编程的3D打印攻城狮">
+<meta property="og:description" content="前言这个情况一般出现在需要多组CT数据混合式三维建模中，即先分别从不同期的CT数据中提取相应的部分的3D模型，最后合并所有三维模型完成建模。但是出现各期CT数据不匹配的情况时（一般是患者在CT扫描的过程中出现了移位的现象），最后合并模型时就出现了问题。 在这里我将自己用Geomagic解决以上问题的方案分享一下，如果大家有更好的解决方案，欢迎讨论！">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171213172005.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171213173336.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171213193930.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171213194541.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%85%A8%E5%B1%80%E6%B3%A8%E5%86%8C.gif">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171213223643.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/ddfdfdfdfdfdfdf.png">
+<meta property="og:updated_time" content="2017-12-13T16:48:59.876Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="一只热爱编程的3D打印攻城狮">
+<meta name="twitter:title" content="解决三维重建中CT各期数据不匹配问题">
+<meta name="twitter:description" content="前言这个情况一般出现在需要多组CT数据混合式三维建模中，即先分别从不同期的CT数据中提取相应的部分的3D模型，最后合并所有三维模型完成建模。但是出现各期CT数据不匹配的情况时（一般是患者在CT扫描的过程中出现了移位的现象），最后合并模型时就出现了问题。 在这里我将自己用Geomagic解决以上问题的方案分享一下，如果大家有更好的解决方案，欢迎讨论！">
+<meta name="twitter:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171213172005.png">
 
 
 
@@ -120,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/博客/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/13/三维重建中CT各期数据不匹配的解决方法/"/>
 
 
 
 
 
-  <title>标签: 博客 | Hello World</title>
+  <title>解决三维重建中CT各期数据不匹配问题 | Hello World</title>
   
 
 
@@ -145,7 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -283,110 +293,220 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>博客<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/13/三维重建中CT各期数据不匹配的解决方法/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hahajoker">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my_logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello World">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/12/04/Hexo搭建个人博客（三）/" itemprop="url">
-              
-                <span itemprop="name">Hexo搭建个人博客（三）</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">解决三维重建中CT各期数据不匹配问题</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-04T12:27:41+08:00"
-              content="2017-12-04" >
-          12-04
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-13T16:50:54+08:00">
+                2017-12-13
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/3D打印/" itemprop="url" rel="index">
+                    <span itemprop="name">3D打印</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/03/Hexo搭建个人博客（二）/" itemprop="url">
-              
-                <span itemprop="name">Hexo搭建个人博客（二）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-03T21:44:33+08:00"
-              content="2017-12-03" >
-          12-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/02/Hexo搭建个人博客（一）/" itemprop="url">
-              
-                <span itemprop="name">Hexo搭建个人博客（一）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-02T23:54:34+08:00"
-              content="2017-12-02" >
-          12-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这个情况一般出现在需要多组CT数据混合式三维建模中，即先分别从不同期的CT数据中提取相应的部分的3D模型，最后合并所有三维模型完成建模。但是出现各期CT数据不匹配的情况时（一般是患者在CT扫描的过程中出现了移位的现象），最后合并模型时就出现了问题。</p>
+<p>在这里我将自己用Geomagic解决以上问题的方案分享一下，如果大家有更好的解决方案，欢迎讨论！</p>
+<a id="more"></a>
+<hr>
+<h1 id="情况说明"><a href="#情况说明" class="headerlink" title="情况说明"></a>情况说明</h1><p>最近的一个病例正好出现了这个问题，在这里我先做下情况介绍：病例诊断为肝细胞癌，肿瘤位于肝脏右后叶下段，病人在两天前做了增强CT检查，由于肝硬化较严重，CT影像效果不是太理想。</p>
+<p>CT三维建模提取要求为：肝实质、动脉、门脉、腔静脉以及肿瘤。</p>
+<p>我先分别从CT各期数据中将肝脏、动脉、门脉、腔静脉以及肿瘤三维数据提取了出来，但是在合并的时候出现了问题：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171213172005.png" alt="img"></p>
+<p>如图，当我要在输尿管期下导入之前建模出来的模型准备合并的时候，肝脏、门脉、腔静脉、肿瘤模型都是匹配的，但是动脉（红色部分）发生了位移。<img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171213173336.png" alt="img"></p>
+<p>动脉（红色部分）是我从动脉期中提取出来的，和输尿管期的动脉（黄色部分）进行比较，动脉期的模型提取效果更加完整充盈，并且体现出了肿瘤（蓝色部分）的动脉供血支。</p>
+<p>据此，我们确定目标：将动脉期的动脉（红色）匹配至输尿管期的动脉（黄色）。</p>
+<h1 id="利用Geomagic进行全局注册"><a href="#利用Geomagic进行全局注册" class="headerlink" title="利用Geomagic进行全局注册"></a>利用Geomagic进行全局注册</h1><p>将两个动脉模型分别从mimics中导出，并保存为<code>动脉期.stl</code>和<code>输尿管期.stl</code></p>
+<p>然后将它们导入Geomagic studio 软件：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171213193930.png" alt="img"></p>
+<p>按住<code>Ctrl</code>将左侧模型管理器中的两个模型都选中。</p>
+<p>然后在工具栏中找到<code>对齐</code>–&gt;<code>全局注册</code>，并点击。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171213194541.png" alt="img"></p>
+<p>进入全局注册模式后，点击<code>应用</code>按钮。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%85%A8%E5%B1%80%E6%B3%A8%E5%86%8C.gif" alt="img"></p>
+<p>全局注册工具会自动计算并拟合两个模型的相似特征，如上图，点击<code>确定</code>按钮即可保存并退出全局注册。</p>
+<p>如果这一步全局注册的效果不理想，我们还可以使用旁边的<code>手动注册</code>工具</p>
+<p><code>手动注册</code>就是手动分别在两个模型上选取对应的特征点，系统会根据对应点拟合两个模型，如下图。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171213223643.png" alt="img"></p>
+<p>最后将调整后的<code>动脉期.stl</code>保存出来，导回到<code>mimics</code>重新合并即可</p>
+<p>最终效果：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/ddfdfdfdfdfdfdf.png" alt="img"></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>用钱砸我，不要停！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="hahajoker 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mimics/" rel="tag"><i class="fa fa-tag"></i> mimics</a>
+          
+            <a href="/tags/Geomagic/" rel="tag"><i class="fa fa-tag"></i> Geomagic</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/12/FDM3D打印常见问题及解决方案/" rel="next" title="FDM3D打印常见问题及解决方案">
+                <i class="fa fa-chevron-left"></i> FDM3D打印常见问题及解决方案
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -394,6 +514,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjM2NS84OTI2"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -414,8 +543,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -514,6 +652,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#情况说明"><span class="nav-number">2.</span> <span class="nav-text">情况说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#利用Geomagic进行全局注册"><span class="nav-number">3.</span> <span class="nav-text">利用Geomagic进行全局注册</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -657,6 +811,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -685,6 +843,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
