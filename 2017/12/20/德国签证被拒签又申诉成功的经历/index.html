@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="3D打印,mimics,导板," />
+  <meta name="keywords" content="签证,申诉," />
 
 
 
@@ -81,47 +81,23 @@
 
 
 
-<meta name="description" content="前言最近一个神外的朋友强烈推荐我做一些关于骨科导板这方面的模型。考虑到目前利用mimics进行术前导板设计和规划的需求越来越多，经过了一段时间的摸索，在这里写一个椎弓根钉导板的建立方法，供大家参考，欢迎讨论交流和各种指正。">
-<meta name="keywords" content="3D打印,mimics,导板">
+<meta name="description" content="前言最近正在准备和家人一起来次年后欧洲自由行，说实话行程还是定得挺满的，按照计划是3天德国（柏林、科隆）+4天英国（伦敦、剑桥）。有了之前自己办理英签顺利通过的经历，这次办理德国申根签证信心满满，想着自己英签都过了德签通过应该是小意思了，结果。。我迎来了人生第一次的拒签经历（打脸）。 在这里我就分享一下我的德国申根签证">
+<meta name="keywords" content="签证,申诉">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于mimics的椎弓根钉导板建立">
-<meta property="og:url" content="http://yoursite.com/2017/12/07/基于mimics的椎弓根钉导板建立/index.html">
+<meta property="og:title" content="德国签证被拒签又申诉成功的经历">
+<meta property="og:url" content="http://yoursite.com/2017/12/20/德国签证被拒签又申诉成功的经历/index.html">
 <meta property="og:site_name" content="Hello World">
-<meta property="og:description" content="前言最近一个神外的朋友强烈推荐我做一些关于骨科导板这方面的模型。考虑到目前利用mimics进行术前导板设计和规划的需求越来越多，经过了一段时间的摸索，在这里写一个椎弓根钉导板的建立方法，供大家参考，欢迎讨论交流和各种指正。">
+<meta property="og:description" content="前言最近正在准备和家人一起来次年后欧洲自由行，说实话行程还是定得挺满的，按照计划是3天德国（柏林、科隆）+4天英国（伦敦、剑桥）。有了之前自己办理英签顺利通过的经历，这次办理德国申根签证信心满满，想着自己英签都过了德签通过应该是小意思了，结果。。我迎来了人生第一次的拒签经历（打脸）。 在这里我就分享一下我的德国申根签证从申请、拒签到申诉成功的经历。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%9B%BE%E7%89%871.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/2.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BFC43.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF4.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/5.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/6.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/mimicszhuigonggendingdaoban7.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BFC48.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF9.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF10.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/11.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/12.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BFC413.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/14.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BFC415.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BFC416.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BFC417.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF18.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/19.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/20.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/21.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171208113142.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171208113510.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171208113532.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171208113632.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/23.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20171208120130_%E7%9C%8B%E5%9B%BE%E7%8E%8B.jpg">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/22.png">
-<meta property="og:updated_time" content="2017-12-08T17:28:21.514Z">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/56a1f140cdcf451bba0c8172fd58bfbd_th.jpg">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%B7%E5%9B%BD%E7%AD%BE%E8%AF%81_%E7%9C%8B%E5%9B%BE%E7%8E%8B.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%9C%A8%E8%81%8C%E4%BA%BA%E5%91%98%20%EF%BC%88%E9%9B%87%E5%91%98%EF%BC%8C%E4%BC%81%E4%B8%9A%E5%AE%B6%EF%BC%89.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171221211056.png">
+<meta property="og:updated_time" content="2017-12-21T17:04:26.896Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于mimics的椎弓根钉导板建立">
-<meta name="twitter:description" content="前言最近一个神外的朋友强烈推荐我做一些关于骨科导板这方面的模型。考虑到目前利用mimics进行术前导板设计和规划的需求越来越多，经过了一段时间的摸索，在这里写一个椎弓根钉导板的建立方法，供大家参考，欢迎讨论交流和各种指正。">
-<meta name="twitter:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%9B%BE%E7%89%871.png">
+<meta name="twitter:title" content="德国签证被拒签又申诉成功的经历">
+<meta name="twitter:description" content="前言最近正在准备和家人一起来次年后欧洲自由行，说实话行程还是定得挺满的，按照计划是3天德国（柏林、科隆）+4天英国（伦敦、剑桥）。有了之前自己办理英签顺利通过的经历，这次办理德国申根签证信心满满，想着自己英签都过了德签通过应该是小意思了，结果。。我迎来了人生第一次的拒签经历（打脸）。 在这里我就分享一下我的德国申根签证从申请、拒签到申诉成功的经历。">
+<meta name="twitter:image" content="http://p0cgjzhqf.bkt.clouddn.com/56a1f140cdcf451bba0c8172fd58bfbd_th.jpg">
 
 
 
@@ -151,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/07/基于mimics的椎弓根钉导板建立/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/20/德国签证被拒签又申诉成功的经历/"/>
 
 
 
 
 
-  <title>基于mimics的椎弓根钉导板建立 | Hello World</title>
+  <title>德国签证被拒签又申诉成功的经历 | Hello World</title>
   
 
 
@@ -328,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/07/基于mimics的椎弓根钉导板建立/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/20/德国签证被拒签又申诉成功的经历/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hahajoker">
@@ -345,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">基于mimics的椎弓根钉导板建立</h1>
+          <h1 class="post-title" itemprop="name headline">德国签证被拒签又申诉成功的经历</h1>
         
 
         <div class="post-meta">
@@ -357,8 +333,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-07T16:53:07+08:00">
-                2017-12-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-20T19:43:34+08:00">
+                2017-12-20
               </time>
             
 
@@ -380,8 +356,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/3D打印/" itemprop="url" rel="index">
-                    <span itemprop="name">3D打印</span>
+                  <a href="/categories/旅行/" itemprop="url" rel="index">
+                    <span itemprop="name">旅行</span>
                   </a>
                 </span>
 
@@ -417,101 +393,129 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近一个神外的朋友强烈推荐我做一些关于骨科导板这方面的模型。考虑到目前利用<code>mimics</code>进行术前导板设计和规划的需求越来越多，经过了一段时间的摸索，在这里写一个<code>椎弓根钉导板</code>的建立方法，供大家参考，欢迎讨论交流和各种指正。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近正在准备和家人一起来次年后欧洲自由行，说实话行程还是定得挺满的，按照计划是3天德国（柏林、科隆）+4天英国（伦敦、剑桥）。有了之前自己办理英签顺利通过的经历，这次办理德国申根签证信心满满，想着自己英签都过了德签通过应该是小意思了，结果。。我迎来了人生第一次的拒签经历（打脸）。</p>
+<p>在这里我就分享一下我的德国申根签证从申请、拒签到申诉成功的经历。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/56a1f140cdcf451bba0c8172fd58bfbd_th.jpg" alt="img"></p>
 <a id="more"></a>
 <hr>
-<h1 id="建立目标骨骼mask（C1-C6）"><a href="#建立目标骨骼mask（C1-C6）" class="headerlink" title="建立目标骨骼mask（C1-C6）"></a>建立目标骨骼mask（C1-C6）</h1><p>本次建模的目标是颈椎C4的椎弓根钉导板</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%9B%BE%E7%89%871.png" alt="img"></p>
-<p>确定目标骨骼<code>阈值区间</code>，<code>区域增长</code>，<code>填充孔隙</code>后<code>分割</code>枕骨和颈1（懒癌犯了…..其中细节我就不在这里说了）</p>
-<p>分割后并生成3D：</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/2.png" alt="img"><strong>整个的建模过程中要注意：我们不要使用<code>smooth</code>或者<code>warp</code>等功能修改骨骼表面形态，无论是mask还是生成3D后。因为我们要保持骨骼表面最真实的形态用以生成相应导板。</strong></p>
-<h1 id="制作导板基底"><a href="#制作导板基底" class="headerlink" title="制作导板基底"></a>制作导板基底</h1><h2 id="利用Morphology功能生成导板壁厚"><a href="#利用Morphology功能生成导板壁厚" class="headerlink" title="利用Morphology功能生成导板壁厚"></a>利用Morphology功能生成导板壁厚</h2><p>选择颈椎mask</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BFC43.png" alt="img"></p>
-<p>点击Morphology工具</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF4.png" alt="img"></p>
-<p>在<code>Morphology</code>工具条中选择<code>Dilat</code>（扩张），扩张系数选择5，新mask命名“C4导板”，然后<code>Apply</code>。</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/5.png" alt="img"></p>
-<p>点击<code>Apply</code>后可以看到生成的蓝色部分，可作为导板外壁，后期我们用<code>bool</code>减去里面的颈椎即可得到导板。</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/6.png" alt="img"></p>
-<h2 id="修剪导板"><a href="#修剪导板" class="headerlink" title="修剪导板"></a>修剪导板</h2><p>在<code>Edit mask in 3D</code>模式下打开C4导板mask，将导板的外形修出。</p>
-<p><strong>注意，在这里要考虑导板的可装配性和定位性。模板必须是手术中能暴露到骨面的部分，否则术中无法放置。面积一般不小于4平方厘米，并且有骨性突起最好。我们尽量选择大且突出的特征进行包覆。</strong></p>
-<p>另外，保留导板下和颈椎重合的多余部分，方便后期布尔减生成接触面。</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimicszhuigonggendingdaoban7.png" alt="img"></p>
-<h2 id="在3-matic下平滑导板"><a href="#在3-matic下平滑导板" class="headerlink" title="在3-matic下平滑导板"></a>在3-matic下平滑导板</h2><p>将修剪后的导板<code>Calculate 3D</code>（生成3D模型）并导入<code>3-matic</code>。</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BFC48.png" alt="img"></p>
-<p>在3-matic中用<code>smooth</code>工具进行平滑。</p>
-<p>平滑前：</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF9.png" alt="img"></p>
-<p>N次平滑后：（是不是好看不少？）</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF10.png" alt="img"></p>
-<p>然后将平滑后的导板导回<code>mimics</code>。（快捷键Ctrl+C，Ctrl+V）</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/11.png" alt="img"></p>
-<p>看看这颜值！！Ok，导板的基底就完成了，下面就是钉孔的设计了。</p>
-<h1 id="设计骨钉导向套"><a href="#设计骨钉导向套" class="headerlink" title="设计骨钉导向套"></a>设计骨钉导向套</h1><p>椎弓根钉之所以需要导板的辅助是因为这个过程对其精准度有极高的要求，骨钉穿入偏差1-2mm就有可能损伤中间的脊髓，造成严重后果。骨钉导向器可以帮助医生在术前规划好入钉路径，减少术中风险。</p>
-<p>所以在设计引导孔之前我们要先设计好骨钉的穿刺路径</p>
-<h2 id="设计钉道"><a href="#设计钉道" class="headerlink" title="设计钉道"></a>设计钉道</h2><p>在横断位图上找到C4椎弓根，找到椎弓根直径最宽层面</p>
-<p>利用<code>Madcad</code>工具栏下<code>cylinder</code>（圆柱）工具绘制椎孔（三点绘制：起点、终点、半径）</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/12.png" alt="img"><strong>注意：这里入钉角度和钉型要与主刀医生沟通，严格按照其手术计划设计，为了保证钉子的稳固性，神外医生一般会选择直径3mm以上的钉子插入，所以下图的圆柱半径一般不小于1.5mm</strong></p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BFC413.png" alt="img"></p>
-<p>同时我们也可在矢状位上调整钉子的俯仰角度，一般的椎弓根钉都是先两侧旁开再向上有个仰角。</p>
-<p>建议：圆柱在骨外需留够3cm左右的长度</p>
-<p>两侧都绘制完成后：</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/14.png" alt="img"></p>
-<p>在<code>CAD Objects</code>栏目中我们可以看见刚才创建的钉孔</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BFC415.png" alt="img"></p>
-<h2 id="设计导向孔"><a href="#设计导向孔" class="headerlink" title="设计导向孔"></a>设计导向孔</h2><p>思路：将钉孔复制一下，扩大其中一组的直径，再布尔减去原来的钉孔即可得到导向套</p>
-<p>首先在<code>CAD Objects</code>栏目中选择钉孔右击，利用<code>Duplicat</code>功能将两个钉孔复制一份，并重新命名修改颜色方便区分</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BFC416.png" alt="img"></p>
-<p>修改直径：</p>
-<p><strong>这里要注意，如果你的模型要3D打印，为满足3D打印的要求（壁厚不能低于1mm），导向套的半径至少要比钉孔半径扩大1mm</strong></p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BFC417.png" alt="img"></p>
-<p>结果为：</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimics%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF18.png" alt="img"></p>
-<p>这时我们发现导向套太长了，可利用<code>simulation</code>–&gt;<code>cut</code>–&gt;<code>Orthogonal to Screen</code>工具切割并删除多余部分</p>
-<p><strong>注意：切割时要画出一个封闭线框，最后一个点一定要双击，以封闭线框。</strong></p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/19.png" alt="img"></p>
-<p>导向套设计完成。</p>
-<h1 id="布尔并生成导板"><a href="#布尔并生成导板" class="headerlink" title="布尔并生成导板"></a>布尔并生成导板</h1><p>布尔工具</p>
-<p><code>simulation</code>–&gt;<code>boolean</code></p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/20.png" alt="img"></p>
-<p>从上至下：减，加，相交</p>
-<p><strong>注意：为了防止混乱，每一步结束后都要合理命名，以及删除无用项目。</strong></p>
-<p>最后的几步：</p>
+<p>最重要的事情说在前面：<strong>如果你想愉快地拿到申根签证，最好就别申请德国！！！</strong></p>
+<p>德国是按照你申请的日期，从入境到出境，完全卡死的。连个入境有效期都没有，也不会多给你几天。</p>
+<p>如果有多旅程的，请出门右拐，从其他国家入境。法国，西班牙，荷兰，意大利，都比德国宽松。</p>
+<p><strong>（当然了，如果你的行程中停留最长国是德国，你还是得乖乖回来往下看）</strong></p>
+<p>如果你想以思维导图形式观看整个申请流程请点这里：<a href="https://www.processon.com/view/link/59dc7b52e4b06e9fd2fae6b2" target="_blank" rel="noopener">德国申根签证思维导图</a></p>
+<h1 id="签证申请"><a href="#签证申请" class="headerlink" title="签证申请"></a>签证申请</h1><p>有两种方式申请德国申根签证:</p>
 <ul>
-<li>1.合并所有导向套</li>
+<li>通过大使馆的服务商中智签证的签证申请受理中心递交申请<ul>
+<li>预约后可获得两个工作日的递签时</li>
+<li>减少在签证受理中心等待时间</li>
+<li><a href="https://de.tlscontact.com/cn/BJS/index.php?l=zh_CN" target="_blank" rel="noopener">https://de.tlscontact.com/cn/BJS/index.php?l=zh_CN</a>网站上获得全面综合信息</li>
+<li>通过签证中心电话 +86 21 6016 8558 (中国联通) 和 +86 21 2221 8500 (中国电信) 提供信息帮助</li>
+<li>申请受理情况可随时在线查询</li>
+<li>无需亲自面签</li>
+<li>通过委托全权代表递交签证申请</li>
 </ul>
+</li>
+<li>或者，直接向使馆/总领事馆的签证处递交申请：<a href="http://www.china.diplo.de/Vertretung/china/zh/02-visa/01-schengenvisa/02-botschaft-konsulat/00-antragstellung-in-av.html" target="_blank" rel="noopener">使馆或总领事馆入口</a><ul>
+<li>签证申请人必需亲自来使领馆</li>
+<li>签证申请人窗口面签</li>
+<li>通过所在管辖区使领馆进行网上预约</li>
+<li>等待时间大约需要两周</li>
+</ul>
+</li>
+</ul>
+<p>这次我果断向亲儿子低了头，准备通过中智递交申请。</p>
+<p>##步骤1：选择正确的签证类型</p>
+<p>根据不同的出行目的，德国申根签证提供短期旅游、商务出行、参展、探亲访友、就医、学习等多种签证类型。</p>
+<p>在申请签证前一定要确定好自己出行的目的，选择相应的签证类型，并且<strong>你准备的申请材料和接受电调话术一定要保持和你出行目的的一致性</strong>。（本次拒签我就是犯了这样的错误）</p>
+<p>废话不多说，我这次的签证类型属于<strong>短期旅游</strong>。</p>
+<p>##步骤2：建立帐号</p>
+<p>在中智官网建立账号用以在线填写申请表与预约面签</p>
+<p>入口在这里：<a href="https://de.tlscontact.com/cn/BJS/register.php" target="_blank" rel="noopener">https://de.tlscontact.com/cn/BJS/register.php</a></p>
+<h2 id="步骤3：在线填写申请表"><a href="#步骤3：在线填写申请表" class="headerlink" title="步骤3：在线填写申请表"></a>步骤3：在线填写申请表</h2><p>在您登录您的个人帐户后，需要新建申请来在线填写申请信息。另外，一起出行的所有申请人需要注册在同一个小组。</p>
+<h2 id="步骤4：预约递交申请时间"><a href="#步骤4：预约递交申请时间" class="headerlink" title="步骤4：预约递交申请时间"></a>步骤4：预约递交申请时间</h2><ul>
+<li>在线选择在签证中心递交您签证申请的时间。</li>
+<li>记得打印成功预约申请时间的预约单，因为出席预约时需要您出示此凭证。</li>
+</ul>
+<h2 id="步骤5：准备材料"><a href="#步骤5：准备材料" class="headerlink" title="步骤5：准备材料"></a>步骤5：准备材料</h2><h3 id="基本材料"><a href="#基本材料" class="headerlink" title="基本材料"></a>基本材料</h3><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%B7%E5%9B%BD%E7%AD%BE%E8%AF%81_%E7%9C%8B%E5%9B%BE%E7%8E%8B.png" alt="img"></p>
+<p><strong>记住你的行程计划，万一被电调会被问个遍</strong></p>
+<p>在这里旅行计划建议用<a href="http://plan.qyer.com/" target="_blank" rel="noopener">穷游行程助手</a>来做，超级好用（也为我后面的拒签申诉起到了关键作用），优点如下：</p>
 <ul>
-<li>2.用合并后的导向套依次减去钉孔1和钉孔2</li>
+<li>可直接导出送签英文行程单</li>
+<li>全面的交通、景点、吃饭、住宿库拖拽式添加</li>
+<li>智能行程自动优化</li>
+<li>完美对接booking，爱比邻数据库</li>
+<li>手机、地图、电脑，PDF等多种查看模式</li>
 </ul>
+<h3 id="特殊材料"><a href="#特殊材料" class="headerlink" title="特殊材料"></a>特殊材料</h3><p>特殊材料是根据出行人员的不同职业性质区分，需要提交不同的材料</p>
+<h4 id="在职人员-（雇员，企业家）"><a href="#在职人员-（雇员，企业家）" class="headerlink" title="在职人员 （雇员，企业家）"></a>在职人员 （雇员，企业家）<img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%9C%A8%E8%81%8C%E4%BA%BA%E5%91%98%20%EF%BC%88%E9%9B%87%E5%91%98%EF%BC%8C%E4%BC%81%E4%B8%9A%E5%AE%B6%EF%BC%89.png" alt="img"></h4><h4 id="大学或培训机构的学生"><a href="#大学或培训机构的学生" class="headerlink" title="大学或培训机构的学生"></a>大学或培训机构的学生</h4><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171221211056.png" alt="img"></p>
+<h2 id="步骤6：前往签证中心递交您的签证申请"><a href="#步骤6：前往签证中心递交您的签证申请" class="headerlink" title="步骤6：前往签证中心递交您的签证申请"></a>步骤6：前往签证中心递交您的签证申请</h2><ul>
+<li>Add：北京市朝阳区东大桥路9号 侨福芳草地大厦C座3层05单元(可由南门进入） 邮编：100020       工作时间：08:30 -16:30 / 周一至周五</li>
+<li>请携带预约单并准时出席您的预约。如果您未能出席或者未能按时出席您的预约，如您希望继续申请，你将需要重新注册并预约新的递交材料的时间</li>
+<li>您需要在签证中心支付<a href=""><strong>签证费及服务费</strong></a>。(现金or刷卡)<ul>
+<li><strong>签证费：475元</strong></li>
+<li><strong>签证服务费：200元</strong></li>
+</ul>
+</li>
+</ul>
+<p>以上就是签证申请的主要步骤，需要注意：<strong>德国大使馆最多只能受理距您入境时间提前90天内的申请</strong>（我第一次就是提前了103天递签被中智拒绝了。。。）</p>
+<p>另外，申请通过后会有邮件和短信的提示，取护照的方式，自提 or EMS ，中智EMS 64元（后来申诉通过大使馆给寄是32元）</p>
+<h1 id="被德国大使馆拒签"><a href="#被德国大使馆拒签" class="headerlink" title="被德国大使馆拒签"></a>被德国大使馆拒签</h1><p>申请通过会邮件和短信提示，申请被拒会收到邮件和拒签信。</p>
+<p>我是11月30号提交的申请，12月11号收到了来自大使馆的EMS，开心地拆开文件袋打算看看护照上的申根签证，Duang~ ，拒签信，拒签理由如下：</p>
 <ul>
-<li>3.合并导板基底和导向套。</li>
+<li><strong>8.递交的关于计划逗留目的条件的信息不可信。</strong></li>
 </ul>
+<p>老子英签都过了德国申根签你居然给我拒签了！！！虽然没有给我盖拒签章，但是认真准备那么久，却被当成骗子，一阵心酸涌上心头，不行！要申诉！</p>
+<h1 id="拒签申诉"><a href="#拒签申诉" class="headerlink" title="拒签申诉"></a>拒签申诉</h1><p>从你被大使馆拒签那天算起（拒签信签署日期）一个月内，德国大使馆为每一位申请人提供一次亲自前往签证处要求说明拒签原因的机会，以便在有需要的情况下决定申请人接下来可采取哪些步骤（提出书面申诉、递交新的申请）。</p>
+<p>申诉的方式有两种：口头申诉和书面申诉</p>
+<p>我建议采用去大使馆当面口头申诉，并同时带上你的申诉书的方式进行。</p>
+<h2 id="确定拒签原因"><a href="#确定拒签原因" class="headerlink" title="确定拒签原因"></a>确定拒签原因</h2><p>无论你要以哪种方式申诉，都得先确定拒签你的具体原因</p>
+<p>在德国大使馆官网上有对拒签通知的说明：<a href="http://www.china.diplo.de/Vertretung/china/zh/02-visa/01-schengenvisa/03-faq/19-erlaeuterungen-ablehnungsbescheid-sprungmarken.html" target="_blank" rel="noopener">http://www.china.diplo.de/Vertretung/china/zh/02-visa/01-schengenvisa/03-faq/19-erlaeuterungen-ablehnungsbescheid-sprungmarken.html</a></p>
+<p>我找到了我拒签原因所对应的解释：</p>
+<p>​       <strong>8. 递交的关于计划逗留目的条件的信息不可信。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">您可能未完整提交必需的材料。您的签证申请如因材料不全被拒绝，使馆建议您递交新的完整的签证申请</span><br><span class="line"></span><br><span class="line">- 您已提交酒店或机票预订单，但随后取消了酒店或机票预订</span><br><span class="line">- 您提交的商务邀请函未由邀请公司确认或不能核实</span><br><span class="line">- 您就逗留目的给出了自相矛盾的信息</span><br><span class="line">- 您未能在审核签证申请时就旅行目的给出详细充分的说明</span><br><span class="line">- 所申请的签证有效期与其他材料（酒店或机票预订单、来自德国的邀请函、医疗保险）上的日期不符</span><br><span class="line">- 申请探亲访友签证，但不能充分证明申请人与被探访者间的亲属或朋友关系</span><br><span class="line">- 申请旅游签证，所申请的签证有效期与假期申请的情况不符</span><br><span class="line"></span><br><span class="line">本馆提示：不排除因上述列举外的其他原因导致拒签。</span><br></pre></td></tr></table></figure>
+<p>在这里要说明，由于机票订单未支付导致机票自动取消的情况一般不会成为大使馆拒签你的理由。</p>
+<p>一项一项排除，我的问题应该是出在了第四条：</p>
 <ul>
-<li>4.整体导向器再减去原始颈椎模型。</li>
+<li><strong>您未能在审核签证申请时就旅行目的给出详细充分的说明</strong></li>
 </ul>
+<p>在签证审核期间，我曾经收到了大使馆的电话调查，在被问了一通行程后。问了我选择去德国旅行的目的，我当时说我是从事3D打印行业的，德国工业设计世界闻名，十分向往，并且打算去柏林的stilwerk商场看设计展览（现在想来真想抽死自己，没事说那么多废话干嘛。。）</p>
+<p>签证官肯定想歪了。。。</p>
+<h2 id="准备申诉材料"><a href="#准备申诉材料" class="headerlink" title="准备申诉材料"></a>准备申诉材料</h2><p>申诉材料无非两个：申诉信（用来表达主诉）和补充材料（证明你的异议）</p>
+<h3 id="申诉信"><a href="#申诉信" class="headerlink" title="申诉信"></a>申诉信</h3><p>写之前查阅了不少申诉的帖子，都说了一点：<strong>申诉信要用英文！！！</strong>中文写的那些，翻译根本不给翻译的，所以相当于没写一样。如果交流过程中再没办法很充分很有条理的表述自己，很容易就被当作狡辩。</p>
+<p>我那用谷歌翻译+一点点语法知识强行揉出来的申述信就不在这里献丑了，<strong>在这里就把我申诉信的框架分享出来：</strong></p>
+<p>Dear Visa Officer ,</p>
+<p><strong>我的姓名、护照号、档案号（拒签信上7位数字）、我于哪天递交了签证申请、于哪天收到拒签信、拒签理由是……</strong></p>
+<p>表达作为一个有正经工作的中国公民，被拒签后的愤懑之情，以及对签证官工作的理解</p>
+<p><strong>查询使馆官网拒签理由后，针对有可能产生的误解解释如下：</strong></p>
 <ul>
-<li>5.导入3-matic中去除掉零星的小碎渣</li>
+<li>您未能在审核签证申请时就旅行目的给出详细充分的说明</li>
 </ul>
-<p>ok，导板的建立就完成了，来看看最终效果：</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/21.png" alt="img"></p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171208113142.png" alt="img"></p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171208113510.png" alt="img"></p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171208113532.png" alt="img"></p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171208113632.png" alt="img"></p>
-<h2 id="聊聊关于其他的建模方式"><a href="#聊聊关于其他的建模方式" class="headerlink" title="聊聊关于其他的建模方式"></a>聊聊关于其他的建模方式</h2><p>之前看资料的时候发现了一个问题，很多的资料上都采用的都是：在mask的层面上进行合并和加减，最后再生成3D的策略，在这里我并不认同。</p>
-<p>Mask的相减是基于体素的减法，精度比较低，出来的导板往往与骨的接触的表面较粗糙，这时再生成3D平滑处理的话就肯定失真。所以我并不推荐这种做法，我现在采用的是生成3D后再bool的方法。</p>
-<p>欢迎讨论交流和各种指正。</p>
-<h1 id="关于3D打印"><a href="#关于3D打印" class="headerlink" title="关于3D打印"></a>关于3D打印</h1><p>这个模型我最后并没有3D打印，所以我没图发给你们，但在这里我可以给出一些建议：</p>
-<p>导板在术中需要直接接触患者创面，最好采用专用的<code>医用陶瓷材料</code>打印，这种材料属于医用二级材料可直接高温消毒，比较安全，打印方式为<code>SLS（选择性激光烧结）</code>，缺点是比较贵，赶得上羟基磷灰石了T_T。</p>
-<p>有很多人问我用光敏树脂打印行不行。<code>光固化打印（SLA）</code>虽然成型快精度高，但是超过55℃即发生形变，达到80℃你就可以任意捏它了。而且，光敏树脂是出了名的不耐腐蚀，所以光敏树脂类3D打印术中导板是肯定不行的。</p>
-<p>不过，你可以用光敏树脂打印的导板动物实验啊！我就用过，还不错！</p>
-<p>－－－－－－－－－－－－－<strong>下图可能引起不适！！！圣母请自觉退散。。。</strong>－－－－－－－－－－－</p>
-<p>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊<br>＊</p>
-<p>－－－－－－－－－－－－－－－－－－－<strong>我是邪恶的分割线</strong>－－－－－－－－－－－－－－－－－－－</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/23.png" alt="img"></p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20171208120130_%E7%9C%8B%E5%9B%BE%E7%8E%8B.jpg" alt="img"></p>
-<p>最后，来一张上台前的自拍美照。</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/22.png" alt="img"></p>
+<p>在签证审核期间，曾经收到了签证官的问询电话，在这里拍了下马屁，我原文写的是A nice lady with a nice voice(left a deep impression on me)并大概讲述了对话过程。</p>
+<p><strong>然后就是解释我到访德国目的的确是旅行</strong>，一方面是感受德国充满魅力的历史、艺术、社会、文化氛围，另一方面就是体验的世界一流而严谨的德国设计（我觉得这里的夸赞是有加分的）</p>
+<p>而我的行程计划也能<strong>说明我的旅行计划与目的一致性</strong>，在计划中我到访的地方基本都是博物馆、教堂和商场，并解释stilwerk只是商场而不是展会，并且表示我会买一些产品带给我的朋友。</p>
+<p>我有一份热爱的职业在北京，并且我深爱我的父母，<strong>所以我肯定会按照计划回到中国</strong>。我为此次出行已经准备了几周的时间，我比任何人都期望这次旅行能顺利进行（I expect more than anybody else that this should be a perfect journey. ）</p>
+<p>感谢您耐心的阅读，热切地期盼您的回复。</p>
+<p>Sincerely,</p>
+<p>my name</p>
+<h3 id="准备补充材料"><a href="#准备补充材料" class="headerlink" title="准备补充材料"></a>准备补充材料</h3><p><strong>记住申诉提交的是补充材料，切不可与之前的申请材料有冲突之处</strong></p>
+<p>我用穷游行程助手导出了一份详细的行程计划书，4天计划足足22页，作为证明我旅游目的的补充材料</p>
+<h2 id="去大使馆申诉"><a href="#去大使馆申诉" class="headerlink" title="去大使馆申诉"></a>去大使馆申诉</h2><p>不同地区的大使馆申诉开放时间不同，<strong>北京德国使馆的申诉时间是每周一下午两点到下午四点</strong></p>
+<p>由于担心排不上，我提前了两小时去，门卫说平均每周申诉的就7、8个人，2点到就行，于是乖乖去喝杯咖啡。</p>
+<p>申诉的时候是一个签证官加一个翻译，大厚玻璃隔着，跟探监似的用听筒对话，英语不行就只能跟翻译对话，翻译的作用是过滤+翻译，如果你的理由不充分她甚至会直接回绝你</p>
+<p>我前面的就是一个准备去德国旅游的女孩，后天飞机，机票酒店都付钱了，结果签证被拒，理由是怀疑工作证明作假，原来女孩在提交申请后换了工作，电调的时候原来的公司前台一查没有此人，大使馆就拒签了她。女孩带来了新公司的工作证明，签证官表示新材料要重新递交申请，但后天飞机，时间显然不够了，女孩急的直哭，原本不错的英语也组织不起来，只能中文里面的翻译女孩帮忙解释下，结果被理由不充分拒绝翻译。</p>
+<p>到我了，点头致意说了句临时抱佛脚的“Hallo”，签证官旁边有个电脑，里面会记录每个申请人的签证信息，包括当时拒签我的签证官给出的拒签理由：</p>
+<ul>
+<li>行程太短只有4天</li>
+<li>加上电调的时候说了和出行目的冲突的话要去参加展会</li>
+</ul>
+<p>基于以上原因签证官认为我出行目的不可信，应该递交商务出行签证，所以拒签</p>
+<p>签证官一开始很友好，但是他在电脑上读我的信息的时候，可以看到他的脸上的表情就像吃了麻辣火锅，一种情况不好，我也无能为力的表情。</p>
+<p>我决定避开电调的话题，话我已经说出去了我怎么解释也无可奈何。</p>
+<p>我先表示自己由于假期时间有限只能安排4天的德国行程（这个看她表情是认可的，并在电脑上开始记录），然后我说我的出行目的是旅行，并且准备了一份详细的4天的行程说明书，并表示这个和我一开始提交的计划是一致的。这个时候那个签证官目瞪口呆地看着我22页的行程计划，问“it’s four days?”,我说自己为此次旅行花了两周时间做计划。然后开始一天一天地介绍。。。</p>
+<p>翻译打断了我，说这并不能反驳你在电话里说的话，于是我打开行程介绍商场的那一页，解释stilwerk商场里会有很多著名设计师的个人品牌店面和产品展览，我只是想去参观和购买产品</p>
+<p>签证官点头并示意我不要在多说，自顾自在电脑上开始记录起来，感觉签证官是满意的，最后笑着收了我的材料，并要了我邮箱号码，表示他们会验证资料确认真实性后无误后，会邮件我带passport去贴签证，时间大约是一周左右。</p>
+<p>最终又卖弄了一下我才学的德语“Vielen Dank!”，但是好像那两人都没听懂，尴尬的我只好说了一句谢谢就走了</p>
+<p>三天后我收到了使馆的邮件，说签证已通过，要我带护照送去大使馆，办完后寄回给我</p>
 
       
     </div>
@@ -553,11 +557,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/3D打印/" rel="tag"><i class="fa fa-tag"></i> 3D打印</a>
+            <a href="/tags/签证/" rel="tag"><i class="fa fa-tag"></i> 签证</a>
           
-            <a href="/tags/mimics/" rel="tag"><i class="fa fa-tag"></i> mimics</a>
-          
-            <a href="/tags/导板/" rel="tag"><i class="fa fa-tag"></i> 导板</a>
+            <a href="/tags/申诉/" rel="tag"><i class="fa fa-tag"></i> 申诉</a>
           
         </div>
       
@@ -570,8 +572,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/04/Hexo搭建个人博客（三）/" rel="next" title="Hexo搭建个人博客（三）">
-                <i class="fa fa-chevron-left"></i> Hexo搭建个人博客（三）
+              <a href="/2017/12/13/三维重建中CT各期数据不匹配的解决方法/" rel="next" title="解决三维重建中CT各期数据不匹配问题">
+                <i class="fa fa-chevron-left"></i> 解决三维重建中CT各期数据不匹配问题
               </a>
             
           </div>
@@ -579,10 +581,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/09/习大大十九大讲话词云分析/" rel="prev" title="习大大十九大讲话词云分析">
-                习大大十九大讲话词云分析 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -758,7 +756,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#建立目标骨骼mask（C1-C6）"><span class="nav-number">2.</span> <span class="nav-text">建立目标骨骼mask（C1-C6）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#制作导板基底"><span class="nav-number">3.</span> <span class="nav-text">制作导板基底</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#利用Morphology功能生成导板壁厚"><span class="nav-number">3.1.</span> <span class="nav-text">利用Morphology功能生成导板壁厚</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修剪导板"><span class="nav-number">3.2.</span> <span class="nav-text">修剪导板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在3-matic下平滑导板"><span class="nav-number">3.3.</span> <span class="nav-text">在3-matic下平滑导板</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计骨钉导向套"><span class="nav-number">4.</span> <span class="nav-text">设计骨钉导向套</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设计钉道"><span class="nav-number">4.1.</span> <span class="nav-text">设计钉道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计导向孔"><span class="nav-number">4.2.</span> <span class="nav-text">设计导向孔</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#布尔并生成导板"><span class="nav-number">5.</span> <span class="nav-text">布尔并生成导板</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#聊聊关于其他的建模方式"><span class="nav-number">5.1.</span> <span class="nav-text">聊聊关于其他的建模方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于3D打印"><span class="nav-number">6.</span> <span class="nav-text">关于3D打印</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#签证申请"><span class="nav-number">2.</span> <span class="nav-text">签证申请</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤3：在线填写申请表"><span class="nav-number">2.1.</span> <span class="nav-text">步骤3：在线填写申请表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤4：预约递交申请时间"><span class="nav-number">2.2.</span> <span class="nav-text">步骤4：预约递交申请时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤5：准备材料"><span class="nav-number">2.3.</span> <span class="nav-text">步骤5：准备材料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本材料"><span class="nav-number">2.3.1.</span> <span class="nav-text">基本材料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊材料"><span class="nav-number">2.3.2.</span> <span class="nav-text">特殊材料</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在职人员-（雇员，企业家）"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">在职人员 （雇员，企业家）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大学或培训机构的学生"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">大学或培训机构的学生</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤6：前往签证中心递交您的签证申请"><span class="nav-number">2.4.</span> <span class="nav-text">步骤6：前往签证中心递交您的签证申请</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#被德国大使馆拒签"><span class="nav-number">3.</span> <span class="nav-text">被德国大使馆拒签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#拒签申诉"><span class="nav-number">4.</span> <span class="nav-text">拒签申诉</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#确定拒签原因"><span class="nav-number">4.1.</span> <span class="nav-text">确定拒签原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备申诉材料"><span class="nav-number">4.2.</span> <span class="nav-text">准备申诉材料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#申诉信"><span class="nav-number">4.2.1.</span> <span class="nav-text">申诉信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备补充材料"><span class="nav-number">4.2.2.</span> <span class="nav-text">准备补充材料</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去大使馆申诉"><span class="nav-number">4.3.</span> <span class="nav-text">去大使馆申诉</span></a></li></ol></li></ol></div>
             
 
           </div>
