@@ -3,6 +3,493 @@
   
     
     <entry>
+      <title><![CDATA[3D打印材料属性一览表]]></title>
+      <url>/2017/12/22/3D%E6%89%93%E5%8D%B0%E6%9D%90%E6%96%99%E5%B1%9E%E6%80%A7%E4%B8%80%E8%A7%88%E8%A1%A8/</url>
+      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近接到了很多关于3D打印耗材选择的问询。大家不清楚的无非以下几点：1.不同3D打印技术分别可以选择哪几种耗材 2.不同3D打印耗材的强度、精度、表面、熔点如何。</p>
+<p>在这里我就针对 FDM、SLA、DLP、3DP、SLS、SLM这几种打印技术，分别为大家介绍他们的常用耗材以及耗材的材料属性，方便大家快速查阅。</p>
+<a id="more"></a>
+<hr>
+<h1 id="3D打印材料属性一览表"><a href="#3D打印材料属性一览表" class="headerlink" title="3D打印材料属性一览表"></a>3D打印材料属性一览表</h1><table>
+<thead>
+<tr>
+<th><strong>材料</strong></th>
+<th><strong>型号</strong></th>
+<th><strong>价格</strong></th>
+<th><strong>精度</strong></th>
+<th><strong>最小细节</strong></th>
+<th><strong>推荐壁厚</strong></th>
+<th><strong>表面</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PLA</td>
+<td>NA</td>
+<td>0.8</td>
+<td>0.2</td>
+<td>0.4</td>
+<td>0.8mm以上</td>
+<td>有层纹</td>
+</tr>
+<tr>
+<td>普通光敏树脂</td>
+<td>9000</td>
+<td>1.7</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>具体看模型</td>
+<td>光滑</td>
+</tr>
+<tr>
+<td>高精度树脂</td>
+<td>128</td>
+<td>3</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>具体看模型</td>
+<td>光滑</td>
+</tr>
+<tr>
+<td>半透明树脂</td>
+<td>11122</td>
+<td>6</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>具体看模型</td>
+<td>光滑</td>
+</tr>
+<tr>
+<td>全透明树脂</td>
+<td>11122</td>
+<td>8</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>具体看模型</td>
+<td>光滑</td>
+</tr>
+<tr>
+<td>红蜡</td>
+<td>RC90</td>
+<td>35</td>
+<td>0.017</td>
+<td>0.1</td>
+<td>具体看模型</td>
+<td>光滑</td>
+</tr>
+<tr>
+<td>蓝蜡</td>
+<td>3Zmodel</td>
+<td>60</td>
+<td>0.017</td>
+<td>0.1</td>
+<td>具体看模型</td>
+<td>光滑</td>
+</tr>
+<tr>
+<td>耐高温树脂（70度）</td>
+<td>8000</td>
+<td>6</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>具体看模型</td>
+<td>光滑</td>
+</tr>
+<tr>
+<td>耐高温树脂（100度）</td>
+<td>8001</td>
+<td>12</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>具体看模型</td>
+<td>光滑</td>
+</tr>
+<tr>
+<td>耐高温树脂（140度）</td>
+<td>8002</td>
+<td>15</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>具体看模型</td>
+<td>光滑</td>
+</tr>
+<tr>
+<td>尼龙</td>
+<td>PA12</td>
+<td>8</td>
+<td>0.15</td>
+<td>0.5</td>
+<td>1mm以上</td>
+<td>轻度磨砂</td>
+</tr>
+<tr>
+<td>尼龙</td>
+<td>PA1172</td>
+<td>8</td>
+<td>0.15</td>
+<td>0.5</td>
+<td>1mm以上</td>
+<td>轻度磨砂</td>
+</tr>
+<tr>
+<td>尼龙加玻纤</td>
+<td>PA12+30%GF</td>
+<td>9</td>
+<td>0.15</td>
+<td>0.5</td>
+<td>1mm以上</td>
+<td>轻度磨砂</td>
+</tr>
+<tr>
+<td>不锈钢</td>
+<td>316L</td>
+<td>15</td>
+<td>0.15</td>
+<td>0.5</td>
+<td>1mm以上</td>
+<td>轻度磨砂</td>
+</tr>
+<tr>
+<td>钛合金</td>
+<td>TI6Al4V</td>
+<td>45</td>
+<td>0.15</td>
+<td>0.5</td>
+<td>1mm以上</td>
+<td>轻度磨砂</td>
+</tr>
+</tbody>
+</table>
+<p><strong>精度：</strong>指打印物品与模型比较的准确程度，跟层厚设置、定位精度和光斑精度有关系，还可能与打印物品的大小，以及打印完成时间有关。</p>
+<p><strong>最小细节：</strong>最小打印细节主要由3D打印机的分辨率决定，如果模型上的特征小于最小细节，就有可能造成打印成品细节的丢失。</p>
+<p><strong>壁厚：</strong>3D打印的模型必须是有厚度的实体，为保证模型结构强度，3D打印有最小壁厚限制。</p>
+<h1 id="FDM打印耗材"><a href="#FDM打印耗材" class="headerlink" title="FDM打印耗材"></a>FDM打印耗材</h1><h2 id="PLA塑料"><a href="#PLA塑料" class="headerlink" title="PLA塑料"></a>PLA塑料</h2><p>材料属性</p>
+<ul>
+<li><p>工艺</p>
+<p>FDM(塑料熔融沉积)</p>
+</li>
+<li><p>精度</p>
+<p>0.10mm</p>
+</li>
+<li><p>最小细节</p>
+<p>0.40</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>0.80</p>
+</li>
+<li><p>表面质量</p>
+<p>有层纹</p>
+</li>
+<li><p>特点</p>
+<p>PLA塑料 价格低 强度高 环保材料 成型尺寸大 适合对精度和完成表面要求不高的物品</p>
+</li>
+<li><p>适合做</p>
+<p>低价原型制作、机械零件原型 大型雕像、艺术品模种</p>
+</li>
+<li><p>不适合做</p>
+<p>复杂设计 对精度要求较高件</p>
+</li>
+</ul>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/05567338305609715.png" alt="img"></p>
+<p>#SLA打印耗材</p>
+<h2 id="普通光敏树脂"><a href="#普通光敏树脂" class="headerlink" title="普通光敏树脂"></a>普通光敏树脂</h2><ul>
+<li><p>工艺</p>
+<p>SLA立体光刻</p>
+</li>
+<li><p>精度</p>
+<p>0.10mm</p>
+</li>
+<li><p>材料型号</p>
+<p>9000</p>
+</li>
+<li><p>最小细节</p>
+<p>0.30</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>具体看模型</p>
+</li>
+<li><p>表面质量</p>
+<p>光滑</p>
+</li>
+<li><p>特点</p>
+<p>进口光敏树脂 精度高，表面细腻，既可做外形外观，又可做结构、装配和功能验证。</p>
+</li>
+<li><p>适合做</p>
+<p>复杂的设计和各类雕塑,高精度模型, 工业手板</p>
+</li>
+<li><p>不适合做</p>
+<p>功能件，承力件</p>
+<p><img src="http://pic.mohou.com/shop/article/04758509344069509.jpg" alt="光敏树脂打印样品">  </p>
+<p>​     光敏树脂材料的3D打印的成品细节很好，表面质量高，可通过喷漆等工艺上色。光敏树脂如果长时间曝露在光照条件下，会逐渐变脆。这种材料多用于打印对模型精度和表面质量要求较高的精细模型,比方说手办，首饰或者精密装配件。</p>
+<p>普通光敏树脂物性表如下：</p>
+<p><img src="http://pic.mohou.com/shop/article/05567354939156231.jpg" alt="img"></p>
+</li>
+</ul>
+<p>##高精度树脂</p>
+<ul>
+<li><p>工艺</p>
+<p>SLA立体光刻</p>
+</li>
+<li><p>精度</p>
+<p>0.10mm</p>
+</li>
+<li><p>材料型号</p>
+<p>128</p>
+</li>
+<li><p>最小细节</p>
+<p>0.30</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>具体看模型</p>
+</li>
+<li><p>表面质量</p>
+<p>光滑</p>
+</li>
+<li><p>特点</p>
+<p>工程塑料，有韧性，类似ABS塑料性能，表面光泽好，易打磨上色，可抛光。</p>
+</li>
+<li><p>适合做</p>
+<p>复杂、精细件，装配件等</p>
+</li>
+<li><p>不适合做</p>
+<p>长期光照，户外承力</p>
+</li>
+</ul>
+<p>高精度光敏树脂物性表如下：</p>
+<p><img src="http://pic.mohou.com/shop/article/05567352434002622.jpg" alt="img"></p>
+<p>##半/全透明光敏树脂</p>
+<ul>
+<li><p>工艺</p>
+<p>SLA立体光刻</p>
+</li>
+<li><p>精度</p>
+<p>0.10mm</p>
+</li>
+<li><p>材料型号</p>
+<p>11122</p>
+</li>
+<li><p>最小细节</p>
+<p>0.30</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>具体看模型</p>
+</li>
+<li><p>表面质量</p>
+<p>光滑</p>
+</li>
+<li><p>特点</p>
+<p>成品为半透明，经处理可达到全透明；产品高通透性，颜色晶莹剔透，光亮度高，吸水率低。</p>
+</li>
+<li><p>适合做</p>
+<p>对透光要求比较高的物件</p>
+</li>
+<li><p>不适合做</p>
+<p>需要暴露于紫外光之下的</p>
+</li>
+</ul>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/05567366536866793.jpg" alt="img"></p>
+<h2 id="耐高温树脂"><a href="#耐高温树脂" class="headerlink" title="耐高温树脂"></a>耐高温树脂</h2><p>一般3D打印的树脂耐温性能在40-50之间，大厂stratasys的所谓耐高温树脂不超过60度，现在市面上出现了三款耐高温树脂，可以耐受70-80. 100,140度的耐高温树脂，可以很好解决一些对应用环境温度有要求的客户，树脂本身打印性能和普通光敏树脂类似，精度0.1mm, 壁厚要求大于0.4mm。 具体物理性能表如下：</p>
+<p><img src="http://pic.mohou.com/shop/article/05562873767785715.jpg" alt="img"></p>
+<p>特点：具有良好的尺寸精度及稳定性；低收缩，高强度。</p>
+<h1 id="DLP成型材料"><a href="#DLP成型材料" class="headerlink" title="DLP成型材料"></a>DLP成型材料</h1><h2 id="红蜡"><a href="#红蜡" class="headerlink" title="红蜡"></a>红蜡</h2><ul>
+<li><p>工艺</p>
+<p>DLP 光固化</p>
+</li>
+<li><p>精度</p>
+<p>0.01mm</p>
+</li>
+<li><p>材料型号</p>
+<p>RC90</p>
+</li>
+<li><p>最小细节</p>
+<p>0.10</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>具体看模型</p>
+</li>
+<li><p>表面质量</p>
+<p>光滑</p>
+</li>
+<li><p>特点</p>
+<p>3D打印所能达到的最高精度,只用于失蜡法铸造</p>
+</li>
+<li><p>适合做</p>
+<p>高精度浇铸模具</p>
+</li>
+<li><p>不适合做</p>
+<p>其他用途</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171222120507.png" alt="img"></p>
+</li>
+</ul>
+<h2 id="蓝蜡"><a href="#蓝蜡" class="headerlink" title="蓝蜡"></a>蓝蜡</h2><ul>
+<li><p>SCP弧度平滑打印技术</p>
+</li>
+<li><p>精度</p>
+<p>0.01mm</p>
+</li>
+<li><p>材料型号</p>
+<p>3Zmodel</p>
+</li>
+<li><p>最小细节</p>
+<p>0.10</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>具体看模型</p>
+</li>
+<li><p>表面质量</p>
+<p>光滑</p>
+</li>
+<li><p>特点</p>
+<p>3D打印所能达到的最高精度,只用于失蜡法铸造</p>
+</li>
+<li><p>适合做</p>
+<p>高精度浇铸模具</p>
+</li>
+<li><p>不适合做</p>
+<p>其他用途</p>
+</li>
+</ul>
+<h1 id="3DP打印材料"><a href="#3DP打印材料" class="headerlink" title="3DP打印材料"></a>3DP打印材料</h1><h2 id="石膏粉末"><a href="#石膏粉末" class="headerlink" title="石膏粉末"></a>石膏粉末</h2><ul>
+<li><p>3DP粉末床3D打印</p>
+</li>
+<li><p>精度</p>
+<p>0.10mm</p>
+</li>
+<li><p>最小细节</p>
+<p>1.00</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>3.00</p>
+</li>
+<li><p>表面质量</p>
+<p>颗粒感强</p>
+</li>
+<li><p>特点</p>
+<p>基于石膏粉末制作，质感类岩石，有一定强度，易碎，适合3d人像、工业模型展示等应用。</p>
+</li>
+<li><p>适合做</p>
+<p>对颜色要求高的物品，如3D人像</p>
+</li>
+<li><p>不适合做</p>
+<p>对强度有要求的物品</p>
+</li>
+</ul>
+<h1 id="SLS成型材料"><a href="#SLS成型材料" class="headerlink" title="SLS成型材料"></a>SLS成型材料</h1><h2 id="尼龙"><a href="#尼龙" class="headerlink" title="尼龙"></a>尼龙</h2><ul>
+<li><p>工艺</p>
+<p>SLS选择性激光烧结</p>
+</li>
+<li><p>精度</p>
+<p>0.15mm</p>
+</li>
+<li><p>材料型号</p>
+<p>PA12，PA1172</p>
+</li>
+<li><p>最小细节</p>
+<p>0.50</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>1.00</p>
+</li>
+<li><p>表面质量</p>
+<p>轻度磨砂</p>
+</li>
+<li><p>特点</p>
+<p>尼龙有优良的韧性、自润滑性、耐磨性、耐化学性、气体透过性、及耐油性、无毒和容易着色等优点，可以说是一种全能型材料，所以在工业上得到广泛应用。</p>
+</li>
+<li><p>适合做</p>
+<p>高精度打印,功能性终产品,需要后期打磨／抛光和上色的产品</p>
+</li>
+<li><p>不适合做</p>
+<p>空心打印（除非设计中自带材料脱出孔）</p>
+</li>
+</ul>
+<p><strong>尼龙PA12物性表：</strong></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/05567369214091254.jpg" alt="img"></p>
+<p><strong>尼龙PA1172物性表：</strong></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/05567365215897790.png" alt="img"></p>
+<h2 id="尼龙玻纤"><a href="#尼龙玻纤" class="headerlink" title="尼龙玻纤"></a>尼龙玻纤</h2><p>尼龙玻纤是指由尼龙和玻纤混合粉末激光烧结的材料，尼龙玻纤一方面继承了尼龙的工程性能，另一方面在耐热性能上有进一步提升，可以达到大约110度，因此尼龙玻纤很适合做一些需要在较热环境下使用的功能件测试。这种材料的硬度、密度，拉伸性能都很优秀，是一款应用面很广的材料。</p>
+<p><strong>打印指标</strong></p>
+<p>典型打印周期： 2-4天</p>
+<p>标准精度： ± 0.3%</p>
+<p>最小壁厚： 建议最小1 mm, 特殊情况可以0.4mm</p>
+<p>层厚：0.12mm</p>
+<p>最大打印空间： 650x330x560 mm</p>
+<p>表面: 磨砂效果，可后续上色，喷漆、打磨等</p>
+<p><strong>物理性能</strong></p>
+<p><strong><img src="http://pic.mohou.com/shop/article/05562068053260446.png" alt="img"></strong></p>
+<p><strong><img src="http://pic.mohou.com/shop/article/05562067416511669.png" alt="img"></strong></p>
+<p><strong>打印工艺简介SLS</strong></p>
+<p><img src="http://pic.mohou.com/shop/article/05562067738166283.png" alt="img"></p>
+<h1 id="SLM成型材料"><a href="#SLM成型材料" class="headerlink" title="SLM成型材料"></a>SLM成型材料</h1><h2 id="不锈钢"><a href="#不锈钢" class="headerlink" title="不锈钢"></a>不锈钢</h2><ul>
+<li><p>工艺</p>
+<p>SLM选择性激光熔融</p>
+</li>
+<li><p>精度</p>
+<p>0.15mm</p>
+</li>
+<li><p>材料型号</p>
+<p>316L</p>
+</li>
+<li><p>最小细节</p>
+<p>0.50</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>1.00</p>
+</li>
+<li><p>表面质量</p>
+<p>轻度磨砂</p>
+</li>
+<li><p>特点</p>
+<p>不锈钢 以其耐空气、蒸汽、水等弱腐蚀介质和酸碱、盐等化学浸蚀性介质腐蚀而得到广泛应用。</p>
+</li>
+<li><p>适合做</p>
+<p>打印尺寸较大的物品</p>
+</li>
+</ul>
+<p><img src="http://pic.mohou.com/shop/article/05615488017557087.jpg" alt="不锈钢3D打印材料316L"></p>
+<p><img src="http://pic.mohou.com/shop/article/05615488389765625.jpg" alt="不锈钢3D打印材料316L  2"></p>
+<h2 id="钛合金"><a href="#钛合金" class="headerlink" title="钛合金"></a>钛合金</h2><ul>
+<li><p>工艺</p>
+<p>SLS选择性激光烧结</p>
+</li>
+<li><p>精度</p>
+<p>0.15mm</p>
+</li>
+<li><p>材料型号</p>
+<p>TI6Al4V</p>
+</li>
+<li><p>最小细节</p>
+<p>0.50</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>1.00</p>
+</li>
+<li><p>表面质量</p>
+<p>轻度磨砂</p>
+</li>
+<li><p>特点</p>
+<p>重量轻、强度高、韧性好、耐腐蚀</p>
+</li>
+</ul>
+<p><img src="http://pic.mohou.com/shop/article/05615492454400229.jpg" alt="钛合金3D打印材料"></p>
+<p><img src="http://pic.mohou.com/shop/article/05615492776762071.jpg" alt="钛合金3D打印材料"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 3D打印 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 材料 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[德国签证被拒签又申诉成功的经历]]></title>
       <url>/2017/12/20/%E5%BE%B7%E5%9B%BD%E7%AD%BE%E8%AF%81%E8%A2%AB%E6%8B%92%E7%AD%BE%E5%8F%88%E7%94%B3%E8%AF%89%E6%88%90%E5%8A%9F%E7%9A%84%E7%BB%8F%E5%8E%86/</url>
       <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近正在准备和家人一起来次年后欧洲自由行，说实话行程还是定得挺满的，按照计划是3天德国（柏林、科隆）+4天英国（伦敦、剑桥）。有了之前自己办理英签顺利通过的经历，这次办理德国申根签证信心满满，想着自己英签都过了德签通过应该是小意思了，结果。。我迎来了人生第一次的拒签经历（打脸）。</p>

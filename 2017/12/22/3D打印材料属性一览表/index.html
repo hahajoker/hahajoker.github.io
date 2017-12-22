@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="3D打印,FDM," />
+  <meta name="keywords" content="材料," />
 
 
 
@@ -81,45 +81,35 @@
 
 
 
-<meta name="description" content="前言接触并使用FDM（熔融沉积）3D打印机已有三年的时间，前前后后打印过的模型估计有几百件，还做过一段时间的硬件开发，对于这种打印机不敢说精通，但算是个老玩家了了。说实话，相对于其他3D打印技术，FDM打印机在稳定性和打印精度上是不理想的，但是它的长处在于性价比，其低廉的价格使其成为了目前保有量最高的3D打印机类型。 ">
-<meta name="keywords" content="3D打印,FDM">
+<meta name="description" content="前言最近接到了很多关于3D打印耗材选择的问询。大家不清楚的无非以下几点：1.不同3D打印技术分别可以选择哪几种耗材 2.不同3D打印耗材的强度、精度、表面、熔点如何。 在这里我就针对 FDM、SLA、DLP、3DP、SLS、SLM这几种打印技术，分别为大家介绍他们的常用耗材以及耗材的材料属性，方便大家快速查阅。">
+<meta name="keywords" content="材料">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FDM3D打印常见问题及解决方案">
-<meta property="og:url" content="http://yoursite.com/2017/12/12/FDM3D打印常见问题及解决方案/index.html">
+<meta property="og:title" content="3D打印材料属性一览表">
+<meta property="og:url" content="http://yoursite.com/2017/12/22/3D打印材料属性一览表/index.html">
 <meta property="og:site_name" content="Hello World">
-<meta property="og:description" content="前言接触并使用FDM（熔融沉积）3D打印机已有三年的时间，前前后后打印过的模型估计有几百件，还做过一段时间的硬件开发，对于这种打印机不敢说精通，但算是个老玩家了了。说实话，相对于其他3D打印技术，FDM打印机在稳定性和打印精度上是不理想的，但是它的长处在于性价比，其低廉的价格使其成为了目前保有量最高的3D打印机类型。 在这里把我遇到过的FDM 3D打印常见问题，以及解决处理方法做了个总结，方便随时">
+<meta property="og:description" content="前言最近接到了很多关于3D打印耗材选择的问询。大家不清楚的无非以下几点：1.不同3D打印技术分别可以选择哪几种耗材 2.不同3D打印耗材的强度、精度、表面、熔点如何。 在这里我就针对 FDM、SLA、DLP、3DP、SLS、SLM这几种打印技术，分别为大家介绍他们的常用耗材以及耗材的材料属性，方便大家快速查阅。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/FDM%203D%E6%89%93%E5%8D%B0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/FDM%203D%E6%89%93%E5%8D%B0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98_%E7%A1%AC%E6%80%A7%E9%97%AE%E9%A2%98.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212181313.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182537.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182604.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182624.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182649.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182715.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182729.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182742.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182803.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182815.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182836.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/ext_020161130133951172.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/FDM%203D%E6%89%93%E5%8D%B0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98_%E6%89%93%E5%8D%B0%E4%BC%98%E5%8C%96.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183043.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212190102.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183123.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183141.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183156.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183208.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183224.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183237.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183251.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183303.png">
-<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183317.png">
-<meta property="og:updated_time" content="2017-12-12T11:19:27.706Z">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/05567338305609715.png">
+<meta property="og:image" content="http://pic.mohou.com/shop/article/04758509344069509.jpg">
+<meta property="og:image" content="http://pic.mohou.com/shop/article/05567354939156231.jpg">
+<meta property="og:image" content="http://pic.mohou.com/shop/article/05567352434002622.jpg">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/05567366536866793.jpg">
+<meta property="og:image" content="http://pic.mohou.com/shop/article/05562873767785715.jpg">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171222120507.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/05567369214091254.jpg">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/05567365215897790.png">
+<meta property="og:image" content="http://pic.mohou.com/shop/article/05562068053260446.png">
+<meta property="og:image" content="http://pic.mohou.com/shop/article/05562067416511669.png">
+<meta property="og:image" content="http://pic.mohou.com/shop/article/05562067738166283.png">
+<meta property="og:image" content="http://pic.mohou.com/shop/article/05615488017557087.jpg">
+<meta property="og:image" content="http://pic.mohou.com/shop/article/05615488389765625.jpg">
+<meta property="og:image" content="http://pic.mohou.com/shop/article/05615492454400229.jpg">
+<meta property="og:image" content="http://pic.mohou.com/shop/article/05615492776762071.jpg">
+<meta property="og:updated_time" content="2017-12-22T04:32:11.114Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FDM3D打印常见问题及解决方案">
-<meta name="twitter:description" content="前言接触并使用FDM（熔融沉积）3D打印机已有三年的时间，前前后后打印过的模型估计有几百件，还做过一段时间的硬件开发，对于这种打印机不敢说精通，但算是个老玩家了了。说实话，相对于其他3D打印技术，FDM打印机在稳定性和打印精度上是不理想的，但是它的长处在于性价比，其低廉的价格使其成为了目前保有量最高的3D打印机类型。 在这里把我遇到过的FDM 3D打印常见问题，以及解决处理方法做了个总结，方便随时">
-<meta name="twitter:image" content="http://p0cgjzhqf.bkt.clouddn.com/FDM%203D%E6%89%93%E5%8D%B0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.png">
+<meta name="twitter:title" content="3D打印材料属性一览表">
+<meta name="twitter:description" content="前言最近接到了很多关于3D打印耗材选择的问询。大家不清楚的无非以下几点：1.不同3D打印技术分别可以选择哪几种耗材 2.不同3D打印耗材的强度、精度、表面、熔点如何。 在这里我就针对 FDM、SLA、DLP、3DP、SLS、SLM这几种打印技术，分别为大家介绍他们的常用耗材以及耗材的材料属性，方便大家快速查阅。">
+<meta name="twitter:image" content="http://p0cgjzhqf.bkt.clouddn.com/05567338305609715.png">
 
 
 
@@ -149,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/12/FDM3D打印常见问题及解决方案/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/22/3D打印材料属性一览表/"/>
 
 
 
 
 
-  <title>FDM3D打印常见问题及解决方案 | Hello World</title>
+  <title>3D打印材料属性一览表 | Hello World</title>
   
 
 
@@ -326,7 +316,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/12/FDM3D打印常见问题及解决方案/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/22/3D打印材料属性一览表/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hahajoker">
@@ -343,7 +333,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">FDM3D打印常见问题及解决方案</h1>
+          <h1 class="post-title" itemprop="name headline">3D打印材料属性一览表</h1>
         
 
         <div class="post-meta">
@@ -355,8 +345,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T17:18:03+08:00">
-                2017-12-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-22T11:25:29+08:00">
+                2017-12-22
               </time>
             
 
@@ -415,41 +405,473 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>接触并使用<code>FDM</code>（熔融沉积）3D打印机已有三年的时间，前前后后打印过的模型估计有几百件，还做过一段时间的硬件开发，对于这种打印机不敢说精通，但算是个老玩家了了。说实话，相对于其他3D打印技术，FDM打印机在稳定性和打印精度上是不理想的，但是它的长处在于性价比，其低廉的价格使其成为了目前保有量最高的3D打印机类型。</p>
-<p>在这里把我遇到过的FDM 3D打印常见问题，以及解决处理方法做了个总结，方便随时查看，让大家少走弯路轻松愉快地使用3D打印机。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近接到了很多关于3D打印耗材选择的问询。大家不清楚的无非以下几点：1.不同3D打印技术分别可以选择哪几种耗材 2.不同3D打印耗材的强度、精度、表面、熔点如何。</p>
+<p>在这里我就针对 FDM、SLA、DLP、3DP、SLS、SLM这几种打印技术，分别为大家介绍他们的常用耗材以及耗材的材料属性，方便大家快速查阅。</p>
 <a id="more"></a>
 <hr>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><img src="http://p0cgjzhqf.bkt.clouddn.com/FDM%203D%E6%89%93%E5%8D%B0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.png" alt="img"></p>
-<p>我将这个目录内的常见问题及解决方案利用<a href="http://www.focusky.com.cn/" target="_blank" rel="noopener">focusky</a>做成了动画展示，方便大家查看和分享。</p>
-<p>点此查看完整预览：<a href="http://fs.focusky.com.cn/wwdb/tcfa/index.html" target="_blank" rel="noopener">http://fs.focusky.com.cn/wwdb/tcfa/index.html</a></p>
-<p><strong>注：建议大家收藏上面的网址，方便遇到问题随时查看</strong></p>
-<h1 id="硬性问题"><a href="#硬性问题" class="headerlink" title="硬性问题"></a>硬性问题</h1><p>硬性问题是指3D打印机出现了较严重的问题，如果不解决问题就无法完成打印过程。我们可以根据打印中出现的问题现象来判断问题原因，找到对应的解决方案。</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/FDM%203D%E6%89%93%E5%8D%B0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98_%E7%A1%AC%E6%80%A7%E9%97%AE%E9%A2%98.png" alt="img"></p>
-<h2 id="3D打印开始后，耗材挤不出如何解决？"><a href="#3D打印开始后，耗材挤不出如何解决？" class="headerlink" title="3D打印开始后，耗材挤不出如何解决？"></a>3D打印开始后，耗材挤不出如何解决？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212181313.png" alt="img"></p>
-<h2 id="如何解决3D打印出现刨料问题？"><a href="#如何解决3D打印出现刨料问题？" class="headerlink" title="如何解决3D打印出现刨料问题？"></a>如何解决3D打印出现刨料问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182537.png" alt="img"></p>
-<h2 id="如何解决喷头堵塞问题？"><a href="#如何解决喷头堵塞问题？" class="headerlink" title="如何解决喷头堵塞问题？"></a>如何解决喷头堵塞问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182604.png" alt="img"></p>
-<h2 id="怎么解决打印的耗材没法粘到平台上？"><a href="#怎么解决打印的耗材没法粘到平台上？" class="headerlink" title="怎么解决打印的耗材没法粘到平台上？"></a>怎么解决打印的耗材没法粘到平台上？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182624.png" alt="img"></p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182649.png" alt="img"></p>
-<h2 id="如何解决打印中途，挤出停止"><a href="#如何解决打印中途，挤出停止" class="headerlink" title="如何解决打印中途，挤出停止"></a>如何解决打印中途，挤出停止</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182715.png" alt="img"></p>
-<h2 id="如何解决3D打印出现层错位问题？"><a href="#如何解决3D打印出现层错位问题？" class="headerlink" title="如何解决3D打印出现层错位问题？"></a>如何解决3D打印出现层错位问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182729.png" alt="img"></p>
-<h2 id="如何解决过热问题"><a href="#如何解决过热问题" class="headerlink" title="如何解决过热问题"></a>如何解决过热问题</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182742.png" alt="img"></p>
-<h2 id="如何解决挤出不稳定问题？"><a href="#如何解决挤出不稳定问题？" class="headerlink" title="如何解决挤出不稳定问题？"></a>如何解决挤出不稳定问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182803.png" alt="img"></p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182815.png" alt="img"></p>
-<h2 id="什么3D建模软件可以支持3D打印？"><a href="#什么3D建模软件可以支持3D打印？" class="headerlink" title="什么3D建模软件可以支持3D打印？"></a>什么3D建模软件可以支持3D打印？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212182836.png" alt="img"></p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/ext_020161130133951172.png" alt="img"></p>
-<h1 id="打印优化"><a href="#打印优化" class="headerlink" title="打印优化"></a>打印优化</h1><p>打印优化问题一般是指打印机可以完成打印过程，但打印出的模型出现了不理想的偏差，我们可以根据模型呈现出的不同状态来判断和调整切片参数或者修复打印机，以达到模型打印的最优状态。</p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/FDM%203D%E6%89%93%E5%8D%B0%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98_%E6%89%93%E5%8D%B0%E4%BC%98%E5%8C%96.png" alt="img"></p>
-<h2 id="打印件边角卷曲和毛糙解决方法"><a href="#打印件边角卷曲和毛糙解决方法" class="headerlink" title="打印件边角卷曲和毛糙解决方法"></a>打印件边角卷曲和毛糙解决方法</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183043.png" alt="img"></p>
-<h2 id="如何解决3D打印中出现拉丝和垂料问题？"><a href="#如何解决3D打印中出现拉丝和垂料问题？" class="headerlink" title="如何解决3D打印中出现拉丝和垂料问题？"></a>如何解决3D打印中出现拉丝和垂料问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212190102.png" alt="img"></p>
-<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183123.png" alt="img"></p>
-<h2 id="如何解决3D打印出现振动和回环纹理"><a href="#如何解决3D打印出现振动和回环纹理" class="headerlink" title="如何解决3D打印出现振动和回环纹理"></a>如何解决3D打印出现振动和回环纹理</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183141.png" alt="img"></p>
-<h2 id="如何解决填充不牢问题"><a href="#如何解决填充不牢问题" class="headerlink" title="如何解决填充不牢问题"></a>如何解决填充不牢问题</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183156.png" alt="img"></p>
-<h2 id="如何解决底面边角上的孔洞和间隙"><a href="#如何解决底面边角上的孔洞和间隙" class="headerlink" title="如何解决底面边角上的孔洞和间隙"></a>如何解决底面边角上的孔洞和间隙</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183208.png" alt="img"></p>
-<h2 id="如何解决侧面线性纹理问题？"><a href="#如何解决侧面线性纹理问题？" class="headerlink" title="如何解决侧面线性纹理问题？"></a>如何解决侧面线性纹理问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183224.png" alt="img"></p>
-<h2 id="如何解决填充与轮廓之间出现间隙现象？"><a href="#如何解决填充与轮廓之间出现间隙现象？" class="headerlink" title="如何解决填充与轮廓之间出现间隙现象？"></a>如何解决填充与轮廓之间出现间隙现象？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183237.png" alt="img"></p>
-<h2 id="如何解决细节打印不出来？"><a href="#如何解决细节打印不出来？" class="headerlink" title="如何解决细节打印不出来？"></a>如何解决细节打印不出来？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183251.png" alt="img"></p>
-<h2 id="如何解决层开裂或断开问题？"><a href="#如何解决层开裂或断开问题？" class="headerlink" title="如何解决层开裂或断开问题？"></a>如何解决层开裂或断开问题？</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183303.png" alt="img"></p>
-<h2 id="如何处理短线轴"><a href="#如何处理短线轴" class="headerlink" title="如何处理短线轴?"></a>如何处理短线轴?</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171212183317.png" alt="img"></p>
+<h1 id="3D打印材料属性一览表"><a href="#3D打印材料属性一览表" class="headerlink" title="3D打印材料属性一览表"></a>3D打印材料属性一览表</h1><table>
+<thead>
+<tr>
+<th><strong>材料</strong></th>
+<th><strong>型号</strong></th>
+<th><strong>价格</strong></th>
+<th><strong>精度</strong></th>
+<th><strong>最小细节</strong></th>
+<th><strong>推荐壁厚</strong></th>
+<th><strong>表面</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PLA</td>
+<td>NA</td>
+<td>0.8</td>
+<td>0.2</td>
+<td>0.4</td>
+<td>0.8mm以上</td>
+<td>有层纹</td>
+</tr>
+<tr>
+<td>普通光敏树脂</td>
+<td>9000</td>
+<td>1.7</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>具体看模型</td>
+<td>光滑</td>
+</tr>
+<tr>
+<td>高精度树脂</td>
+<td>128</td>
+<td>3</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>具体看模型</td>
+<td>光滑</td>
+</tr>
+<tr>
+<td>半透明树脂</td>
+<td>11122</td>
+<td>6</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>具体看模型</td>
+<td>光滑</td>
+</tr>
+<tr>
+<td>全透明树脂</td>
+<td>11122</td>
+<td>8</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>具体看模型</td>
+<td>光滑</td>
+</tr>
+<tr>
+<td>红蜡</td>
+<td>RC90</td>
+<td>35</td>
+<td>0.017</td>
+<td>0.1</td>
+<td>具体看模型</td>
+<td>光滑</td>
+</tr>
+<tr>
+<td>蓝蜡</td>
+<td>3Zmodel</td>
+<td>60</td>
+<td>0.017</td>
+<td>0.1</td>
+<td>具体看模型</td>
+<td>光滑</td>
+</tr>
+<tr>
+<td>耐高温树脂（70度）</td>
+<td>8000</td>
+<td>6</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>具体看模型</td>
+<td>光滑</td>
+</tr>
+<tr>
+<td>耐高温树脂（100度）</td>
+<td>8001</td>
+<td>12</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>具体看模型</td>
+<td>光滑</td>
+</tr>
+<tr>
+<td>耐高温树脂（140度）</td>
+<td>8002</td>
+<td>15</td>
+<td>0.1</td>
+<td>0.3</td>
+<td>具体看模型</td>
+<td>光滑</td>
+</tr>
+<tr>
+<td>尼龙</td>
+<td>PA12</td>
+<td>8</td>
+<td>0.15</td>
+<td>0.5</td>
+<td>1mm以上</td>
+<td>轻度磨砂</td>
+</tr>
+<tr>
+<td>尼龙</td>
+<td>PA1172</td>
+<td>8</td>
+<td>0.15</td>
+<td>0.5</td>
+<td>1mm以上</td>
+<td>轻度磨砂</td>
+</tr>
+<tr>
+<td>尼龙加玻纤</td>
+<td>PA12+30%GF</td>
+<td>9</td>
+<td>0.15</td>
+<td>0.5</td>
+<td>1mm以上</td>
+<td>轻度磨砂</td>
+</tr>
+<tr>
+<td>不锈钢</td>
+<td>316L</td>
+<td>15</td>
+<td>0.15</td>
+<td>0.5</td>
+<td>1mm以上</td>
+<td>轻度磨砂</td>
+</tr>
+<tr>
+<td>钛合金</td>
+<td>TI6Al4V</td>
+<td>45</td>
+<td>0.15</td>
+<td>0.5</td>
+<td>1mm以上</td>
+<td>轻度磨砂</td>
+</tr>
+</tbody>
+</table>
+<p><strong>精度：</strong>指打印物品与模型比较的准确程度，跟层厚设置、定位精度和光斑精度有关系，还可能与打印物品的大小，以及打印完成时间有关。</p>
+<p><strong>最小细节：</strong>最小打印细节主要由3D打印机的分辨率决定，如果模型上的特征小于最小细节，就有可能造成打印成品细节的丢失。</p>
+<p><strong>壁厚：</strong>3D打印的模型必须是有厚度的实体，为保证模型结构强度，3D打印有最小壁厚限制。</p>
+<h1 id="FDM打印耗材"><a href="#FDM打印耗材" class="headerlink" title="FDM打印耗材"></a>FDM打印耗材</h1><h2 id="PLA塑料"><a href="#PLA塑料" class="headerlink" title="PLA塑料"></a>PLA塑料</h2><p>材料属性</p>
+<ul>
+<li><p>工艺</p>
+<p>FDM(塑料熔融沉积)</p>
+</li>
+<li><p>精度</p>
+<p>0.10mm</p>
+</li>
+<li><p>最小细节</p>
+<p>0.40</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>0.80</p>
+</li>
+<li><p>表面质量</p>
+<p>有层纹</p>
+</li>
+<li><p>特点</p>
+<p>PLA塑料 价格低 强度高 环保材料 成型尺寸大 适合对精度和完成表面要求不高的物品</p>
+</li>
+<li><p>适合做</p>
+<p>低价原型制作、机械零件原型 大型雕像、艺术品模种</p>
+</li>
+<li><p>不适合做</p>
+<p>复杂设计 对精度要求较高件</p>
+</li>
+</ul>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/05567338305609715.png" alt="img"></p>
+<p>#SLA打印耗材</p>
+<h2 id="普通光敏树脂"><a href="#普通光敏树脂" class="headerlink" title="普通光敏树脂"></a>普通光敏树脂</h2><ul>
+<li><p>工艺</p>
+<p>SLA立体光刻</p>
+</li>
+<li><p>精度</p>
+<p>0.10mm</p>
+</li>
+<li><p>材料型号</p>
+<p>9000</p>
+</li>
+<li><p>最小细节</p>
+<p>0.30</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>具体看模型</p>
+</li>
+<li><p>表面质量</p>
+<p>光滑</p>
+</li>
+<li><p>特点</p>
+<p>进口光敏树脂 精度高，表面细腻，既可做外形外观，又可做结构、装配和功能验证。</p>
+</li>
+<li><p>适合做</p>
+<p>复杂的设计和各类雕塑,高精度模型, 工业手板</p>
+</li>
+<li><p>不适合做</p>
+<p>功能件，承力件</p>
+<p><img src="http://pic.mohou.com/shop/article/04758509344069509.jpg" alt="光敏树脂打印样品">  </p>
+<p>​     光敏树脂材料的3D打印的成品细节很好，表面质量高，可通过喷漆等工艺上色。光敏树脂如果长时间曝露在光照条件下，会逐渐变脆。这种材料多用于打印对模型精度和表面质量要求较高的精细模型,比方说手办，首饰或者精密装配件。</p>
+<p>普通光敏树脂物性表如下：</p>
+<p><img src="http://pic.mohou.com/shop/article/05567354939156231.jpg" alt="img"></p>
+</li>
+</ul>
+<p>##高精度树脂</p>
+<ul>
+<li><p>工艺</p>
+<p>SLA立体光刻</p>
+</li>
+<li><p>精度</p>
+<p>0.10mm</p>
+</li>
+<li><p>材料型号</p>
+<p>128</p>
+</li>
+<li><p>最小细节</p>
+<p>0.30</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>具体看模型</p>
+</li>
+<li><p>表面质量</p>
+<p>光滑</p>
+</li>
+<li><p>特点</p>
+<p>工程塑料，有韧性，类似ABS塑料性能，表面光泽好，易打磨上色，可抛光。</p>
+</li>
+<li><p>适合做</p>
+<p>复杂、精细件，装配件等</p>
+</li>
+<li><p>不适合做</p>
+<p>长期光照，户外承力</p>
+</li>
+</ul>
+<p>高精度光敏树脂物性表如下：</p>
+<p><img src="http://pic.mohou.com/shop/article/05567352434002622.jpg" alt="img"></p>
+<p>##半/全透明光敏树脂</p>
+<ul>
+<li><p>工艺</p>
+<p>SLA立体光刻</p>
+</li>
+<li><p>精度</p>
+<p>0.10mm</p>
+</li>
+<li><p>材料型号</p>
+<p>11122</p>
+</li>
+<li><p>最小细节</p>
+<p>0.30</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>具体看模型</p>
+</li>
+<li><p>表面质量</p>
+<p>光滑</p>
+</li>
+<li><p>特点</p>
+<p>成品为半透明，经处理可达到全透明；产品高通透性，颜色晶莹剔透，光亮度高，吸水率低。</p>
+</li>
+<li><p>适合做</p>
+<p>对透光要求比较高的物件</p>
+</li>
+<li><p>不适合做</p>
+<p>需要暴露于紫外光之下的</p>
+</li>
+</ul>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/05567366536866793.jpg" alt="img"></p>
+<h2 id="耐高温树脂"><a href="#耐高温树脂" class="headerlink" title="耐高温树脂"></a>耐高温树脂</h2><p>一般3D打印的树脂耐温性能在40-50之间，大厂stratasys的所谓耐高温树脂不超过60度，现在市面上出现了三款耐高温树脂，可以耐受70-80. 100,140度的耐高温树脂，可以很好解决一些对应用环境温度有要求的客户，树脂本身打印性能和普通光敏树脂类似，精度0.1mm, 壁厚要求大于0.4mm。 具体物理性能表如下：</p>
+<p><img src="http://pic.mohou.com/shop/article/05562873767785715.jpg" alt="img"></p>
+<p>特点：具有良好的尺寸精度及稳定性；低收缩，高强度。</p>
+<h1 id="DLP成型材料"><a href="#DLP成型材料" class="headerlink" title="DLP成型材料"></a>DLP成型材料</h1><h2 id="红蜡"><a href="#红蜡" class="headerlink" title="红蜡"></a>红蜡</h2><ul>
+<li><p>工艺</p>
+<p>DLP 光固化</p>
+</li>
+<li><p>精度</p>
+<p>0.01mm</p>
+</li>
+<li><p>材料型号</p>
+<p>RC90</p>
+</li>
+<li><p>最小细节</p>
+<p>0.10</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>具体看模型</p>
+</li>
+<li><p>表面质量</p>
+<p>光滑</p>
+</li>
+<li><p>特点</p>
+<p>3D打印所能达到的最高精度,只用于失蜡法铸造</p>
+</li>
+<li><p>适合做</p>
+<p>高精度浇铸模具</p>
+</li>
+<li><p>不适合做</p>
+<p>其他用途</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171222120507.png" alt="img"></p>
+</li>
+</ul>
+<h2 id="蓝蜡"><a href="#蓝蜡" class="headerlink" title="蓝蜡"></a>蓝蜡</h2><ul>
+<li><p>SCP弧度平滑打印技术</p>
+</li>
+<li><p>精度</p>
+<p>0.01mm</p>
+</li>
+<li><p>材料型号</p>
+<p>3Zmodel</p>
+</li>
+<li><p>最小细节</p>
+<p>0.10</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>具体看模型</p>
+</li>
+<li><p>表面质量</p>
+<p>光滑</p>
+</li>
+<li><p>特点</p>
+<p>3D打印所能达到的最高精度,只用于失蜡法铸造</p>
+</li>
+<li><p>适合做</p>
+<p>高精度浇铸模具</p>
+</li>
+<li><p>不适合做</p>
+<p>其他用途</p>
+</li>
+</ul>
+<h1 id="3DP打印材料"><a href="#3DP打印材料" class="headerlink" title="3DP打印材料"></a>3DP打印材料</h1><h2 id="石膏粉末"><a href="#石膏粉末" class="headerlink" title="石膏粉末"></a>石膏粉末</h2><ul>
+<li><p>3DP粉末床3D打印</p>
+</li>
+<li><p>精度</p>
+<p>0.10mm</p>
+</li>
+<li><p>最小细节</p>
+<p>1.00</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>3.00</p>
+</li>
+<li><p>表面质量</p>
+<p>颗粒感强</p>
+</li>
+<li><p>特点</p>
+<p>基于石膏粉末制作，质感类岩石，有一定强度，易碎，适合3d人像、工业模型展示等应用。</p>
+</li>
+<li><p>适合做</p>
+<p>对颜色要求高的物品，如3D人像</p>
+</li>
+<li><p>不适合做</p>
+<p>对强度有要求的物品</p>
+</li>
+</ul>
+<h1 id="SLS成型材料"><a href="#SLS成型材料" class="headerlink" title="SLS成型材料"></a>SLS成型材料</h1><h2 id="尼龙"><a href="#尼龙" class="headerlink" title="尼龙"></a>尼龙</h2><ul>
+<li><p>工艺</p>
+<p>SLS选择性激光烧结</p>
+</li>
+<li><p>精度</p>
+<p>0.15mm</p>
+</li>
+<li><p>材料型号</p>
+<p>PA12，PA1172</p>
+</li>
+<li><p>最小细节</p>
+<p>0.50</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>1.00</p>
+</li>
+<li><p>表面质量</p>
+<p>轻度磨砂</p>
+</li>
+<li><p>特点</p>
+<p>尼龙有优良的韧性、自润滑性、耐磨性、耐化学性、气体透过性、及耐油性、无毒和容易着色等优点，可以说是一种全能型材料，所以在工业上得到广泛应用。</p>
+</li>
+<li><p>适合做</p>
+<p>高精度打印,功能性终产品,需要后期打磨／抛光和上色的产品</p>
+</li>
+<li><p>不适合做</p>
+<p>空心打印（除非设计中自带材料脱出孔）</p>
+</li>
+</ul>
+<p><strong>尼龙PA12物性表：</strong></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/05567369214091254.jpg" alt="img"></p>
+<p><strong>尼龙PA1172物性表：</strong></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/05567365215897790.png" alt="img"></p>
+<h2 id="尼龙玻纤"><a href="#尼龙玻纤" class="headerlink" title="尼龙玻纤"></a>尼龙玻纤</h2><p>尼龙玻纤是指由尼龙和玻纤混合粉末激光烧结的材料，尼龙玻纤一方面继承了尼龙的工程性能，另一方面在耐热性能上有进一步提升，可以达到大约110度，因此尼龙玻纤很适合做一些需要在较热环境下使用的功能件测试。这种材料的硬度、密度，拉伸性能都很优秀，是一款应用面很广的材料。</p>
+<p><strong>打印指标</strong></p>
+<p>典型打印周期： 2-4天</p>
+<p>标准精度： ± 0.3%</p>
+<p>最小壁厚： 建议最小1 mm, 特殊情况可以0.4mm</p>
+<p>层厚：0.12mm</p>
+<p>最大打印空间： 650x330x560 mm</p>
+<p>表面: 磨砂效果，可后续上色，喷漆、打磨等</p>
+<p><strong>物理性能</strong></p>
+<p><strong><img src="http://pic.mohou.com/shop/article/05562068053260446.png" alt="img"></strong></p>
+<p><strong><img src="http://pic.mohou.com/shop/article/05562067416511669.png" alt="img"></strong></p>
+<p><strong>打印工艺简介SLS</strong></p>
+<p><img src="http://pic.mohou.com/shop/article/05562067738166283.png" alt="img"></p>
+<h1 id="SLM成型材料"><a href="#SLM成型材料" class="headerlink" title="SLM成型材料"></a>SLM成型材料</h1><h2 id="不锈钢"><a href="#不锈钢" class="headerlink" title="不锈钢"></a>不锈钢</h2><ul>
+<li><p>工艺</p>
+<p>SLM选择性激光熔融</p>
+</li>
+<li><p>精度</p>
+<p>0.15mm</p>
+</li>
+<li><p>材料型号</p>
+<p>316L</p>
+</li>
+<li><p>最小细节</p>
+<p>0.50</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>1.00</p>
+</li>
+<li><p>表面质量</p>
+<p>轻度磨砂</p>
+</li>
+<li><p>特点</p>
+<p>不锈钢 以其耐空气、蒸汽、水等弱腐蚀介质和酸碱、盐等化学浸蚀性介质腐蚀而得到广泛应用。</p>
+</li>
+<li><p>适合做</p>
+<p>打印尺寸较大的物品</p>
+</li>
+</ul>
+<p><img src="http://pic.mohou.com/shop/article/05615488017557087.jpg" alt="不锈钢3D打印材料316L"></p>
+<p><img src="http://pic.mohou.com/shop/article/05615488389765625.jpg" alt="不锈钢3D打印材料316L  2"></p>
+<h2 id="钛合金"><a href="#钛合金" class="headerlink" title="钛合金"></a>钛合金</h2><ul>
+<li><p>工艺</p>
+<p>SLS选择性激光烧结</p>
+</li>
+<li><p>精度</p>
+<p>0.15mm</p>
+</li>
+<li><p>材料型号</p>
+<p>TI6Al4V</p>
+</li>
+<li><p>最小细节</p>
+<p>0.50</p>
+</li>
+<li><p>推荐壁厚</p>
+<p>1.00</p>
+</li>
+<li><p>表面质量</p>
+<p>轻度磨砂</p>
+</li>
+<li><p>特点</p>
+<p>重量轻、强度高、韧性好、耐腐蚀</p>
+</li>
+</ul>
+<p><img src="http://pic.mohou.com/shop/article/05615492454400229.jpg" alt="钛合金3D打印材料"></p>
+<p><img src="http://pic.mohou.com/shop/article/05615492776762071.jpg" alt="钛合金3D打印材料"></p>
 
       
     </div>
@@ -491,9 +913,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/3D打印/" rel="tag"><i class="fa fa-tag"></i> 3D打印</a>
-          
-            <a href="/tags/FDM/" rel="tag"><i class="fa fa-tag"></i> FDM</a>
+            <a href="/tags/材料/" rel="tag"><i class="fa fa-tag"></i> 材料</a>
           
         </div>
       
@@ -506,8 +926,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/11/Xpath爬取链家二手房数据并利用Echarts可视化/" rel="next" title="Xpath爬取链家二手房数据并利用Echarts可视化">
-                <i class="fa fa-chevron-left"></i> Xpath爬取链家二手房数据并利用Echarts可视化
+              <a href="/2017/12/20/德国签证被拒签又申诉成功的经历/" rel="next" title="德国签证被拒签又申诉成功的经历">
+                <i class="fa fa-chevron-left"></i> 德国签证被拒签又申诉成功的经历
               </a>
             
           </div>
@@ -515,10 +935,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/13/三维重建中CT各期数据不匹配的解决方法/" rel="prev" title="解决三维重建中CT各期数据不匹配问题">
-                解决三维重建中CT各期数据不匹配问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -694,7 +1110,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#硬性问题"><span class="nav-number">3.</span> <span class="nav-text">硬性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3D打印开始后，耗材挤不出如何解决？"><span class="nav-number">3.1.</span> <span class="nav-text">3D打印开始后，耗材挤不出如何解决？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决3D打印出现刨料问题？"><span class="nav-number">3.2.</span> <span class="nav-text">如何解决3D打印出现刨料问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决喷头堵塞问题？"><span class="nav-number">3.3.</span> <span class="nav-text">如何解决喷头堵塞问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么解决打印的耗材没法粘到平台上？"><span class="nav-number">3.4.</span> <span class="nav-text">怎么解决打印的耗材没法粘到平台上？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决打印中途，挤出停止"><span class="nav-number">3.5.</span> <span class="nav-text">如何解决打印中途，挤出停止</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决3D打印出现层错位问题？"><span class="nav-number">3.6.</span> <span class="nav-text">如何解决3D打印出现层错位问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决过热问题"><span class="nav-number">3.7.</span> <span class="nav-text">如何解决过热问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决挤出不稳定问题？"><span class="nav-number">3.8.</span> <span class="nav-text">如何解决挤出不稳定问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么3D建模软件可以支持3D打印？"><span class="nav-number">3.9.</span> <span class="nav-text">什么3D建模软件可以支持3D打印？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打印优化"><span class="nav-number">4.</span> <span class="nav-text">打印优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#打印件边角卷曲和毛糙解决方法"><span class="nav-number">4.1.</span> <span class="nav-text">打印件边角卷曲和毛糙解决方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决3D打印中出现拉丝和垂料问题？"><span class="nav-number">4.2.</span> <span class="nav-text">如何解决3D打印中出现拉丝和垂料问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决3D打印出现振动和回环纹理"><span class="nav-number">4.3.</span> <span class="nav-text">如何解决3D打印出现振动和回环纹理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决填充不牢问题"><span class="nav-number">4.4.</span> <span class="nav-text">如何解决填充不牢问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决底面边角上的孔洞和间隙"><span class="nav-number">4.5.</span> <span class="nav-text">如何解决底面边角上的孔洞和间隙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决侧面线性纹理问题？"><span class="nav-number">4.6.</span> <span class="nav-text">如何解决侧面线性纹理问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决填充与轮廓之间出现间隙现象？"><span class="nav-number">4.7.</span> <span class="nav-text">如何解决填充与轮廓之间出现间隙现象？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决细节打印不出来？"><span class="nav-number">4.8.</span> <span class="nav-text">如何解决细节打印不出来？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决层开裂或断开问题？"><span class="nav-number">4.9.</span> <span class="nav-text">如何解决层开裂或断开问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何处理短线轴"><span class="nav-number">4.10.</span> <span class="nav-text">如何处理短线轴?</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3D打印材料属性一览表"><span class="nav-number">2.</span> <span class="nav-text">3D打印材料属性一览表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FDM打印耗材"><span class="nav-number">3.</span> <span class="nav-text">FDM打印耗材</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PLA塑料"><span class="nav-number">3.1.</span> <span class="nav-text">PLA塑料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#普通光敏树脂"><span class="nav-number">3.2.</span> <span class="nav-text">普通光敏树脂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#耐高温树脂"><span class="nav-number">3.3.</span> <span class="nav-text">耐高温树脂</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DLP成型材料"><span class="nav-number">4.</span> <span class="nav-text">DLP成型材料</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#红蜡"><span class="nav-number">4.1.</span> <span class="nav-text">红蜡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蓝蜡"><span class="nav-number">4.2.</span> <span class="nav-text">蓝蜡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3DP打印材料"><span class="nav-number">5.</span> <span class="nav-text">3DP打印材料</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#石膏粉末"><span class="nav-number">5.1.</span> <span class="nav-text">石膏粉末</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SLS成型材料"><span class="nav-number">6.</span> <span class="nav-text">SLS成型材料</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#尼龙"><span class="nav-number">6.1.</span> <span class="nav-text">尼龙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#尼龙玻纤"><span class="nav-number">6.2.</span> <span class="nav-text">尼龙玻纤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SLM成型材料"><span class="nav-number">7.</span> <span class="nav-text">SLM成型材料</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#不锈钢"><span class="nav-number">7.1.</span> <span class="nav-text">不锈钢</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#钛合金"><span class="nav-number">7.2.</span> <span class="nav-text">钛合金</span></a></li></ol></li></ol></div>
             
 
           </div>
