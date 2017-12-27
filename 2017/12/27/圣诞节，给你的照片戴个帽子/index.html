@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="hahajoker" />
+  <meta name="keywords" content="python,人脸识别," />
 
 
 
@@ -81,16 +81,26 @@
 
 
 
-<meta name="description" content="一只热爱编程的3D打印攻城狮">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/tags/申诉/index.html">
+<meta name="description" content="前言圣诞节来了，听说前两天有不少同志被一则“票圈发自己照片并@微信官方，就可收到带圣诞帽的照片”的消息骗了，在这里我就用python 的人脸识别模块写个小应用，自动给你的照片带帽。 之前看，已经有不少大神实现了这个功能，但是看下来，采用的方法不是openCV（觉得识别准确度较低），就是dilb（准确度可以，但代码太长）">
+<meta name="keywords" content="python,人脸识别">
+<meta property="og:type" content="article">
+<meta property="og:title" content="圣诞节，给你的照片戴个帽子">
+<meta property="og:url" content="http://yoursite.com/2017/12/27/圣诞节，给你的照片戴个帽子/index.html">
 <meta property="og:site_name" content="Hello World">
-<meta property="og:description" content="一只热爱编程的3D打印攻城狮">
+<meta property="og:description" content="前言圣诞节来了，听说前两天有不少同志被一则“票圈发自己照片并@微信官方，就可收到带圣诞帽的照片”的消息骗了，在这里我就用python 的人脸识别模块写个小应用，自动给你的照片带帽。 之前看，已经有不少大神实现了这个功能，但是看下来，采用的方法不是openCV（觉得识别准确度较低），就是dilb（准确度可以，但代码太长），这次我使用的是前面讲过的face_recognition，虽然这货也是基于di">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/tmpsodasok0_%E7%9C%8B%E5%9B%BE%E7%8E%8B.bmp">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/hat.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20171227173051.jpg">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/tmpdrcvu7m2_%E7%9C%8B%E5%9B%BE%E7%8E%8B.bmp">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/tmpx7x5qwxt_%E7%9C%8B%E5%9B%BE%E7%8E%8B.bmp">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/tmplvnloe92_%E7%9C%8B%E5%9B%BE%E7%8E%8B_%E7%9C%8B%E5%9B%BE%E7%8E%8B.jpg">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/tmp27kv6492_%E7%9C%8B%E5%9B%BE%E7%8E%8B_%E7%9C%8B%E5%9B%BE%E7%8E%8B.jpg">
+<meta property="og:updated_time" content="2017-12-27T10:09:22.310Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="一只热爱编程的3D打印攻城狮">
+<meta name="twitter:title" content="圣诞节，给你的照片戴个帽子">
+<meta name="twitter:description" content="前言圣诞节来了，听说前两天有不少同志被一则“票圈发自己照片并@微信官方，就可收到带圣诞帽的照片”的消息骗了，在这里我就用python 的人脸识别模块写个小应用，自动给你的照片带帽。 之前看，已经有不少大神实现了这个功能，但是看下来，采用的方法不是openCV（觉得识别准确度较低），就是dilb（准确度可以，但代码太长），这次我使用的是前面讲过的face_recognition，虽然这货也是基于di">
+<meta name="twitter:image" content="http://p0cgjzhqf.bkt.clouddn.com/tmpsodasok0_%E7%9C%8B%E5%9B%BE%E7%8E%8B.bmp">
 
 
 
@@ -120,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/申诉/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/27/圣诞节，给你的照片戴个帽子/"/>
 
 
 
 
 
-  <title>标签: 申诉 | Hello World</title>
+  <title>圣诞节，给你的照片戴个帽子 | Hello World</title>
   
 
 
@@ -145,7 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -283,54 +293,234 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>申诉<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/27/圣诞节，给你的照片戴个帽子/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hahajoker">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my_logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello World">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/12/20/德国签证被拒签又申诉成功的经历/" itemprop="url">
-              
-                <span itemprop="name">德国签证被拒签又申诉成功的经历</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">圣诞节，给你的照片戴个帽子</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-20T19:43:34+08:00"
-              content="2017-12-20" >
-          12-20
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-27T16:15:07+08:00">
+                2017-12-27
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>圣诞节来了，听说前两天有不少同志被一则“票圈发自己照片并@微信官方，就可收到带圣诞帽的照片”的消息骗了，在这里我就用python 的人脸识别模块写个小应用，自动给你的照片带帽。</p>
+<p>之前看，已经有不少大神实现了这个功能，但是看下来，采用的方法不是<code>openCV</code>（觉得识别准确度较低），就是<code>dilb</code>（准确度可以，但代码太长），这次我使用的是前面讲过的<code>face_recognition</code>，虽然这货也是基于<code>dilb</code>的，但是好用啊！感受下：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/tmpsodasok0_%E7%9C%8B%E5%9B%BE%E7%8E%8B.bmp" alt="img"></p>
+<a id="more"></a>
+<hr>
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
+<li>Python 3.6.1</li>
+<li>Windows 7  64位</li>
+<li>PyCharm 2017.1.4</li>
+</ul>
+<h1 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h1><h2 id="库的安装"><a href="#库的安装" class="headerlink" title="库的安装"></a>库的安装</h2><ul>
+<li><p><strong>face_recognition</strong>（之前说过说过，它是基于dlib的人脸检测，比OpenCV更好用，而且dlib有OpenCV没有的关键点检测）</p>
+<p><a href="http://link.zhihu.com/?target=https%3A//github.com/ageitgey/face_recognition" target="_blank" rel="noopener">ageitgey/face_recognition</a></p>
+<p>安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install face_recognition</span><br></pre></td></tr></table></figure>
+<p>如果安装过程中出现问题，99%都是安装依赖的库时出现了问题，这货安装依赖较多：boost（boost_python），cmake，dlib这几个依赖和库，中间出现任何问题都可以通过Google解决（回头我写篇帖子吧这个坑填上）。</p>
+</li>
+<li><p><strong>PIL库</strong></p>
+<p>安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pillow   #PIL库</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>准备两张图，一张头像，一张帽子。先<code>face_recognition</code>人脸识别定位图片中的人脸，得到人脸范围坐标；再根据这个坐标确定帽子放置的坐标；最后将两张图片拼接后输出。（需要注意的是，帽子是不规则图像，除了主体外背景应该是透明的，因此必须是四通道png格式）。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/hat.png" alt="img"></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>我的代码注释还是比较清晰的，应该基本都能看懂：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from PIL import Image</span><br><span class="line">import face_recognition</span><br><span class="line"></span><br><span class="line"># 头像图片的路径</span><br><span class="line">img_path = &quot;***********/test.jpg&quot;</span><br><span class="line"></span><br><span class="line">image = face_recognition.load_image_file(img_path)</span><br><span class="line">face_locations = face_recognition.face_locations(image)</span><br><span class="line"># 打印发现了几张脸</span><br><span class="line">print(&quot;Found &#123;&#125; face(s) in this photograph.&quot;.format(len(face_locations)))</span><br><span class="line"></span><br><span class="line"># 头像图像数据读入human_img中，并转换为四通道RGBA模式</span><br><span class="line">human_img = Image.open(img_path)</span><br><span class="line">human_img = human_img.convert(&quot;RGBA&quot;)</span><br><span class="line"></span><br><span class="line"># 帽子图像数据读入hat_img中，并转换为四通道RGBA模式</span><br><span class="line">hat_img = Image.open(&quot;./hat.png&quot;)</span><br><span class="line">hat_img = hat_img.convert(&quot;RGBA&quot;)</span><br><span class="line">proportion_hat = hat_img.size[1] / hat_img.size[0]   # 帽子长宽比（高/宽）</span><br></pre></td></tr></table></figure>
+<p>至此，我们已经通过人脸识别得到了头像图片中的<code>face_locations</code>人脸数据列表，并且将头像图像数据<code>human_img</code>和帽子图像数据<code>hat_img</code>读入，同时得到了<code>proportion_hat</code>帽子长宽比（高/宽）,待后续调用。</p>
+<p>接下来遍历每一张<code>face_locations</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">for face_location in face_locations:            # 对于每张脸</span><br><span class="line">    top, right, bottom, left = face_location    # 得到 top, right, bottom, left</span><br><span class="line">    top -= 0            # 帽子相对与人脸框上线的偏移量</span><br><span class="line">    print(&quot;A face is located at pixel location Top: &#123;&#125;, Left: &#123;&#125;, Bottom: &#123;&#125;, Right: &#123;&#125;&quot;.format(top, left, bottom, right))</span><br><span class="line"></span><br><span class="line">    head_h = bottom-top # 脸部高度</span><br><span class="line">    head_w = right-left # 脸部宽度</span><br><span class="line"></span><br><span class="line">    factor = 1.5        # 帽子缩放因子</span><br><span class="line">    hat_w = int(round( head_w * factor))</span><br><span class="line">    hat_h = int(round( hat_w * proportion_hat))</span><br><span class="line"></span><br><span class="line">    # 调整帽子的大小</span><br><span class="line">    hat_img = hat_img.resize((hat_w, hat_h))</span><br><span class="line">    # 将帽子图像作为顶部图层图像</span><br><span class="line">    hat_region = hat_img</span><br><span class="line">    #hat_region = hat_region.rotate(6)</span><br><span class="line"></span><br><span class="line">    # 确定底部图层（头像图片）被覆盖的区域（就是帽子放置区域）</span><br><span class="line">    axis = 0.38          # 帽子穿戴轴线位置</span><br><span class="line">    offset = int(round( ( hat_w * axis ) - ( head_w * 0.5 ) ) )  # 偏移量</span><br><span class="line">    human_region = ( left - offset , top - hat_h , left - offset + hat_w , top )</span><br><span class="line"></span><br><span class="line">    # 把顶部图层与底部图层拼接</span><br><span class="line">    human_img.paste(hat_region, human_region,mask=hat_img)</span><br><span class="line">    </span><br><span class="line"># 完成输出</span><br><span class="line">human_img.show()</span><br></pre></td></tr></table></figure>
+<p>帽子相对与人脸框上线的偏移量，帽子缩放因子<code>factor</code> 和 帽子穿戴轴线位置<code>axis</code>是可人为调整的参数。</p>
+<p>在这里解释下第21行偏移量<code>offset</code>的计算方法：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20171227173051.jpg" alt="img"></p>
+<p>所以</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">offset = ( hat_w * axis ) - ( head_w * 0.5 )</span><br></pre></td></tr></table></figure>
+<p>但是，最后被覆盖的区域<code>human_region</code>的输入数值必须是<code>int</code>,因此所有的计算结果都要先四舍五入<code>round()</code>后再<code>int()</code></p>
+<p>最后：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/tmpdrcvu7m2_%E7%9C%8B%E5%9B%BE%E7%8E%8B.bmp" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/tmpx7x5qwxt_%E7%9C%8B%E5%9B%BE%E7%8E%8B.bmp" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/tmplvnloe92_%E7%9C%8B%E5%9B%BE%E7%8E%8B_%E7%9C%8B%E5%9B%BE%E7%8E%8B.jpg" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/tmp27kv6492_%E7%9C%8B%E5%9B%BE%E7%8E%8B_%E7%9C%8B%E5%9B%BE%E7%8E%8B.jpg" alt="img"></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>用钱砸我，不要停！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="hahajoker 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          
+            <a href="/tags/人脸识别/" rel="tag"><i class="fa fa-tag"></i> 人脸识别</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/22/利用face-locations包实现刷脸签到小应用/" rel="next" title="利用face locations包实现刷脸签到小应用">
+                <i class="fa fa-chevron-left"></i> 利用face locations包实现刷脸签到小应用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -338,6 +528,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjM2NS84OTI2"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -358,8 +557,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -458,6 +666,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境"><span class="nav-number">2.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#策略"><span class="nav-number">3.</span> <span class="nav-text">策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#库的安装"><span class="nav-number">3.1.</span> <span class="nav-text">库的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">3.2.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -612,6 +836,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -640,6 +868,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 

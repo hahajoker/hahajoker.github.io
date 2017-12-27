@@ -3,12 +3,75 @@
   
     
     <entry>
+      <title><![CDATA[圣诞节，给你的照片戴个帽子]]></title>
+      <url>/2017/12/27/%E5%9C%A3%E8%AF%9E%E8%8A%82%EF%BC%8C%E7%BB%99%E4%BD%A0%E7%9A%84%E7%85%A7%E7%89%87%E6%88%B4%E4%B8%AA%E5%B8%BD%E5%AD%90/</url>
+      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>圣诞节来了，听说前两天有不少同志被一则“票圈发自己照片并@微信官方，就可收到带圣诞帽的照片”的消息骗了，在这里我就用python 的人脸识别模块写个小应用，自动给你的照片带帽。</p>
+<p>之前看，已经有不少大神实现了这个功能，但是看下来，采用的方法不是<code>openCV</code>（觉得识别准确度较低），就是<code>dilb</code>（准确度可以，但代码太长），这次我使用的是前面讲过的<code>face_recognition</code>，虽然这货也是基于<code>dilb</code>的，但是好用啊！感受下：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/tmpsodasok0_%E7%9C%8B%E5%9B%BE%E7%8E%8B.bmp" alt="img"></p>
+<a id="more"></a>
+<hr>
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
+<li>Python 3.6.1</li>
+<li>Windows 7  64位</li>
+<li>PyCharm 2017.1.4</li>
+</ul>
+<h1 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h1><h2 id="库的安装"><a href="#库的安装" class="headerlink" title="库的安装"></a>库的安装</h2><ul>
+<li><p><strong>face_recognition</strong>（之前说过说过，它是基于dlib的人脸检测，比OpenCV更好用，而且dlib有OpenCV没有的关键点检测）</p>
+<p><a href="http://link.zhihu.com/?target=https%3A//github.com/ageitgey/face_recognition" target="_blank" rel="noopener">ageitgey/face_recognition</a></p>
+<p>安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install face_recognition</span><br></pre></td></tr></table></figure>
+<p>如果安装过程中出现问题，99%都是安装依赖的库时出现了问题，这货安装依赖较多：boost（boost_python），cmake，dlib这几个依赖和库，中间出现任何问题都可以通过Google解决（回头我写篇帖子吧这个坑填上）。</p>
+</li>
+<li><p><strong>PIL库</strong></p>
+<p>安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pillow   #PIL库</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>准备两张图，一张头像，一张帽子。先<code>face_recognition</code>人脸识别定位图片中的人脸，得到人脸范围坐标；再根据这个坐标确定帽子放置的坐标；最后将两张图片拼接后输出。（需要注意的是，帽子是不规则图像，除了主体外背景应该是透明的，因此必须是四通道png格式）。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/hat.png" alt="img"></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>我的代码注释还是比较清晰的，应该基本都能看懂：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from PIL import Image</span><br><span class="line">import face_recognition</span><br><span class="line"></span><br><span class="line"># 头像图片的路径</span><br><span class="line">img_path = &quot;***********/test.jpg&quot;</span><br><span class="line"></span><br><span class="line">image = face_recognition.load_image_file(img_path)</span><br><span class="line">face_locations = face_recognition.face_locations(image)</span><br><span class="line"># 打印发现了几张脸</span><br><span class="line">print(&quot;Found &#123;&#125; face(s) in this photograph.&quot;.format(len(face_locations)))</span><br><span class="line"></span><br><span class="line"># 头像图像数据读入human_img中，并转换为四通道RGBA模式</span><br><span class="line">human_img = Image.open(img_path)</span><br><span class="line">human_img = human_img.convert(&quot;RGBA&quot;)</span><br><span class="line"></span><br><span class="line"># 帽子图像数据读入hat_img中，并转换为四通道RGBA模式</span><br><span class="line">hat_img = Image.open(&quot;./hat.png&quot;)</span><br><span class="line">hat_img = hat_img.convert(&quot;RGBA&quot;)</span><br><span class="line">proportion_hat = hat_img.size[1] / hat_img.size[0]   # 帽子长宽比（高/宽）</span><br></pre></td></tr></table></figure>
+<p>至此，我们已经通过人脸识别得到了头像图片中的<code>face_locations</code>人脸数据列表，并且将头像图像数据<code>human_img</code>和帽子图像数据<code>hat_img</code>读入，同时得到了<code>proportion_hat</code>帽子长宽比（高/宽）,待后续调用。</p>
+<p>接下来遍历每一张<code>face_locations</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">for face_location in face_locations:            # 对于每张脸</span><br><span class="line">    top, right, bottom, left = face_location    # 得到 top, right, bottom, left</span><br><span class="line">    top -= 0            # 帽子相对与人脸框上线的偏移量</span><br><span class="line">    print(&quot;A face is located at pixel location Top: &#123;&#125;, Left: &#123;&#125;, Bottom: &#123;&#125;, Right: &#123;&#125;&quot;.format(top, left, bottom, right))</span><br><span class="line"></span><br><span class="line">    head_h = bottom-top # 脸部高度</span><br><span class="line">    head_w = right-left # 脸部宽度</span><br><span class="line"></span><br><span class="line">    factor = 1.5        # 帽子缩放因子</span><br><span class="line">    hat_w = int(round( head_w * factor))</span><br><span class="line">    hat_h = int(round( hat_w * proportion_hat))</span><br><span class="line"></span><br><span class="line">    # 调整帽子的大小</span><br><span class="line">    hat_img = hat_img.resize((hat_w, hat_h))</span><br><span class="line">    # 将帽子图像作为顶部图层图像</span><br><span class="line">    hat_region = hat_img</span><br><span class="line">    #hat_region = hat_region.rotate(6)</span><br><span class="line"></span><br><span class="line">    # 确定底部图层（头像图片）被覆盖的区域（就是帽子放置区域）</span><br><span class="line">    axis = 0.38          # 帽子穿戴轴线位置</span><br><span class="line">    offset = int(round( ( hat_w * axis ) - ( head_w * 0.5 ) ) )  # 偏移量</span><br><span class="line">    human_region = ( left - offset , top - hat_h , left - offset + hat_w , top )</span><br><span class="line"></span><br><span class="line">    # 把顶部图层与底部图层拼接</span><br><span class="line">    human_img.paste(hat_region, human_region,mask=hat_img)</span><br><span class="line">    </span><br><span class="line"># 完成输出</span><br><span class="line">human_img.show()</span><br></pre></td></tr></table></figure>
+<p>帽子相对与人脸框上线的偏移量，帽子缩放因子<code>factor</code> 和 帽子穿戴轴线位置<code>axis</code>是可人为调整的参数。</p>
+<p>在这里解释下第21行偏移量<code>offset</code>的计算方法：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20171227173051.jpg" alt="img"></p>
+<p>所以</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">offset = ( hat_w * axis ) - ( head_w * 0.5 )</span><br></pre></td></tr></table></figure>
+<p>但是，最后被覆盖的区域<code>human_region</code>的输入数值必须是<code>int</code>,因此所有的计算结果都要先四舍五入<code>round()</code>后再<code>int()</code></p>
+<p>最后：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/tmpdrcvu7m2_%E7%9C%8B%E5%9B%BE%E7%8E%8B.bmp" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/tmpx7x5qwxt_%E7%9C%8B%E5%9B%BE%E7%8E%8B.bmp" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/tmplvnloe92_%E7%9C%8B%E5%9B%BE%E7%8E%8B_%E7%9C%8B%E5%9B%BE%E7%8E%8B.jpg" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/tmp27kv6492_%E7%9C%8B%E5%9B%BE%E7%8E%8B_%E7%9C%8B%E5%9B%BE%E7%8E%8B.jpg" alt="img"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 编程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> 人脸识别 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[利用face locations包实现刷脸签到小应用]]></title>
       <url>/2017/12/22/%E5%88%A9%E7%94%A8face-locations%E5%8C%85%E5%AE%9E%E7%8E%B0%E5%88%B7%E8%84%B8%E7%AD%BE%E5%88%B0%E5%B0%8F%E5%BA%94%E7%94%A8/</url>
       <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前段时间看了一篇帖子<a href="https://zhuanlan.zhihu.com/p/26431250" target="_blank" rel="noopener">老板来了：人脸识别+手机推送，老板来了你立刻知道。</a>作者利用<code>face_recognition</code>+<code>jpush-api-python-client</code>的方式完成了办公室摄像头识别BOSS脸型，自动手机推送同时切换电脑屏幕的功能。点子不错，也启发了我也许可以做个自动人脸识别签到的小应用，可以用在上课，晚宴，会展等场景。</p>
 <a id="more"></a>
 <hr>
 <h1 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h1><p><img src="http://p0cgjzhqf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20171222170328.png" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171222170958.png" alt="img"></p>
 <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
 <li>Python 3.6.1</li>
 <li>Windows 7  64位</li>
@@ -171,9 +234,9 @@
         
         <tags>
             
-            <tag> 德国 </tag>
-            
             <tag> 签证 </tag>
+            
+            <tag> 德国 </tag>
             
             <tag> 申诉 </tag>
             
@@ -664,9 +727,9 @@
         
         <tags>
             
-            <tag> 签证 </tag>
-            
             <tag> 英国 </tag>
+            
+            <tag> 签证 </tag>
             
         </tags>
         
