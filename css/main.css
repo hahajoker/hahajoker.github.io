@@ -1160,7 +1160,8 @@ pre .javascript .function {
 .site-nav-toggle button {
   margin-top: 2px;
   padding: 9px 10px;
-  background: transparent;
+/*background: transparent;*/
+  background-color: #eee;
   border: none;
 }
 @media (max-width: 767px) {
@@ -1955,7 +1956,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #d2fc05;
+  background: #4f6cff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2093,7 +2094,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #fff;
+  background: #13c1bd;
 }
 .footer {
   font-size: 14px;
