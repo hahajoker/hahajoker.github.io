@@ -3,6 +3,69 @@
   
     
     <entry>
+      <title><![CDATA[3-matic肝脏轻量化建模]]></title>
+      <url>/2017/12/28/3-matic%E8%82%9D%E8%84%8F%E8%BD%BB%E9%87%8F%E5%8C%96%E5%BB%BA%E6%A8%A1/</url>
+      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>就目前来说肝脏模型的3D打印还十分的昂贵，究其原因，为了让医生能够看清肝脏内部的血管结构，我们不得不采用昂贵的光敏树脂透明材料来打印肝实质，并且打印机的选择只有 J250、J750等寥寥数种高端机型。</p>
+<p>肝脏轻量化建模可以将模型转化为一个轻量化的框架结构，减少打印成本，材料选择多样化，并且保留了肝脏的外轮廓，在一定程度上给了医生一个有效参考。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171228214825.png" alt="img"></p>
+<a id="more"></a>
+<hr>
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>本篇需要利用3-matic的<code>Lightweights</code>轻量化模块，这个模块是3-matic工业版（<code>3-matic STL</code>）特有的功能，一般mimics附带的<code>3-matic Research</code>是不具备的，没有安装的同学请移步官网申请体验版安装，或者在评论区问我要下载链接。</p>
+<h1 id="平滑处理"><a href="#平滑处理" class="headerlink" title="平滑处理"></a>平滑处理</h1><p>为了得到平滑的线框模型，我们需要提前对原模型进行平滑处理</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171228230050.png" alt="img"></p>
+<p>使用<code>warp</code>对肝脏进行平滑处理，<code>detail</code>设置为 3，表示3以下的特征都平滑掉，点<code>Apply</code>确定</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171228230736.png" alt="img"></p>
+<p>新生成的模型命名为<code>肝脏_wrapped</code>，接着可以使用<code>smooth</code>进行再平滑，处理结果：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171228231309.png" alt="img"></p>
+<h1 id="生成线框"><a href="#生成线框" class="headerlink" title="生成线框"></a>生成线框</h1><p>先选择刚才平滑后得到的肝脏模型，点击工具栏中<code>Lightweights</code>–&gt;<code>Create Grid Graph</code>工具。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171228231944.png" alt="img"></p>
+<p>在工具设置中：</p>
+<ul>
+<li><code>Create grid</code>有两个选项，分别是在模型外表面生成线框和在内外两个面都生成线框，这里我们选择<code>surface</code>即可</li>
+<li><code>Edge length</code>的意思是线框的间隔距离，肝脏的话15-20即可</li>
+</ul>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171228232723.png" alt="img"></p>
+<p>效果如下，点<code>Apply</code>确定</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171228232818.png" alt="img"></p>
+<h1 id="线框实体化"><a href="#线框实体化" class="headerlink" title="线框实体化"></a>线框实体化</h1><p>在模型树中，<code>肝脏_wrapped</code>–&gt;<code>Graph List</code>下，选中所有上一步刚刚生成的<code>Graph</code></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171228235051.png" alt="img"></p>
+<p>点击工具栏中<code>Lightweights</code>–&gt;<code>Graph to STL</code>工具。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171228235313.png" alt="img"></p>
+<p>设置：</p>
+<ul>
+<li><strong>paramater</strong> ： Assign new parameters（分配新参数）</li>
+<li><strong>Thickness</strong>    :  线框直径，设置为2 即可</li>
+</ul>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171228235951.png" alt="img"></p>
+<p>点<code>Apply</code>确定，计算过程较长，大概1mins左右。</p>
+<p>计算结果：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171229000910.png" alt="img"></p>
+<p>这时候，可以看到肝脏框架已经形成，但是在模型树中新生成的框架和肝脏还是一体的，下一步我们就将他们区分开来。</p>
+<p>在模型树中，<code>肝脏_wrapped</code>–&gt;<code>Surface List</code>下有两个<code>Surface</code>，一个是肝脏另一个是框架，选择框架所对应的<code>Surface</code>右击鼠标<code>Separate</code>–&gt;<code>Move to Part</code>–&gt;<code>Create New</code></p>
+<p>框架<code>Surface</code>会生成新的模型，然后将<code>肝脏_wrapped</code>使用右键菜单<code>Hide</code>隐藏掉</p>
+<p>最后结果：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/ganzangkuangjia.gif" alt="img"></p>
+<p>注：框架的显示颜色需要在模型树中其<code>Surface List</code>下的<code>Surface</code>中修改。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 3D打印 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 3-matic </tag>
+            
+            <tag> 轻量化 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[有哪些好听的入门口琴曲（持续更新）]]></title>
       <url>/2017/12/27/%E6%9C%89%E5%93%AA%E4%BA%9B%E5%A5%BD%E5%90%AC%E7%9A%84%E5%85%A5%E9%97%A8%E5%8F%A3%E7%90%B4%E6%9B%B2/</url>
       <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>什么是好乐器？能够在维也纳金色大厅引领全场的钢琴？还是科隆大教堂震撼人心的管风琴？在我看来，能够在出差酒店，出行路上，陪你度过寂寥夜晚的乐器才是好乐器。而口琴就是不错的选择。</p>
@@ -1291,7 +1354,7 @@
 <h1 id="修改移动端菜单栏按钮显示"><a href="#修改移动端菜单栏按钮显示" class="headerlink" title="修改移动端菜单栏按钮显示"></a>修改移动端菜单栏按钮显示</h1><p>效果：</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20171228112830.png" alt="img"></p>
 <p>在<code>\themes\next\source\css\_common\components\header</code>路径下找到<code>site-nav.styl</code>文件，修改<code>button</code>标签下的<code>background</code>字段（#eee为色值）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">button &#123;</span><br><span class="line">  margin-top: 2px;</span><br><span class="line">  padding: 9px 10px;</span><br><span class="line">  background: #eee;               # 按钮背景色，原参数为transparent</span><br><span class="line">  border: none;                   # 按钮凸起</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">button &#123;</span><br><span class="line">  margin-top: 2px;</span><br><span class="line">  padding: 9px 10px;</span><br><span class="line">  /*background: transparent;*/    # 按钮背景色，原设置为透明</span><br><span class="line">  background-color: #eee;         # 按钮背景色，原参数为transparent            </span><br><span class="line">  border: none;                   # 按钮凸起</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h1><p>打开<code>主题配置文件</code>，找到这个：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Local search</span><br><span class="line"># Dependencies: https://github.com/flashlab/hexo-generator-search</span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # if auto, trigger search by changing input</span><br><span class="line">  # if manual, trigger search by pressing enter key or search button</span><br><span class="line">  trigger: auto</span><br><span class="line">  # show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br></pre></td></tr></table></figure>
 <p><code>enable</code>默认为false，改为true。可以看到本地search依赖一个包，需要<code>npm install</code>一下。</p>
