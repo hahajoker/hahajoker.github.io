@@ -5,14 +5,20 @@
     <entry>
       <title><![CDATA[利用3D打印破解face ID人脸识别]]></title>
       <url>/2018/01/03/%E5%88%A9%E7%94%A83D%E6%89%93%E5%8D%B0%E7%A0%B4%E8%A7%A3face-ID%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/</url>
-      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>新一年的第二天，我的手机微博突然要求重新登录（现在看来一股浓浓的套路的味道。。。），由于大学时的手机号早已弃用，我不得不更换微博注册手机号来验证。这时候突然跳出需要我的芝麻信用来担保，跳转支付宝APP后最终通过摄像头添加我的人脸数据来完成整个的验证过程（技术提供商是著名的旷视科技）。</p>
-<p>继手机，邮箱，身份证和指纹后，我又向大佬们上缴了我的人脸ID，目的只是单纯的为了证明我是我自己。（现在就只剩下虹膜ID和我底裤的颜色他们不知道了吧）</p>
-<p>带着浓浓的不爽情绪，在这里我尝试利用3D打印破解下人脸识别中的“高富帅”—号称识别安全度超越普通人脸识别20倍以上的苹果face ID。</p>
+      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>新一年的第二天，我的手机微博突然要求重新登录（现在看来一股浓浓的套路的味道。。。）由于大学时的手机号早已弃用，我不得不更换微博注册手机号来验证。这时候突然跳出需要我的芝麻信用来担保，跳转支付宝APP后最终通过摄像头添加我的人脸数据来完成整个的验证过程（技术提供商是著名的旷视科技）。</p>
+<p>继手机，邮箱，身份证和指纹后，我又向大佬们上缴了我的人脸ID，目的只是单纯的为了证明我是我自己（现在就只剩下虹膜ID和底裤的颜色他们不知道了吧）。</p>
+<p>带着浓浓的不爽情绪，在这里我尝试利用3D打印破解下人脸识别中的“高富帅”——号称识别安全度超越普通人脸识别20倍以上的苹果face ID。</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/v2-1a8f57bb75fd4346f7967c2ad5856494_r.jpg" alt="img"></p>
 <a id="more"></a>
 <hr>
 <h1 id="先来看看face-ID的技术文档"><a href="#先来看看face-ID的技术文档" class="headerlink" title="先来看看face ID的技术文档"></a>先来看看face ID的技术文档</h1><p>在Apple Inc.的<strong>US 20170132456</strong> <strong>Enhanced face detection using depth information</strong> 有提到他们使用的Face detection.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">A method for face detection, comprising:</span><br><span class="line"></span><br><span class="line">capturing a depth map, comprising an array of three-dimensional coordinates, and a two-dimensional image of a scene;</span><br><span class="line"></span><br><span class="line">selecting one or more locations in the image to test for presence of human faces;</span><br><span class="line"></span><br><span class="line">at each selected location, defining a respective face detection window having a size that is scaled according to an expected face size, in pixels of the image, at a depth of the selected location that is indicated by the depth map; and</span><br><span class="line"></span><br><span class="line">processing a part of the image that is contained within each face detection window to determine whether the face detection window contains a human face.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>A method for face detection, comprising:</p>
+<p>capturing a depth map, comprising an array of three-dimensional coordinates, and a two-dimensional image of a scene;</p>
+<p>selecting one or more locations in the image to test for presence of human faces;</p>
+<p>at each selected location, defining a respective face detection window having a size that is scaled according to an expected face size, in pixels of the image, at a depth of the selected location that is indicated by the depth map; and</p>
+<p>processing a part of the image that is contained within each face detection window to determine whether the face detection window contains a human face.</p>
+</blockquote>
 <p>再结合iPhone X的“刘海儿”结构图：</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/v2-1cd662141ddc3fe72106b9971727c161_hd.jpg" alt="img"></p>
 <p>这货不就是微缩版的Kinect嘛！</p>
@@ -21,7 +27,7 @@
 <h1 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h1><p>既然Face ID是采用结构光得到的3D数据来识别人脸，那我们就用同样采用结构光技术的Kinect<code>三维扫描仪</code>预先扫描出对象的3D人脸数据，再通过三维建模软件将人脸数据建模成面具三维模型，同时导出<code>色彩贴图</code>并2D打印，最后用3D打印技术将人脸<code>面具模型</code>打印出来，将色彩贴图贴上去，用制作出的3D人脸“骗过”Face ID。</p>
 <p>过程如下：</p>
 <p><strong><code>三维扫描</code>–&gt;<code>三维建模</code>–&gt;<code>3D打印</code>–&gt;<code>贴图</code></strong></p>
-<h1 id="三维扫描"><a href="#三维扫描" class="headerlink" title="三维扫描"></a>三维扫描</h1><p>在这里先介绍下Kinect三维扫描仪：</p>
+<h1 id="三维扫描"><a href="#三维扫描" class="headerlink" title="三维扫描"></a>三维扫描</h1><p>在这里先介绍下Kinect：</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/v2-6a8c3e794124fd7728ab2b9f51340913_r.jpg" alt="img"></p>
 <p>新技术的立项，很多时候是着眼于未来，但最初的出发点往往并没有我们想象中那么复杂。 2009 年微软选择推出 Kinect 的初衷其实很简单：通过 Kinect 体感操控设备提升 Xbox 的市场竞争力。</p>
 <p>虽然现在Kinect已经停产，但是其t留下的技术财富是巨大的：</p>
@@ -33,7 +39,7 @@
 <li>Face ID（在这里黑下苹果）</li>
 </ul>
 <p>2013 年苹果公司以大约 3.6 亿美元的价格，收购了 PrimeSense 公司。而PrimeSense 正是此前为 Kinect 提供技术支持的主力公司。（又是苹果和微软的恩怨情仇。。。）</p>
-<p><strong>来看下我们这次要用到的设备：</strong></p>
+<p><strong>来看下我们这次要用到的三维扫描设备：</strong></p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E9%94%90%E5%93%81%E4%B8%89%E7%BB%B4%E6%89%AB%E6%8F%8F%E4%BB%AA-REPIN-ONE-S_800x800_%E7%9C%8B%E5%9B%BE%E7%8E%8B.jpg" alt="img"></p>
 <p>扫描对象：好友甲，开发大牛，粉丝无数。。。</p>
 <p>连接笔记本（配置要求2G以上的独立显卡），对准头部旋转一周扫描，扫描过程大概10秒（如果只扫描脸部大约只需1-2秒）</p>
@@ -44,8 +50,8 @@
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180103194210.png" alt="img"></p>
 <p>右击<code>反转选区</code>，按<code>Delete</code>删除非脸部部分，得到一张人脸面片：</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180103194629.png" alt="img"></p>
-<p>在<code>显示</code>中打开<code>顶点颜色</code>显示，点击<code>工具</code>–&gt;<code>纹理贴图</code>–&gt;<code>生成纹理贴图</code>，点击<code>应用</code>.</p>
-<p><code>纹理贴图</code>–&gt;<code>管理纹理贴图</code>将贴图<code>保存</code>出来，打印出来，用作最后的模型贴图</p>
+<p>在<code>显示</code>中打开<code>顶点颜色</code>显示，点击<code>工具</code>–&gt;<code>纹理贴图</code>–&gt;<code>生成纹理贴图</code>，点击<code>应用</code>。</p>
+<p><code>纹理贴图</code>–&gt;<code>管理纹理贴图</code>将贴图<code>保存</code>出来，并打印，用作最后的模型贴图。</p>
 <p><strong>如果你打算采用3DP彩色3D打印技术，这一步就不需要了，直接打印彩色三维模型即可</strong></p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180103205052.png" alt="img"></p>
 <p>下面我们只需要将人脸面片拉出一个厚度即可完成人脸面具。</p>
@@ -341,9 +347,9 @@
         
         <tags>
             
-            <tag> python </tag>
-            
             <tag> 人脸识别 </tag>
+            
+            <tag> python </tag>
             
         </tags>
         
@@ -399,9 +405,9 @@
         
         <tags>
             
-            <tag> python </tag>
-            
             <tag> 人脸识别 </tag>
+            
+            <tag> python </tag>
             
         </tags>
         
