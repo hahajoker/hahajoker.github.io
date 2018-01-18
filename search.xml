@@ -3,6 +3,257 @@
   
     
     <entry>
+      <title><![CDATA[Tensorflow学习笔记-例子3建造神经网络&可视化]]></title>
+      <url>/2018/01/19/Tensorflow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BE%8B%E5%AD%903%E5%BB%BA%E9%80%A0%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C-%E5%8F%AF%E8%A7%86%E5%8C%96/</url>
+      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Tensorflow学习笔记，一个简单的例子，建立一个3层的神经网络（输入层1个神经元 隐藏层10个神经元 输出层1个神经元），通过训练去接近并拟合<code>real_data</code>，目标为误差<code>loss</code>的下降，并用<code>pyplot</code>将过程可视化出来。</p>
+<p>学习目的：熟悉神经网络建造逻辑，熟悉Tensorflow功能性函数的应用。</p>
+<p>最终输出：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%8B%9F%E5%90%88.gif" alt="img"></p>
+<a id="more"></a>
+<hr>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180118172624.png" alt="img"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line"># 添加一个新的层，输入值，输入单位数，输出单位数，激励函数默认为None，即线性函数</span><br><span class="line">def add_layer(inputs,in_size,out_size,activation_function=None):</span><br><span class="line"></span><br><span class="line">    # 定义一个随机变量，数据格式为 in_size行 out_size列</span><br><span class="line">    Weights = tf.Variable(tf.random_normal([in_size,out_size]))</span><br><span class="line"></span><br><span class="line">    # 定义一个变量，从零开始，数据格式为1行out_size列</span><br><span class="line">    # 在机器学习中 biases的初始值推荐不为0，所以+0.1</span><br><span class="line">    biases = tf.Variable(tf.zeros([1,out_size]) + 0.1)</span><br><span class="line"></span><br><span class="line">    # 预测函数</span><br><span class="line">    Wx_plus_b = tf.matmul(inputs,Weights) + biases</span><br><span class="line"></span><br><span class="line">    if activation_function is None:</span><br><span class="line">        outputs = Wx_plus_b</span><br><span class="line">    else:</span><br><span class="line">        # 用激励函数掰弯Wx_plus_b</span><br><span class="line">        outputs = activation_function(Wx_plus_b)</span><br><span class="line"></span><br><span class="line">    return outputs</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 制作真实数据 ###</span><br><span class="line"></span><br><span class="line"># 生成等差数列，x_data有300行（或者说300个实例）,范围-1到1,np.newaxis加一个维度</span><br><span class="line">x_data = np.linspace(-1,1,300)[:,np.newaxis]</span><br><span class="line"># 添加噪音，让数据更接近真实,方差0.05，格式与x_data一样</span><br><span class="line">noise = np.random.normal(0,0.05,x_data.shape)</span><br><span class="line"></span><br><span class="line">y_data = np.square(x_data) - 0.5 + noise  # np.square()平方计算</span><br><span class="line"></span><br><span class="line">xs = tf.placeholder(tf.float32,[None,1])  # 占位,将在sess.run(train_step)时传参，None表示有多少实例都ok</span><br><span class="line">ys = tf.placeholder(tf.float32,[None,1])  # 占位,将在sess.run(train_step)时传参</span><br><span class="line"></span><br><span class="line">### 制作真实数据 ###</span><br><span class="line"></span><br><span class="line"># 输入层1个神经元 隐藏层10个 输出层1个</span><br><span class="line"></span><br><span class="line">### 设置层参数 ###</span><br><span class="line"></span><br><span class="line"># 定义隐藏层</span><br><span class="line">l1 = add_layer(xs,1,10,activation_function=tf.nn.relu)  # tf提供多种activation_function 这里通常选择tf.nn.relu</span><br><span class="line"># 定义输出层</span><br><span class="line">prediction = add_layer(l1,10,1,activation_function=None)</span><br><span class="line"></span><br><span class="line">### 设置层参数 ###</span><br><span class="line"></span><br><span class="line"># 误差,predition与ys的差值</span><br><span class="line"># tf.square(ys - predition)每个例子的平方</span><br><span class="line"># tf.reduce_sum()所有例子求和</span><br><span class="line"># tf.reduce_mean()求平均值</span><br><span class="line">loss = tf.reduce_mean(tf.reduce_sum(tf.square(ys - prediction),reduction_indices=[1]))</span><br><span class="line"></span><br><span class="line"># 训练，减少误差, tf.train.GradientDescentOptimizer为常用方法，学习效率0.1（要求小于1）,对象为loss</span><br><span class="line">train_step = tf.train.GradientDescentOptimizer(0.1).minimize(loss)</span><br><span class="line"></span><br><span class="line"># 初始化</span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line"></span><br><span class="line"># 指针</span><br><span class="line">sess = tf.Session()</span><br><span class="line">sess.run(init)      # 激活</span><br><span class="line"></span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(1,1,1)</span><br><span class="line">ax.scatter(x_data,y_data)</span><br><span class="line">plt.ion()           # 使图像编辑连续进行</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for i in range(1000):</span><br><span class="line">    # 训练并传参</span><br><span class="line">    sess.run(train_step, feed_dict=&#123;xs: x_data, ys: y_data&#125;)</span><br><span class="line">    if i % 50 == 0:  # 每隔50个</span><br><span class="line">        # print(sess.run(loss,feed_dict=&#123;xs:x_data,ys:y_data&#125;))</span><br><span class="line">        try:</span><br><span class="line">            # 每次循环抹除上次的线,第一次时没有就pass</span><br><span class="line">            ax.lines.remove(lines[0])</span><br><span class="line">        except Exception:  # 所有异常都是基类 Exception的成员</span><br><span class="line">            pass</span><br><span class="line"></span><br><span class="line">        prediction_value = sess.run(prediction, feed_dict=&#123;xs: x_data, ys: y_data&#125;)</span><br><span class="line">        # 用了线段表示预测值prediction_value，红色，线宽5</span><br><span class="line">        lines = ax.plot(x_data, prediction_value, &apos;r-&apos;, lw=5)</span><br><span class="line">        # 暂停0.1秒</span><br><span class="line">        plt.pause(0.1)</span><br></pre></td></tr></table></figure>
+<h1 id="1-创建并定义新的神经层"><a href="#1-创建并定义新的神经层" class="headerlink" title="1.创建并定义新的神经层"></a>1.创建并定义新的神经层</h1><p>一个新的神经层的逻辑关系如下图</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180118172142.png" alt="img"></p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line"># 添加一个新的层，输入值，输入单位数，输出单位数，激励函数默认为None，即线性函数</span><br><span class="line">def add_layer(inputs,in_size,out_size,activation_function=None):</span><br><span class="line"></span><br><span class="line">    # 定义一个随机变量，数据格式为 in_size行 out_size列</span><br><span class="line">    Weights = tf.Variable(tf.random_normal([in_size,out_size]))</span><br><span class="line"></span><br><span class="line">    # 定义一个变量，从零开始，数据格式为1行out_size列</span><br><span class="line">    # 在机器学习中 biases的初始值推荐不为0，所以+0.1</span><br><span class="line">    biases = tf.Variable(tf.zeros([1,out_size]) + 0.1)</span><br><span class="line"></span><br><span class="line">    # 预测函数</span><br><span class="line">    Wx_plus_b = tf.matmul(inputs,Weights) + biases</span><br><span class="line"></span><br><span class="line">    if activation_function is None:</span><br><span class="line">        outputs = Wx_plus_b</span><br><span class="line">    else:</span><br><span class="line">        # 用激励函数掰弯Wx_plus_b</span><br><span class="line">        outputs = activation_function(Wx_plus_b)</span><br><span class="line"></span><br><span class="line">    return outputs</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><a href="https://www.w3cschool.cn/tensorflow_python/tensorflow_python-fe2i2ev9.html" target="_blank" rel="noopener">tf.Variable() 变量函数</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">get_local_variable(</span><br><span class="line">    *args,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.w3cschool.cn/tensorflow_python/tensorflow_python-n7hl2gmf.html" target="_blank" rel="noopener">tf.random_normal()随机值函数</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">random_normal(</span><br><span class="line">    shape,</span><br><span class="line">    mean=0.0,</span><br><span class="line">    stddev=1.0,</span><br><span class="line">    dtype=tf.float32,</span><br><span class="line">    seed=None,</span><br><span class="line">    name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.w3cschool.cn/tensorflow_python/tensorflow_python-l5x72feg.html" target="_blank" rel="noopener">tf.matmul()矩阵乘法</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">matmul(</span><br><span class="line">    a,</span><br><span class="line">    b,</span><br><span class="line">    transpose_a=False,</span><br><span class="line">    transpose_b=False,</span><br><span class="line">    adjoint_a=False,</span><br><span class="line">    adjoint_b=False,</span><br><span class="line">    a_is_sparse=False,</span><br><span class="line">    b_is_sparse=False,</span><br><span class="line">    name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="2-制作真实数据"><a href="#2-制作真实数据" class="headerlink" title="2.制作真实数据"></a>2.制作真实数据</h1><p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 生成等差数列，x_data有300行（或者说300个实例）,范围-1到1,np.newaxis加一个维度</span><br><span class="line">x_data = np.linspace(-1,1,300)[:,np.newaxis]</span><br><span class="line"># 添加噪音，让数据更接近真实,方差0.05，格式与x_data一样</span><br><span class="line">noise = np.random.normal(0,0.05,x_data.shape)</span><br><span class="line"></span><br><span class="line">y_data = np.square(x_data) - 0.5 + noise  # np.square()平方计算</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><a href="http://blog.csdn.net/you_are_my_dream/article/details/53493752" target="_blank" rel="noopener">np.linspace() 均分函数</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">numpy.linspace(</span><br><span class="line">start,</span><br><span class="line">stop,</span><br><span class="line">num=50,</span><br><span class="line">endpoint=True,</span><br><span class="line">retstep=False,</span><br><span class="line">dtype=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.baidu.com/link?url=xZLM0YT1kEOUb7EQzVxpMV-fbG4afFqQyTao7YzDk6ze_R0MtVE6Esu53NL_U6uxU5xWfArJNOeyVTEJCoqj4iwwX8BGitv1m2ly3ZvSL8u&amp;wd=&amp;eqid=a535528d00016039000000025a60bb05" target="_blank" rel="noopener">tf.linspace与np.linspace的对比分析</a></p>
+</li>
+<li><p><a href="http://blog.csdn.net/qiqiaiairen/article/details/52505667" target="_blank" rel="noopener">np.random.normal()正态分布</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.random.normal(loc=0.0, scale=1.0, size=None)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="3-设置占位xs-amp-ys"><a href="#3-设置占位xs-amp-ys" class="headerlink" title="3.设置占位xs&amp;ys"></a>3.设置占位xs&amp;ys</h1><p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xs = tf.placeholder(tf.float32,[None,1]) </span><br><span class="line"># 占位,将在sess.run(train_step)时传参，None表示有多少实例都ok</span><br><span class="line">ys = tf.placeholder(tf.float32,[None,1])</span><br><span class="line"># 占位,将在sess.run(train_step)时传参</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><a href="https://www.w3cschool.cn/tensorflow_python/tensorflow_python-w7yt2fwc.html" target="_blank" rel="noopener">tf.placeholder()占位符</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tf.placeholder 函数</span><br><span class="line">placeholder(</span><br><span class="line">    dtype,</span><br><span class="line">    shape=None,</span><br><span class="line">    name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>​tf.placeholder()与feed_dict={} 是前后绑定的，先占位，后传参    </p>
+</li>
+<li><p>tf.float32 是tensorflow中通常采用的默认格式</p>
+</li>
+</ul>
+<h1 id="4-设置层参数"><a href="#4-设置层参数" class="headerlink" title="4.设置层参数"></a>4.设置层参数</h1><p><em>先声明：输入层1个神经元 隐藏层10个神经元 输出层1个神经元</em></p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 定义隐藏层</span><br><span class="line">l1 = add_layer(xs,1,10,activation_function=tf.nn.relu)  # tf提供多种activation_function 这里通常选择tf.nn.relu</span><br><span class="line"># 定义输出层</span><br><span class="line">prediction = add_layer(l1,10,1,activation_function=None)</span><br></pre></td></tr></table></figure>
+<h2 id="激励函数-activation-function"><a href="#激励函数-activation-function" class="headerlink" title="激励函数 activation_function"></a>激励函数 activation_function</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180119003454.png" alt="img"></p>
+<p>查看所有activation_function：<a href="https://www.tensorflow.org/api_guides/python/nn" target="_blank" rel="noopener">官方文档</a></p>
+<ul>
+<li><p><a href="https://www.tensorflow.org/api_docs/python/tf/nn/relu" target="_blank" rel="noopener"><code>tf.nn.relu</code></a> 小于0时等于0大于时线性增加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">relu(</span><br><span class="line">features,</span><br><span class="line">name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.tensorflow.org/api_docs/python/tf/nn/relu6" target="_blank" rel="noopener"><code>tf.nn.relu6</code></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">relu6(</span><br><span class="line">features,</span><br><span class="line">name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.tensorflow.org/api_docs/python/tf/nn/crelu" target="_blank" rel="noopener"><code>tf.nn.crelu</code></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">crelu(</span><br><span class="line">features,</span><br><span class="line">name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.tensorflow.org/api_docs/python/tf/nn/elu" target="_blank" rel="noopener"><code>tf.nn.elu</code></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">elu(</span><br><span class="line">features,</span><br><span class="line">name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.tensorflow.org/api_docs/python/tf/nn/selu" target="_blank" rel="noopener"><code>tf.nn.selu</code></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">selu(  </span><br><span class="line">features, </span><br><span class="line">name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.tensorflow.org/api_docs/python/tf/nn/softplus" target="_blank" rel="noopener"><code>tf.nn.softplus</code></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">softplus( </span><br><span class="line">features,  </span><br><span class="line">name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.tensorflow.org/api_docs/python/tf/nn/softsign" target="_blank" rel="noopener"><code>tf.nn.softsign</code></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">softsign(   </span><br><span class="line">features,   </span><br><span class="line">name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.tensorflow.org/api_docs/python/tf/nn/dropout" target="_blank" rel="noopener"><code>tf.nn.dropout</code></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dropout( </span><br><span class="line">x,   </span><br><span class="line">keep_prob, </span><br><span class="line">noise_shape=None,  </span><br><span class="line">seed=None,  </span><br><span class="line">name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.tensorflow.org/api_docs/python/tf/nn/bias_add" target="_blank" rel="noopener"><code>tf.nn.bias_add</code></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bias_add(   </span><br><span class="line">value,   </span><br><span class="line">bias,  </span><br><span class="line">data_format=None, </span><br><span class="line">name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.tensorflow.org/api_docs/python/tf/sigmoid" target="_blank" rel="noopener"><code>tf.sigmoid</code></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sigmoid( </span><br><span class="line">x,  </span><br><span class="line">name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.tensorflow.org/api_docs/python/tf/tanh" target="_blank" rel="noopener"><code>tf.tanh</code></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tanh(   </span><br><span class="line">x,  </span><br><span class="line">name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>TensorFlow提供了多种激励函数的选择，根据不同情况推荐使用不同的激励函数：</p>
+<ul>
+<li>2-3层神经网络：随意使用，不会有太大影响。</li>
+</ul>
+<ul>
+<li>在卷积神经网络中：首选 relu</li>
+<li>在循环神经网络中：首选 relu or tanh</li>
+</ul>
+<h1 id="5-误差"><a href="#5-误差" class="headerlink" title="5.误差"></a>5.误差</h1><p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 误差,predition与ys的差值</span><br><span class="line"># tf.square(ys - predition)每个例子的平方</span><br><span class="line"># tf.reduce_sum()所有例子求和</span><br><span class="line"># tf.reduce_mean()求平均值</span><br><span class="line">loss = tf.reduce_mean(tf.reduce_sum(tf.square(ys - prediction),reduction_indices=[1]))</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><a href="https://www.w3cschool.cn/tensorflow_python/tensorflow_python-5y4d2i2n.html" target="_blank" rel="noopener">tf.reduce_sum()张量各维度求和</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">reduce_sum （ </span><br><span class="line">    input_tensor ， </span><br><span class="line">    axis = None ， </span><br><span class="line">    keep_dims = False ， </span><br><span class="line">    name = None ， </span><br><span class="line">    reduction_indices = None</span><br><span class="line"> ）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.w3cschool.cn/tensorflow_python/tensorflow_python-hckq2htb.htmll" target="_blank" rel="noopener">tf.reduce_mean()张量各维度平均值</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">reduce_mean(</span><br><span class="line">    input_tensor,</span><br><span class="line">    axis=None,</span><br><span class="line">    keep_dims=False,</span><br><span class="line">    name=None,</span><br><span class="line">    reduction_indices=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="6-训练设置"><a href="#6-训练设置" class="headerlink" title="6.训练设置"></a>6.训练设置</h1><p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 训练，减少误差, tf.train.GradientDescentOptimizer为常用方法，学习效率0.1（要求小于1）,对象为loss</span><br><span class="line">train_step = tf.train.GradientDescentOptimizer(0.1).minimize(loss)</span><br></pre></td></tr></table></figure>
+<p>查看所有tf.train：<a href="https://www.tensorflow.org/api_docs/python/tf/train" target="_blank" rel="noopener">官方文档</a></p>
+<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p><a href="https://www.tensorflow.org/api_docs/python/tf/train/queue_runner" target="_blank" rel="noopener"><code>queue_runner</code></a> 模块：创建线程来运行多个入队操作。</p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p><a href="https://www.tensorflow.org/api_docs/python/tf/train/AdadeltaOptimizer" target="_blank" rel="noopener"><code>class AdadeltaOptimizer</code></a>：实现Adadelta算法的优化器。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/AdagradDAOptimizer" target="_blank" rel="noopener"><code>class AdagradDAOptimizer</code></a>：用于稀疏线性模型的Adagrad双重平均算法。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/AdagradOptimizer" target="_blank" rel="noopener"><code>class AdagradOptimizer</code></a>：实现Adagrad算法的优化器。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/AdamOptimizer" target="_blank" rel="noopener"><code>class AdamOptimizer</code></a>：实现Adam算法的优化器。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/BytesList" target="_blank" rel="noopener"><code>class BytesList</code></a></p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/CheckpointSaverHook" target="_blank" rel="noopener"><code>class CheckpointSaverHook</code></a>：每N步或每秒保存检查点。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/CheckpointSaverListener" target="_blank" rel="noopener"><code>class CheckpointSaverListener</code></a>：在检查点保存之前或之后执行操作的侦听器的接口。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/ChiefSessionCreator" target="_blank" rel="noopener"><code>class ChiefSessionCreator</code></a>：为首席创建一个tf.Session。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/ClusterDef" target="_blank" rel="noopener"><code>class ClusterDef</code></a></p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec" target="_blank" rel="noopener"><code>class ClusterSpec</code></a>：将集群表示为一组“任务”，组织成“工作”。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/Coordinator" target="_blank" rel="noopener"><code>class Coordinator</code></a>：线程的协调者。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/Example" target="_blank" rel="noopener"><code>class Example</code></a></p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/ExponentialMovingAverage" target="_blank" rel="noopener"><code>class ExponentialMovingAverage</code></a>：通过使用指数衰减保持变量的平均值。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/Feature" target="_blank" rel="noopener"><code>class Feature</code></a></p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/FeatureList" target="_blank" rel="noopener"><code>class FeatureList</code></a></p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/FeatureLists" target="_blank" rel="noopener"><code>class FeatureLists</code></a></p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/Features" target="_blank" rel="noopener"><code>class Features</code></a></p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/FeedFnHook" target="_blank" rel="noopener"><code>class FeedFnHook</code></a>：运行<code>feed_fn</code>并设置<code>feed_dict</code>相应的。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/FinalOpsHook" target="_blank" rel="noopener"><code>class FinalOpsHook</code></a>：<code>Tensors</code>在会话结束时评估的钩子。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/FloatList" target="_blank" rel="noopener"><code>class FloatList</code></a></p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/FtrlOptimizer" target="_blank" rel="noopener"><code>class FtrlOptimizer</code></a>：实现FTRL算法的优化器。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/GlobalStepWaiterHook" target="_blank" rel="noopener"><code>class GlobalStepWaiterHook</code></a>：延迟执行，直到全局步骤到达<code>wait_until_step</code>。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/GradientDescentOptimizer" target="_blank" rel="noopener"><code>class GradientDescentOptimizer</code></a>：实现梯度下降算法的优化器。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/Int64List" target="_blank" rel="noopener"><code>class Int64List</code></a></p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/JobDef" target="_blank" rel="noopener"><code>class JobDef</code></a></p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/LoggingTensorHook" target="_blank" rel="noopener"><code>class LoggingTensorHook</code></a>：每N个本地步骤打印给定的张量，每N秒或结束。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/LooperThread" target="_blank" rel="noopener"><code>class LooperThread</code></a>：反复运行代码的线程，可选地在一个定时器上运行。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/MomentumOptimizer" target="_blank" rel="noopener"><code>class MomentumOptimizer</code></a>：实现Momentum算法的优化器。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/MonitoredSession" target="_blank" rel="noopener"><code>class MonitoredSession</code></a>：处理初始化，恢复和挂钩的类会话对象。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/NanLossDuringTrainingError" target="_blank" rel="noopener"><code>class NanLossDuringTrainingError</code></a></p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/NanTensorHook" target="_blank" rel="noopener"><code>class NanTensorHook</code></a>：如果损失是NaN，则监视损失张量并停止训练。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/Optimizer" target="_blank" rel="noopener"><code>class Optimizer</code></a>：优化器的基类。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/ProfilerHook" target="_blank" rel="noopener"><code>class ProfilerHook</code></a>：每N步或每秒捕获一次CPU / GPU分析信息。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/ProximalAdagradOptimizer" target="_blank" rel="noopener"><code>class ProximalAdagradOptimizer</code></a>：实现Proximal Adagrad算法的优化器。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/ProximalGradientDescentOptimizer" target="_blank" rel="noopener"><code>class ProximalGradientDescentOptimizer</code></a>：实现近端梯度下降算法的优化器。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/QueueRunner" target="_blank" rel="noopener"><code>class QueueRunner</code></a>：保存队列的排队操作列表，每个队列都在一个线程中运行。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/RMSPropOptimizer" target="_blank" rel="noopener"><code>class RMSPropOptimizer</code></a>：实现RMSProp算法的优化器。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/Saver" target="_blank" rel="noopener"><code>class Saver</code></a>：保存并恢复变量。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/SaverDef" target="_blank" rel="noopener"><code>class SaverDef</code></a></p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/Scaffold" target="_blank" rel="noopener"><code>class Scaffold</code></a>：创建或收集通常需要训练模型的部分的结构。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/SecondOrStepTimer" target="_blank" rel="noopener"><code>class SecondOrStepTimer</code></a>：每N秒或每N步触发一次的定时器。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/SequenceExample" target="_blank" rel="noopener"><code>class SequenceExample</code></a></p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/Server" target="_blank" rel="noopener"><code>class Server</code></a>：一个在线TensorFlow服务器，用于分布式培训。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/ServerDef" target="_blank" rel="noopener"><code>class ServerDef</code></a></p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/SessionCreator" target="_blank" rel="noopener"><code>class SessionCreator</code></a>：tf.Session的工厂。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/SessionManager" target="_blank" rel="noopener"><code>class SessionManager</code></a>：从检查点恢复并创建会话的培训帮手。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/SessionRunArgs" target="_blank" rel="noopener"><code>class SessionRunArgs</code></a>：表示要添加到<code>Session.run()</code>调用中的参数。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/SessionRunContext" target="_blank" rel="noopener"><code>class SessionRunContext</code></a>：提供有关<code>session.run()</code>正在进行的呼叫的信息。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/SessionRunHook" target="_blank" rel="noopener"><code>class SessionRunHook</code></a>挂钩将调用扩展到MonitoredSession.run（）。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/SessionRunValues" target="_blank" rel="noopener"><code>class SessionRunValues</code></a>：包含结果<code>Session.run()</code>。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/SingularMonitoredSession" target="_blank" rel="noopener"><code>class SingularMonitoredSession</code></a>：处理初始化，恢复和挂钩的类会话对象。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/StepCounterHook" target="_blank" rel="noopener"><code>class StepCounterHook</code></a>：每秒计算步数的钩子。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/StopAtStepHook" target="_blank" rel="noopener"><code>class StopAtStepHook</code></a>：挂钩请求在指定的步骤停止。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/SummarySaverHook" target="_blank" rel="noopener"><code>class SummarySaverHook</code></a>：每N步保存一个摘要。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/Supervisor" target="_blank" rel="noopener"><code>class Supervisor</code></a>：一个培训助手，检查点模型和计算摘要。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/SyncReplicasOptimizer" target="_blank" rel="noopener"><code>class SyncReplicasOptimizer</code></a>：要同步的类，聚合渐变并将它们传递给优化器。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/WorkerSessionCreator" target="_blank" rel="noopener"><code>class WorkerSessionCreator</code></a>：为工作者创建一个tf.Session。</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p><a href="https://www.tensorflow.org/api_docs/python/tf/train/MonitoredTrainingSession" target="_blank" rel="noopener"><code>MonitoredTrainingSession(...)</code></a>：创建一个<code>MonitoredSession</code>训练。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/NewCheckpointReader" target="_blank" rel="noopener"><code>NewCheckpointReader(...)</code></a></p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/add_queue_runner" target="_blank" rel="noopener"><code>add_queue_runner(...)</code></a>：<code>QueueRunner</code>在图表中添加一个集合。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/assert_global_step" target="_blank" rel="noopener"><code>assert_global_step(...)</code></a>：断言<code>global_step_tensor</code>是一个标量int <code>Variable</code>或<code>Tensor</code>。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/basic_train_loop" target="_blank" rel="noopener"><code>basic_train_loop(...)</code></a>：基本循环来训练一个模型。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/batch" target="_blank" rel="noopener"><code>batch(...)</code></a>：在中创建张量的批次<code>tensors</code>。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/batch_join" target="_blank" rel="noopener"><code>batch_join(...)</code></a>：运行张量列表以填充队列以创建批处理示例。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/checkpoint_exists" target="_blank" rel="noopener"><code>checkpoint_exists(...)</code></a>：使用指定的前缀检查V1或V2检查点是否存在。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/create_global_step" target="_blank" rel="noopener"><code>create_global_step(...)</code></a>：在图中创建全局步张量。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/do_quantize_training_on_graphdef" target="_blank" rel="noopener"><code>do_quantize_training_on_graphdef(...)</code></a></p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/exponential_decay" target="_blank" rel="noopener"><code>exponential_decay(...)</code></a>：应用指数衰减的学习率。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/export_meta_graph" target="_blank" rel="noopener"><code>export_meta_graph(...)</code></a>：返回<code>MetaGraphDef</code>原型。可选将其写入文件名。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/generate_checkpoint_state_proto" target="_blank" rel="noopener"><code>generate_checkpoint_state_proto(...)</code></a>：生成一个检查点状态原型。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/get_checkpoint_mtimes" target="_blank" rel="noopener"><code>get_checkpoint_mtimes(...)</code></a>：返回检查点的mtimes（修改时间戳）。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/get_checkpoint_state" target="_blank" rel="noopener"><code>get_checkpoint_state(...)</code></a>：从“检查点”文件返回CheckpointState原型。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/get_global_step" target="_blank" rel="noopener"><code>get_global_step(...)</code></a>：获得全局步张量。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/get_or_create_global_step" target="_blank" rel="noopener"><code>get_or_create_global_step(...)</code></a>：返回并创建（如有必要）全局步张量。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/global_step" target="_blank" rel="noopener"><code>global_step(...)</code></a>：小帮手，以获得全球的一步。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/import_meta_graph" target="_blank" rel="noopener"><code>import_meta_graph(...)</code></a>：重新创建保存在<code>MetaGraphDef</code>原型中的图表。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/init_from_checkpoint" target="_blank" rel="noopener"><code>init_from_checkpoint(...)</code></a>：用从给定检查点加载的张量初始化当前变量。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/input_producer" target="_blank" rel="noopener"><code>input_producer(...)</code></a>：将行输出<code>input_tensor</code>到输入管道的队列。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/inverse_time_decay" target="_blank" rel="noopener"><code>inverse_time_decay(...)</code></a>：将反时限衰减应用到初始学习率。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/latest_checkpoint" target="_blank" rel="noopener"><code>latest_checkpoint(...)</code></a>：查找最新保存的检查点文件的文件名。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/limit_epochs" target="_blank" rel="noopener"><code>limit_epochs(...)</code></a>：返回张量<code>num_epochs</code>时间，然后引发<code>OutOfRange</code>错误。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/list_variables" target="_blank" rel="noopener"><code>list_variables(...)</code></a>：返回检查点中所有变量的列表。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/load_checkpoint" target="_blank" rel="noopener"><code>load_checkpoint(...)</code></a>：返回<code>CheckpointReader</code>找到的检查点<code>ckpt_dir_or_file</code>。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/load_variable" target="_blank" rel="noopener"><code>load_variable(...)</code></a>：返回检查点中给定变量的张量值。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/match_filenames_once" target="_blank" rel="noopener"><code>match_filenames_once(...)</code></a>：保存匹配模式的文件列表，所以只计算一次。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/maybe_batch" target="_blank" rel="noopener"><code>maybe_batch(...)</code></a>：有条件地创建基于的批量张量<code>keep_input</code>。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/maybe_batch_join" target="_blank" rel="noopener"><code>maybe_batch_join(...)</code></a>：运行张量列表以有条件地填充队列以创建批次。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/maybe_shuffle_batch" target="_blank" rel="noopener"><code>maybe_shuffle_batch(...)</code></a>：通过随机改变有条件排列的张量来创建批次。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/maybe_shuffle_batch_join" target="_blank" rel="noopener"><code>maybe_shuffle_batch_join(...)</code></a>：通过随机洗牌有条件排列的张量来创建批次。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/natural_exp_decay" target="_blank" rel="noopener"><code>natural_exp_decay(...)</code></a>：将自然指数衰减应用于初始学习速率。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/piecewise_constant" target="_blank" rel="noopener"><code>piecewise_constant(...)</code></a>：从边界和区间值分段常量。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/polynomial_decay" target="_blank" rel="noopener"><code>polynomial_decay(...)</code></a>：将多项式衰减应用于学习率。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/range_input_producer" target="_blank" rel="noopener"><code>range_input_producer(...)</code></a>：在队列中生成从0到limit-1的整数。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/replica_device_setter" target="_blank" rel="noopener"><code>replica_device_setter(...)</code></a>：返回a <code>device function</code>以在构建副本的图形时使用。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/sdca_fprint" target="_blank" rel="noopener"><code>sdca_fprint(...)</code></a>：计算输入字符串的指纹。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/sdca_optimizer" target="_blank" rel="noopener"><code>sdca_optimizer(...)</code></a>随机双坐标上升（SDCA）优化器的分布式版本</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/sdca_shrink_l1" target="_blank" rel="noopener"><code>sdca_shrink_l1(...)</code></a>：对参数应用L1正则化收缩步骤。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/shuffle_batch" target="_blank" rel="noopener"><code>shuffle_batch(...)</code></a>：通过随机混洗张量来创建批次。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/shuffle_batch_join" target="_blank" rel="noopener"><code>shuffle_batch_join(...)</code></a>：通过随机改变张量来创建批次。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/slice_input_producer" target="_blank" rel="noopener"><code>slice_input_producer(...)</code></a>：产生每一个切片<code>Tensor</code>在<code>tensor_list</code>。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/start_queue_runners" target="_blank" rel="noopener"><code>start_queue_runners(...)</code></a>：启动图中收集的所有队列跑步者。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/string_input_producer" target="_blank" rel="noopener"><code>string_input_producer(...)</code></a>：输出字符串（例如文件名）到输入管道的队列。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/summary_iterator" target="_blank" rel="noopener"><code>summary_iterator(...)</code></a>：<code>Event</code>从事件文件读取协议缓冲区的迭代器。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/update_checkpoint_state" target="_blank" rel="noopener"><code>update_checkpoint_state(...)</code></a>：更新“检查点”文件的内容。</p>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/train/write_graph" target="_blank" rel="noopener"><code>write_graph(...)</code></a>：将一个graph proto写入一个文件。</p>
+<h1 id="7-初始化-amp-指针"><a href="#7-初始化-amp-指针" class="headerlink" title="7.初始化&amp;指针"></a>7.初始化&amp;指针</h1><p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 初始化</span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line"></span><br><span class="line"># 指针</span><br><span class="line">sess = tf.Session()</span><br><span class="line">sess.run(init)      # 激活</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><a href="https://www.tensorflow.org/api_docs/python/tf/global_variables_initializer" target="_blank" rel="noopener">tf.global_variables_initializer</a>返回初始化全局变量</p>
+<p><em>有变量就必须定义初始化！！！</em></p>
+</li>
+</ul>
+<h1 id="8-循环训练"><a href="#8-循环训练" class="headerlink" title="8.循环训练"></a>8.循环训练</h1><p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for i in range(1000):</span><br><span class="line">    # 训练并传参</span><br><span class="line">    sess.run(train_step,feed_dict=&#123;xs:x_data,ys:y_data&#125;)</span><br><span class="line">    if i % 50 == 0:      # 每隔50个</span><br><span class="line">        print(sess.run(loss,feed_dict=&#123;xs:x_data,ys:y_data&#125;))</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>feed_dict={xs:x_data,ys:y_data}</code></p>
+<p>在每次sess.run()时以feed_dict的形式传入参数（dict）</p>
+</li>
+</ul>
+<h1 id="9-可视化"><a href="#9-可视化" class="headerlink" title="9.可视化"></a>9.可视化</h1><p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(1,1,1)</span><br><span class="line">ax.scatter(x_data,y_data)</span><br><span class="line">plt.ion()           # 使图像编辑连续进行</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for i in range(1000):</span><br><span class="line">    # 训练并传参</span><br><span class="line">    sess.run(train_step, feed_dict=&#123;xs: x_data, ys: y_data&#125;)</span><br><span class="line">    if i % 50 == 0:  # 每隔50个</span><br><span class="line">        try:</span><br><span class="line">            # 每次循环抹除上次的线,第一次时没有就pass</span><br><span class="line">            ax.lines.remove(lines[0])</span><br><span class="line">        except Exception:  # 所有异常都是基类 Exception的成员</span><br><span class="line">            pass</span><br><span class="line"></span><br><span class="line">        prediction_value = sess.run(prediction, feed_dict=&#123;xs: x_data, ys: y_data&#125;)</span><br><span class="line">        # 用了线段表示预测值prediction_value，红色，线宽5</span><br><span class="line">        lines = ax.plot(x_data, prediction_value, &apos;r-&apos;, lw=5)</span><br><span class="line">        # 暂停0.1秒</span><br><span class="line">        plt.pause(0.1)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%8B%9F%E5%90%88.gif" alt="img"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 编程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> tensorflow </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[去英国，应该买什么茶？]]></title>
       <url>/2018/01/04/%E5%8E%BB%E8%8B%B1%E5%9B%BD%EF%BC%8C%E5%BA%94%E8%AF%A5%E4%B9%B0%E4%BB%80%E4%B9%88%E8%8C%B6%EF%BC%9F/</url>
       <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前阵子接到妈妈的电话，大意是要我在去英国旅行的时候给她带些英国的茶叶回来。我妈算是半个茶迷，这个要求本无可厚非，但偏偏又没告诉我具体的品牌和品种。在我的印象中，英式茶，是个打包的概念，与“颜值”二字是不可区分的：精巧的骨瓷茶具+花式的茶点+不知道哪的茶叶。前两点才是颜值核心，而第三点我还真没了解过。于是作为儿子，我还是查阅了一番，没想到英国茶还真是挺有意思的一个概念。</p>
@@ -186,9 +437,9 @@
             
             <tag> 3D打印 </tag>
             
-            <tag> face ID </tag>
-            
             <tag> 人脸识别 </tag>
+            
+            <tag> face ID </tag>
             
         </tags>
         
@@ -331,11 +582,11 @@
         
         <tags>
             
+            <tag> 3D打印 </tag>
+            
             <tag> 3-matic </tag>
             
             <tag> 轻量化 </tag>
-            
-            <tag> 3D打印 </tag>
             
         </tags>
         
@@ -438,9 +689,9 @@
         
         <tags>
             
-            <tag> 人脸识别 </tag>
-            
             <tag> python </tag>
+            
+            <tag> 人脸识别 </tag>
             
         </tags>
         
@@ -496,9 +747,9 @@
         
         <tags>
             
-            <tag> 人脸识别 </tag>
-            
             <tag> python </tag>
+            
+            <tag> 人脸识别 </tag>
             
         </tags>
         
@@ -1134,9 +1385,9 @@
         
         <tags>
             
-            <tag> 英国 </tag>
-            
             <tag> 签证 </tag>
+            
+            <tag> 英国 </tag>
             
         </tags>
         
