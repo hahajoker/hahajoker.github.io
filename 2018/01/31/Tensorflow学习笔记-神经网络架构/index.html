@@ -91,14 +91,12 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://cs231n.github.io/assets/nn1/neural_net2.jpeg">
 <meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180131163401.png">
-<meta property="og:image" content="http://cs231n.github.io/assets/nn1/sigmoid.jpeg">
-<meta property="og:image" content="http://cs231n.github.io/assets/nn1/tanh.jpeg">
-<meta property="og:image" content="http://cs231n.github.io/assets/nn1/relu.jpeg">
-<meta property="og:image" content="http://cs231n.github.io/assets/nn1/alexplot.jpeg">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180131163944.png">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180131163958.png">
 <meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180131132011.png">
 <meta property="og:image" content="http://cs231n.github.io/assets/nn1/layer_sizes.jpeg">
 <meta property="og:image" content="http://cs231n.github.io/assets/nn1/reg_strengths.jpeg">
-<meta property="og:updated_time" content="2018-01-31T08:35:52.694Z">
+<meta property="og:updated_time" content="2018-01-31T08:42:15.477Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tensorflow学习笔记-神经网络架构">
 <meta name="twitter:description" content="概要在本次记述中，  我们参考了一个非常粗糙的生物神经元模型来解释计算机神经元，但两者其实有本质区别。 我们讨论了在实践中使用的几种类型的激活函数，其中ReLU是最常见的选择 我们引入了神经网络，其中神经元与完全连接的层连接，相邻层中的神经元具有完全的成对连接，但层内的神经元没有连接。 我们看到，这种分层架构能够基于与激活函数交织的矩阵乘法，对神经网络进行高效的评估。 我们看到，神经网络是通用函数">
@@ -422,7 +420,7 @@
 <p><strong>二元Softmax分类器</strong></p>
 <p><strong>二进制SVM分类器</strong></p>
 <p><strong>正则化解释</strong></p>
-<h2 id="常用的激活函数"><a href="#常用的激活函数" class="headerlink" title="常用的激活函数"></a>常用的激活函数</h2><p><img src="http://cs231n.github.io/assets/nn1/sigmoid.jpeg" alt="img"> <img src="http://cs231n.github.io/assets/nn1/tanh.jpeg" alt="img"></p>
+<h2 id="常用的激活函数"><a href="#常用的激活函数" class="headerlink" title="常用的激活函数"></a>常用的激活函数</h2><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180131163944.png" alt="img"> </p>
 <p><strong>左：</strong> Sigmoid非线性将实数压缩到[0,1]之间的范围   <strong>右：</strong> tanh非线性将实数压缩到[-1,1]之间的范围。</p>
 <p><strong>Sigmoid：</strong> 函数为：<strong>σ(x)=1/(1+e−x)</strong></p>
 <ul>
@@ -432,7 +430,7 @@
 <p><strong>Tanh.</strong></p>
 <p>Tanh函数显示在右上方的图像上。它将一个实数值压缩到[-1，1]的范围。像Sigmoid形神经元一样，它的激活饱和，但不同的是，它的输出是以零为中心的。因此，<strong>在实践中tanh非线性始终优于Sigmoid形非线性。</strong>还要注意tanh神经元只是一个缩放的sigmoid神经元，特别是以下情况：tanh（X ）= 2 σ（2 x ）- 1</p>
 <hr>
-<p><img src="http://cs231n.github.io/assets/nn1/relu.jpeg" alt="img"> <img src="http://cs231n.github.io/assets/nn1/alexplot.jpeg" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180131163958.png" alt="img"> </p>
 <p><strong>左：</strong>整流线性单元（RELU）激活功能，这是当零x &lt; 0的，然后用斜率1线性当x &gt; 0    <strong>右：</strong>与TanL单位相比，ReLU单位的收敛性提高了6倍。</p>
 <p><strong>RELU.</strong>在过去几年已经非常流行。函数为：<strong>f(x)=max(0,x)</strong></p>
 <ul>
@@ -488,9 +486,9 @@
 <p><strong>重申一下，正则化是控制神经网络过度拟合的首选方法！！！</strong>我们可以看看三种不同设置的结果：</p>
 <p><img src="http://cs231n.github.io/assets/nn1/reg_strengths.jpeg" alt="img"></p>
 <p>正则化强度的影响：上述每个神经网络有20个隐藏的神经元，但是改变正则化强度使得其最终决策区域更平滑并具有更高的正则化。你可以在这个<a href="http://cs.stanford.edu/people/karpathy/convnetjs/demo/classify2d.html" target="_blank" rel="noopener">ConvNetsJS演示中</a>使用这些例子。</p>
-<p><strong>总结一下就是，你不应该因为害怕过度拟合就使用较小的神经网络。相反，你应该像公司做预算那样使用一个神经网络，并且使用其他正则化技术来控制过拟合。</strong></p>
+<p><strong>总结一下就是，你不应因为害怕过度拟合就使用较小的神经网络。相反，你应该像公司做预算那样使用一个神经网络，并且使用其他正则化技术来控制过拟合。</strong></p>
 <h1 id="参考阅读"><a href="#参考阅读" class="headerlink" title="参考阅读"></a>参考阅读</h1><ul>
-<li><a href="http://cs231n.github.io/neural-networks-1/#power" target="_blank" rel="noopener">斯坦福CS类，神经网络的架构</a></li>
+<li><a href="http://cs231n.github.io/neural-networks-1/#power" target="_blank" rel="noopener">斯坦福CS类：神经网络的架构</a></li>
 </ul>
 <ul>
 <li>与Theano的<a href="http://www.deeplearning.net/tutorial/mlp.html" target="_blank" rel="noopener">deeplearning.net教程</a></li>
