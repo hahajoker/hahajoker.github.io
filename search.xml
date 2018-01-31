@@ -98,8 +98,6 @@
 <p><strong>总结一下就是，你不应因为害怕过度拟合就使用较小的神经网络。相反，你应该像公司做预算那样使用一个神经网络，并且使用其他正则化技术来控制过拟合。</strong></p>
 <h1 id="参考阅读"><a href="#参考阅读" class="headerlink" title="参考阅读"></a>参考阅读</h1><ul>
 <li><a href="http://cs231n.github.io/neural-networks-1/#power" target="_blank" rel="noopener">斯坦福CS类：神经网络的架构</a></li>
-</ul>
-<ul>
 <li>与Theano的<a href="http://www.deeplearning.net/tutorial/mlp.html" target="_blank" rel="noopener">deeplearning.net教程</a></li>
 <li><a href="http://cs.stanford.edu/people/karpathy/convnetjs/" target="_blank" rel="noopener">ConvNetJS</a>直观的演示</li>
 <li><a href="http://neuralnetworksanddeeplearning.com/chap1.html" target="_blank" rel="noopener">迈克尔尼尔森的</a>教程</li>
