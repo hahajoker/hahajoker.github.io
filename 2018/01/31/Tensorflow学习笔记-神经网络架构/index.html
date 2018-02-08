@@ -12,6 +12,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -88,18 +99,18 @@
 <meta property="og:site_name" content="Hello World">
 <meta property="og:description" content="概要在本次记述中，  我们参考了一个非常粗糙的生物神经元模型来解释计算机神经元，但两者其实有本质区别。 我们讨论了在实践中使用的几种类型的激活函数，其中ReLU是最常见的选择 我们引入了神经网络，其中神经元与完全连接的层连接，相邻层中的神经元具有完全的成对连接，但层内的神经元没有连接。 我们看到，这种分层架构能够基于与激活函数交织的矩阵乘法，对神经网络进行高效的评估。 我们看到，神经网络是通用函数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://cs231n.github.io/assets/nn1/neural_net2.jpeg">
+<meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/neural_net2.jpeg">
 <meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180131163401.png">
 <meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180131163944.png">
 <meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180131163958.png">
 <meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180131132011.png">
 <meta property="og:image" content="http://cs231n.github.io/assets/nn1/layer_sizes.jpeg">
 <meta property="og:image" content="http://cs231n.github.io/assets/nn1/reg_strengths.jpeg">
-<meta property="og:updated_time" content="2018-01-31T08:45:03.196Z">
+<meta property="og:updated_time" content="2018-02-08T19:52:10.109Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tensorflow学习笔记-神经网络架构">
 <meta name="twitter:description" content="概要在本次记述中，  我们参考了一个非常粗糙的生物神经元模型来解释计算机神经元，但两者其实有本质区别。 我们讨论了在实践中使用的几种类型的激活函数，其中ReLU是最常见的选择 我们引入了神经网络，其中神经元与完全连接的层连接，相邻层中的神经元具有完全的成对连接，但层内的神经元没有连接。 我们看到，这种分层架构能够基于与激活函数交织的矩阵乘法，对神经网络进行高效的评估。 我们看到，神经网络是通用函数">
-<meta name="twitter:image" content="http://cs231n.github.io/assets/nn1/neural_net2.jpeg">
+<meta name="twitter:image" content="http://p0cgjzhqf.bkt.clouddn.com/neural_net2.jpeg">
 
 
 
@@ -404,7 +415,7 @@
 <li>我们看到，神经网络是<strong>通用函数逼近器</strong>，但是我们也证明了这个性质与它们无处不在的用途没什么关系的事实。它们被使用是因为它们对实践中出现的函数的功能形式做出了某些“正确”的假设。</li>
 <li>我们讨论了这样一个事实：大型网络总是比小型网络工作得更好，但是它们的更高的模型容量必须用更强的正则化（比如更高的权重衰减）来适当地解决，否则它们可能会过度拟合。</li>
 </ul>
-<p><img src="http://cs231n.github.io/assets/nn1/neural_net2.jpeg" alt="img"></p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/neural_net2.jpeg" alt="img"></p>
 <a id="more"></a>
 <hr>
 <h1 id="何为神经元"><a href="#何为神经元" class="headerlink" title="何为神经元"></a>何为神经元</h1><p>神经网络领域最初的主要灵感来自对生物神经系统进行建模的目标，但之后已经分化并成为工程问题，并在机器学习任务中取得了良好的结果。尽管如此，我们还是从这个领域很大一部分的灵感来源，对生物系统进行了非常简短和高层次的描述，开始我们的讨论。</p>
@@ -558,6 +569,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/02/09/家族记忆相册/" rel="prev" title="家族记忆相册">
+                家族记忆相册 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -642,7 +657,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -664,7 +679,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
