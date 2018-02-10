@@ -3,6 +3,123 @@
   
     
     <entry>
+      <title><![CDATA[Tensorflow学习笔记-CNN卷积神经网络架构]]></title>
+      <url>/2018/02/11/Tensorflow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-CNN%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84/</url>
+      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>卷积神经网络是近些年逐步兴起的一种人工神经网络结构, 因为利用卷积神经网络在图像和语音识别方面能够给出更优预测结果, 这一种技术也被广泛的传播可应用. 卷积神经网络最常被应用的方面是计算机的图像识别, 不过因为不断地创新, 它也被应用在视频分析, 自然语言处理 等等. 近期火热的 Alpha Go, 让计算机看懂围棋, 同样也是有运用到这门技术.</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9B%BE1.jpg" alt="img"></p>
+<a id="more"></a>
+<hr>
+<h1 id="CNN卷积神经网络"><a href="#CNN卷积神经网络" class="headerlink" title="CNN卷积神经网络"></a>CNN卷积神经网络</h1><p>比起传统神经网络，CNN到底有什么不同？我们回想一下：<strong>传统神经网络的每个神经元完全连接到前一层的所有神经元，而单层神经元完全独立运行，不共享任何连接。</strong>这会导致什么呢？举个例子：当处理一个32×32×3（32宽，32高，3色通道）的图像数据时，第一个隐藏层中的一个完全连接的神经元将具有32×32×3 = 3072的权重。虽然这个数据量看起来似乎还可以，但我们已经发现问题了：<strong>随着输入数据和层的增加，参数会快速飞涨起来！</strong>并且，这种完整的连接是浪费的，大量的参数很快就会导致过度配置。</p>
+<p>就好像我们将整个世界的书籍都堆在了孩子的面前，并指望他不走弯路且高效地学习完这些，这是粗鲁的。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/cnn2.png" alt="img"></p>
+<p>针对像图像这种的具有局部特征的数据，卷积神经网络充分利用了输入由图像组成的事实，并以更合理的方式建立了体系结构：与常规的神经网络不同，ConvNet的层具有三维排列的神经元：<strong>宽度，高度，深度</strong>。（请注意，“深度”这里指的是激活数据的第三维，而不是整个神经网络的深度。）<strong>一层中的神经元只能连接到它之前层的一个小区域，而不是以完全连接的方式连接到所有的神经元。</strong></p>
+<hr>
+<p><img src="http://cs231n.github.io/assets/cnn/cnn.jpeg" alt="img"></p>
+<p>上图：一个ConvNet在三个维度（宽度，高度，深度）上安排它的神经元，如在一个图层中可视化的那样。ConvNet的每一层都将3D输入数据转换为神经元激活的3D输出数据。在这个例子中，红色输入层保存图像，所以它的宽度和高度将是图像的尺寸，并且深度将是3（红色，绿色，蓝色通道）。</p>
+<hr>
+<h1 id="CNN神经网络架构"><a href="#CNN神经网络架构" class="headerlink" title="CNN神经网络架构"></a>CNN神经网络架构</h1><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%9B%BE%E7%89%875.png" alt="img"></p>
+<p>在这里例举一个经典架构：</p>
+<p><strong>[ INPUT –&gt; CONV –&gt; RELU –&gt; POOL –&gt; FC ]</strong></p>
+<p>更详细地说：</p>
+<ul>
+<li>INPUT [32x32x3]将保存图像的原始像素值，在这种情况下，图像的宽度为32，高度为32，并具有三个颜色通道R，G，B。</li>
+<li>CONV层（卷积层）将计算连接到输入中的局部区域的神经元的输出，每个计算它们的权重与它们在输入体积中连接的小区域之间的点积。如果我们决定使用12个过滤器，这会导致输出为[32x32x12]。</li>
+<li>RELU层将应用元素激活函数，如max（0，x），但不改变数据尺寸。</li>
+<li>POOL层（池化层）将沿着空间维度（宽度，高度）执行下采样操作，从而产生诸如[16x16x12]的音量。</li>
+<li>FC层（完全连接层）将计算类别分数，得到大小为[1×1×10]的数量，其中每个数字对应于一个类别分数，例如在CIFAR-10的10个类别中。和传统的神经网络一样，这个层中的每个神经元都将被连接到前一层中的所有神经元。</li>
+</ul>
+<hr>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/convnet.jpeg" alt="img"></p>
+<p>一个示例ConvNet神经网络。初始卷存储原始图像像素（左），最后一卷存储类别分数（右）。处理路径上的每个激活量显示为一列。由于很难将3D卷积可视化，因此我们将每个卷的切片放在一行中。最后一个图层卷保存每个类的分数，但是在这里我们只显示排序的前五个分数，并打印每个分数的标签。完整的演示在这里：<a href="http://cs231n.stanford.edu/" target="_blank" rel="noopener">web-based demo</a> 。</p>
+<hr>
+<p>现在介绍各个层和需定义的超参数及其连接的细节。</p>
+<h2 id="Convolutional-Layer（卷积层）"><a href="#Convolutional-Layer（卷积层）" class="headerlink" title="Convolutional Layer（卷积层）"></a>Convolutional Layer（卷积层）</h2><p>Conv层是卷积网络的核心组成部分，完成大部分计算繁重工作。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/cnn%E5%9B%BE%E7%89%87%E6%95%B0%E6%8D%AE1.png" alt="img"></p>
+<p>CONV层的参数由一组可学习的过滤器组成。每个过滤器在空间上都很小（沿着宽度和高度），但是贯穿输入体积的整个深度。例如，ConvNet的第一层上的典型过滤器可能具有5x5x3的大小（即，5像素的宽度和高度，3颜色通道）。过滤器沿着输入体积的宽度和高度滑动（更精确地说是卷积）每个过滤器，计算过滤器视野中的数据和Weight之间的点积。当我们在输入体积的宽度和高度上滑动滤波器时，我们将生成一个二维激活图，给出每个空间位置滤波器的响应。沿深度维度堆叠这些激活图并产生输出量。</p>
+<hr>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/depthcol.jpeg" alt="img"></p>
+<p>一个示例：输入体积（例如，32x32x3 CIFAR-10图像）以及第一卷积层中的示例体积的神经元。卷积层中的每个神经元仅在空间上连接到输入体积中的局部区域，但是连接到全深度（即所有颜色通道）。请注意，沿着深度有多个神经元（在这个例子中是5个），所有神经元都在输入中查看相同的区域。</p>
+<hr>
+<p>介绍下需要定义的超参数：</p>
+<ul>
+<li>过滤器 <strong>视野（F）</strong>是个超参数，过滤器将每个神经元连接到输入数据的局部区域。</li>
+<li>输出量的 <strong>深度（k）</strong>是一个超参数：它对应于我们想要使用的过滤器的数量，每个过滤器学习在输入中寻找不同的东西。</li>
+<li>其次，我们必须指明我们滑动过滤器的 <strong>步伐（S）</strong>。当步幅为1时，我们一次将滤镜移动一个像素。当步幅是2（或者不常见的是3或更多，尽管这在实践中很少见），那么当我们滑动它们时，滤波器一次跳跃2个像素。这将在空间上产生较小的输出量。</li>
+<li>正如我们将很快看到的，有时将输入音量填充到边界周围将会很方便。这个 <strong>填充（P）</strong>的大小是一个超参数。零填充的好处在于，它允许我们控制输出体积的空间大小（最常见的是我们很快就会看到，我们将使用它来精确地保留输入体积的空间大小，以便输入和输出宽度和身高是一样的）</li>
+</ul>
+<p>我们可以通过以上超参数来计算输出数据尺寸：<strong>(W−F+2P)/S+1</strong></p>
+<hr>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/stride.jpeg" alt="img"></p>
+<p>空间排布的例证。在这个例子中，只有一个空间维度（x轴），一个神经元与F = 3的感受域的大小，输入尺寸为W = 5，并且存在零填充P = 1的<strong>左：</strong>神经元跨距（5 - 3 + 2）/ 1 + 1 = 5 <strong>右：</strong>神经元使用S = 2的步长，给出大小为（5 - 3 + 2） / 2 + 1 = 3。请注意，步幅S = 3无法使用，因为它不能很好地穿过数据。（5-3 + 2）= 4不能被3整除。<br>在这个例子中神经元的权重是[1,0，-1]（在右边显示），它的偏差是零。这些权重在所有黄色神经元上共享。</p>
+<hr>
+<h3 id="卷积演示"><a href="#卷积演示" class="headerlink" title="卷积演示"></a>卷积演示</h3><p>以下是一个CONV层的演示。由于三维体积难以可视化，所有的体积（输入体积（蓝色），体重体积（红色），输出体积（绿色））可视化，每个深度切片堆叠成行。输入体积为W1=5,H1=5,D1=3，CONV层参数为K=2,F=3,S=2,P=1。也就是说，我们有两个尺寸为3×3的滤镜，并且它们以2的步幅施加。因此，输出体积大小具有空间大小（5-3 + 2）/ 2 + 1 = 3。此外，填充P=1被施加到输入体积，使输入音量的外边界为零。下面的可视化对输出激活（绿色）进行迭代，并显示每个元素的计算方法是将高亮显示的输入（蓝色）与过滤器（红色）进行元素相乘，然后将其相加，然后通过偏移来输出结果。</p>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%8D%B7%E7%A7%AF%E8%BF%87%E7%A8%8B.gif" alt="img"></p>
+<hr>
+<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>总而言之，Conv层：</p>
+<ul>
+<li>输入大小为：<strong>W1×H1×D1</strong></li>
+<li>需要四个超参数：<ul>
+<li>过滤器数 <strong>ķ</strong></li>
+<li>过滤器大小 <strong>F</strong></li>
+<li>步幅 <strong>S</strong></li>
+<li>填充量 <strong>P</strong></li>
+</ul>
+</li>
+<li>输出大小为：<strong>W2×H2×D2</strong><ul>
+<li><strong>W2=(W1−F+2P)/S+1</strong></li>
+<li><strong>H2=(H1−F+2P)/S+1</strong></li>
+<li><strong>D2=K</strong></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>注：当P=0且S=1时，W和H不变，D2=K 。</strong></p>
+</blockquote>
+<p><strong>超参数的常见设置是F= 3 ，S= 1 ，P= 1</strong></p>
+<h2 id="Pooling-Layer（池化层）"><a href="#Pooling-Layer（池化层）" class="headerlink" title="Pooling Layer（池化层）"></a>Pooling Layer（池化层）</h2><p>每次卷积都会丢失数据，于是有了池化，即每次卷积，不减小尺寸，压缩交给池化。</p>
+<p>周期性地在ConvNet体系结构中连续的Conv层之间插入一个Pooling层。其功能是逐步减小表示的空间大小，以减少网络中的参数和计算量，从而也控制过拟合。池层在输入的每个深度切片上独立运行，并使用MAX操作在空间上调整其大小。</p>
+<p>最常见的形式是一个大小为2x2的过滤器的汇聚层，在输入的每个深度切片上沿着宽度和高度两次施加2个下采样的步幅，丢弃75％的激活。在这种情况下，每个MAX操作最多需要4个以上的数字（在某个深度切片中只有很少的2×2区域）。<strong>深度维度保持不变。</strong></p>
+<h3 id="摘要-1"><a href="#摘要-1" class="headerlink" title="摘要"></a>摘要</h3><p>总而言之，池化层：</p>
+<ul>
+<li>输入大小为：<strong>W1×H1×D1</strong></li>
+<li>需要四个超参数：<ul>
+<li>过滤器大小 <strong>F</strong></li>
+<li>步幅 <strong>S</strong></li>
+</ul>
+</li>
+<li>输出大小为：<strong>W2×H2×D2</strong><ul>
+<li><strong>W2=(W1−F)/S+1</strong></li>
+<li><strong>H2=(H1−F)/S+1</strong></li>
+<li><strong>D2=D1</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>常见设置是F= 3 ，S= 2（重叠池） 或者F= 2 ，S= 2 （这个更常见）。</strong></p>
+<hr>
+<p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180211010508.png" alt="img"></p>
+<p>池化层在输入体积的每个深度切片中独立地在空间上下采样该体积。<strong>左图：</strong>在此示例中，尺寸为[224x224x64]的输入量与过滤器尺寸2合并，跨度为2尺寸为[112x112x64]的输出量。请注意，数据深度保留。<strong>右：</strong>最常见的下采样操作是最大的，产生<strong>MAX POOLING</strong>，这里显示的步幅是2,也就是说，每个最大值是4个数字（小2×2平方）。</p>
+<hr>
+<h2 id="Fully-connected-layer（全连接层）"><a href="#Fully-connected-layer（全连接层）" class="headerlink" title="Fully-connected layer（全连接层）"></a>Fully-connected layer（全连接层）</h2><p>完整连接层和传统神经网络的架构一样。完整连接层中的神经元与前一层中的所有激活完全连接，正如在常规神经网络中所看到的那样。因此可以用一个矩阵乘法和一个偏置偏移来计算它们的激活。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 编程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> tensorflow </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[家族记忆相册]]></title>
       <url>/2018/02/09/%E5%AE%B6%E6%97%8F%E8%AE%B0%E5%BF%86%E7%9B%B8%E5%86%8C/</url>
       <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>也是看了《寻梦环游记 Coco》才有的想法，命运可以剥夺我的所有，但请不要带走我的记忆，因为那是在我灵魂生命中最深层的宝藏。借过年回家的机会，扫描了爷爷奶奶老相册中的照片，听着他们的故事记述下这些。希望有一天，我们的记忆都能与世长存。。。</p>
@@ -871,9 +988,9 @@
             
             <tag> 3D打印 </tag>
             
-            <tag> face ID </tag>
-            
             <tag> 人脸识别 </tag>
+            
+            <tag> face ID </tag>
             
         </tags>
         
@@ -1016,11 +1133,11 @@
         
         <tags>
             
+            <tag> 3D打印 </tag>
+            
             <tag> 3-matic </tag>
             
             <tag> 轻量化 </tag>
-            
-            <tag> 3D打印 </tag>
             
         </tags>
         
@@ -1330,9 +1447,9 @@
         
         <tags>
             
-            <tag> 签证 </tag>
-            
             <tag> 德国 </tag>
+            
+            <tag> 签证 </tag>
             
             <tag> 申诉 </tag>
             
