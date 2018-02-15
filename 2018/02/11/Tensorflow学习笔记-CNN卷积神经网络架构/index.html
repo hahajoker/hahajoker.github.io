@@ -109,7 +109,7 @@
 <meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/stride.jpeg">
 <meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%8D%B7%E7%A7%AF%E8%BF%87%E7%A8%8B.gif">
 <meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180211010508.png">
-<meta property="og:updated_time" content="2018-02-10T17:31:25.213Z">
+<meta property="og:updated_time" content="2018-02-15T17:46:49.789Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tensorflow学习笔记-CNN卷积神经网络架构">
 <meta name="twitter:description" content="前言卷积神经网络是近些年逐步兴起的一种人工神经网络结构, 因为利用卷积神经网络在图像和语音识别方面能够给出更优预测结果, 这一种技术也被广泛的传播可应用. 卷积神经网络最常被应用的方面是计算机的图像识别, 不过因为不断地创新, 它也被应用在视频分析, 自然语言处理 等等. 近期火热的 Alpha Go, 让计算机看懂围棋, 同样也是有运用到这门技术.">
@@ -454,7 +454,7 @@
 <p>我们可以通过以上超参数来计算输出数据尺寸：<strong>(W−F+2P)/S+1</strong></p>
 <hr>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/stride.jpeg" alt="img"></p>
-<p>空间排布的例证。在这个例子中，只有一个空间维度（x轴），一个神经元与F = 3的感受域的大小，输入尺寸为W = 5，并且存在零填充P = 1的<strong>左：</strong>神经元跨距（5 - 3 + 2）/ 1 + 1 = 5 <strong>右：</strong>神经元使用S = 2的步长，给出大小为（5 - 3 + 2） / 2 + 1 = 3。请注意，步幅S = 3无法使用，因为它不能很好地穿过数据。（5-3 + 2）= 4不能被3整除。<br>在这个例子中神经元的权重是[1,0，-1]（在右边显示），它的偏差是零。这些权重在所有黄色神经元上共享。</p>
+<p>空间排布的例证。在这个例子中，只有一个空间维度（x轴），一个神经元与F = 3的感受域的大小，输入尺寸为W = 5，并且存在零填充P = 1的<strong>左：</strong>神经元跨距（5 - 3 + 2）/ 1 + 1 = 5  <strong>右：</strong>神经元使用S = 2的步长，给出大小为（5 - 3 + 2） / 2 + 1 = 3。请注意，步幅S = 3无法使用，因为它不能很好地穿过数据。（5-3 + 2）= 4不能被3整除。<br>在这个例子中神经元的权重是[1,0，-1]（在右边显示），它的偏差是零。这些权重在所有黄色神经元上共享。</p>
 <hr>
 <h3 id="卷积演示"><a href="#卷积演示" class="headerlink" title="卷积演示"></a>卷积演示</h3><p>以下是一个CONV层的演示。由于三维体积难以可视化，所有的体积（输入体积（蓝色），体重体积（红色），输出体积（绿色））可视化，每个深度切片堆叠成行。输入体积为W1=5,H1=5,D1=3，CONV层参数为K=2,F=3,S=2,P=1。也就是说，我们有两个尺寸为3×3的滤镜，并且它们以2的步幅施加。因此，输出体积大小具有空间大小（5-3 + 2）/ 2 + 1 = 3。此外，填充P=1被施加到输入体积，使输入音量的外边界为零。下面的可视化对输出激活（绿色）进行迭代，并显示每个元素的计算方法是将高亮显示的输入（蓝色）与过滤器（红色）进行元素相乘，然后将其相加，然后通过偏移来输出结果。</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%8D%B7%E7%A7%AF%E8%BF%87%E7%A8%8B.gif" alt="img"></p>
@@ -504,7 +504,86 @@
 <p>池化层在输入体积的每个深度切片中独立地在空间上下采样该体积。<strong>左图：</strong>在此示例中，尺寸为[224x224x64]的输入量与过滤器尺寸2合并，跨度为2尺寸为[112x112x64]的输出量。请注意，数据深度保留。<strong>右：</strong>最常见的下采样操作是最大的，产生<strong>MAX POOLING</strong>，这里显示的步幅是2,也就是说，每个最大值是4个数字（小2×2平方）。</p>
 <hr>
 <h2 id="Fully-connected-layer（全连接层）"><a href="#Fully-connected-layer（全连接层）" class="headerlink" title="Fully-connected layer（全连接层）"></a>Fully-connected layer（全连接层）</h2><p>完整连接层和传统神经网络的架构一样。完整连接层中的神经元与前一层中的所有激活完全连接，正如在常规神经网络中所看到的那样。因此可以用一个矩阵乘法和一个偏置偏移来计算它们的激活。</p>
-
+<h1 id="案例演示"><a href="#案例演示" class="headerlink" title="案例演示"></a>案例演示</h1><p>好了，现在对卷积神经网络内部数据流动，已经有了大概的了解，现在我们通过代码来实现一个基于MNIST数据集的简单卷积神经网络。</p>
+<h2 id="定义卷积层的-weight-amp-bias"><a href="#定义卷积层的-weight-amp-bias" class="headerlink" title="定义卷积层的 weight&amp;bias"></a>定义卷积层的 weight&amp;bias</h2><p>首先我们导入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br></pre></td></tr></table></figure>
+<p>采用的数据集依然是<code>tensorflow</code>里面的<code>mnist</code>数据集</p>
+<p>我们需要先导入它</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python from tensorflow.examples.tutorials.mnist import input_data</span><br></pre></td></tr></table></figure>
+<p>本次用到的数据集就是来自于它</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mnist=input_data.read_data_sets(&apos;MNIST_data&apos;,one_hot=true)</span><br></pre></td></tr></table></figure>
+<p>接着呢，我们定义<code>Weight</code>变量，输入<code>shape</code>，返回变量的参数。其中我们使用<code>tf.truncted_normal</code>产生随机变量来进行初始化.（标准差为0.1）</p>
+<p>这里说明下<code>tf.truncted_normal</code>与<code>tf.random_normal</code> ，虽然都是从正态分布的曲线中输出随机值，但<strong>前者产生的随机数与均值的差距不会超过两倍的标准差.</strong>即从<strong>截断</strong>的正态分布中输出随机值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def weight_variable(shape): </span><br><span class="line">	inital=tf.truncted_normal(shape,stddev=0.1)</span><br><span class="line">	return tf.Variable(initial)</span><br></pre></td></tr></table></figure>
+<p>同样的定义<code>biase</code>变量，输入<code>shape</code> ,返回变量的一些参数。其中我们使用<code>tf.constant</code>常量函数来进行初始化:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def bias_variable(shape): </span><br><span class="line">	initial=tf.constant(0.1,shape=shape) </span><br><span class="line">	return tf.Variable(initial)</span><br></pre></td></tr></table></figure>
+<p>定义卷积，<code>tf.nn.conv2d</code>函数是<code>tensoflow</code>里面的二维的卷积函数，<code>x</code>是图片的所有参数，<code>W</code>是此卷积层的权重，然后定义<strong>步长</strong><code>strides=[1,1,1,1]</code>值，<code>strides[0]</code>和<code>strides[3]</code>的两个1是默认值，中间两个1代表padding时在x方向运动一步，y方向运动一步，<strong>填充</strong> padding采用的方式是<code>SAME</code>。</p>
+<ul>
+<li><a href="https://tensorflow.google.cn/versions/r1.4/api_docs/python/tf/nn/conv2d" target="_blank" rel="noopener">tf.nn.conv2d()</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def conv2d(x,W):</span><br><span class="line">	return tf.nn.conv2d(x,W,strides=[1,1,1,1]，padding=&apos;SAME&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="定义-pooling"><a href="#定义-pooling" class="headerlink" title="定义 pooling"></a>定义 pooling</h2><p>接着定义池化<code>pooling</code>，为了得到更多的图片信息，padding时我们选的是一次一步，也就是<code>strides[1]=strides[2]=1</code>，这样得到的图片尺寸没有变化，而我们希望压缩一下图片也就是参数能少一些从而减小系统的复杂度，因此我们采用<code>pooling</code>来稀疏化参数，也就是卷积神经网络中所谓的下采样层。</p>
+<p><code>pooling</code>有两种，一种是最大值池化，一种是平均值池化，本例采用的是最大值池化<code>tf.max_pool()</code>。池化的核函数大小为2x2，因此<strong>过滤器大小</strong>为2:<code>ksize=[1,2,2,1]</code>，<strong>步长</strong>为2，因此<code>strides=[1,2,2,1]</code></p>
+<ul>
+<li><a href="https://tensorflow.google.cn/versions/r1.4/api_docs/python/tf/nn/max_pool" target="_blank" rel="noopener">tf.nn.max_pool</a><ul>
+<li>value：<code>Tensor</code>指定的格式的4-D <code>data_format</code>。</li>
+<li>ksize：输入张量的每个维度的窗口的大小。</li>
+<li>strides：输入张量的每个维度的滑动窗口的步幅。</li>
+<li>padding：填充，<code>&#39;VALID&#39;</code>或者<code>&#39;SAME&#39;</code>。</li>
+<li>data_format：一个字符串。支持“NHWC”，“NCHW”和“NCHW_VECT_C”。</li>
+<li>name：操作的可选名称。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def max_pool_2x2(x): </span><br><span class="line">	return tf.nn.max_pool(x,ksize=[1,2,2,1],strides=[1,2,2,1],,padding=&apos;SAME&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="定义-placeholder"><a href="#定义-placeholder" class="headerlink" title="定义 placeholder"></a>定义 placeholder</h2><p>首先呢，我们定义一下输入的<code>placeholder</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xs=tf.placeholder(tf.float32,[None,784])</span><br><span class="line">ys=tf.placeholder(tf.float32,[None,10])</span><br></pre></td></tr></table></figure>
+<p>我们还定义了<code>dropout</code>的<code>placeholder</code>，它是解决过拟合的有效手段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keep_prob=tf.placeholder(tf.float32)</span><br></pre></td></tr></table></figure>
+<p>接着呢，我们需要处理我们的<code>xs</code>，<strong>改变形状，不要维度，形状28*28，黑白</strong>，把<code>xs</code>的形状变成<code>[-1,28,28,1]</code>，-1代表先不考虑输入的图片例子多少这个维度，后面的1是channel的数量，因为我们输入的图片是黑白的，因此channel是1，例如如果是RGB图像，那么channel就是3。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_image=tf.reshape(xs,[-1,28,28,1])</span><br></pre></td></tr></table></figure>
+<h2 id="建立卷积层"><a href="#建立卷积层" class="headerlink" title="建立卷积层"></a>建立卷积层</h2><p>接着我们定义第一层卷积,先定义本层的<code>Weight</code>,本层我们的卷积核patch的大小是5x5，因为黑白图片channel是1所以输入是1，输出是32个featuremap</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">W_conv1=weight_variable([5,5,1,32])</span><br></pre></td></tr></table></figure>
+<p>接着定义<code>bias</code>，它的大小是32个长度，因此我们传入它的<code>shape</code>为<code>[32]</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b_conv1=bias_variable([32])</span><br></pre></td></tr></table></figure>
+<p>定义好了<code>Weight</code>和<code>bias</code>，我们就可以定义卷积神经网络的第一个卷积层<code>h_conv1=conv2d(x_image,W_conv1)+b_conv1</code>,同时我们对<code>h_conv1</code>进行非线性处理，也就是激活函数来处理喽，这里我们用的是<code>tf.nn.relu</code>（修正线性单元）来处理，要注意的是，因为采用了<code>SAME</code>的padding方式，输出图片的大小没有变化依然是28x28，只是厚度变厚了，因此现在的输出大小就变成了28x28x32</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h_conv1=tf.nn.relu(conv2d(x_image,W_conv1)+b_conv1)</span><br></pre></td></tr></table></figure>
+<p>最后我们再进行<code>pooling</code>的处理就ok啦，经过<code>pooling</code>的处理，输出大小就变为了14x14x32</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h_pool=max_pool_2x2(h_conv1)</span><br></pre></td></tr></table></figure>
+<p>接着呢，同样的形式我们定义第二层卷积，本层我们的输入就是上一层的输出，本层我们的卷积核patch的大小是5x5，有32个featuremap所以输入就是32，输出呢我们定为64</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">W_conv2=weight_variable([5,5,32,64])</span><br><span class="line">b_conv2=bias_variable([64])</span><br></pre></td></tr></table></figure>
+<p>接着我们就可以定义卷积神经网络的第二个卷积层，这时的输出的大小就是14x14x64</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h_conv2=tf.nn.relu(conv2d(h_pool1,W_conv2)+b_conv2)</span><br></pre></td></tr></table></figure>
+<p>最后也是一个pooling处理，输出大小为7x7x64</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h_pool2=max_pool_2x2(h_conv2)</span><br></pre></td></tr></table></figure>
+<h2 id="建立全连接层"><a href="#建立全连接层" class="headerlink" title="建立全连接层"></a>建立全连接层</h2><p>好的，接下来我们定义我们的 fully connected layer,</p>
+<p>进入全连接层时, 我们通过<code>tf.reshape()</code>将<code>h_pool2</code>的输出值从一个三维的变为一维的数据, -1表示先不考虑输入图片例子维度, 将上一个输出结果展平.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#[n_samples,7,7,64]-&gt;&gt;[n_samples,7*7*64]</span><br><span class="line">h_pool2_flat=tf.reshape(h_pool2,[-1,7*7*64])</span><br></pre></td></tr></table></figure>
+<p>此时<code>weight_variable</code>的<code>shape</code>输入就是第二个卷积层展平了的输出大小: 7x7x64， 后面的输出size我们继续扩大，定为1024</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">W_fc1=weight_variable([7*7*64,1024]) </span><br><span class="line">b_fc1=bias_variable([1024])</span><br></pre></td></tr></table></figure>
+<p>然后将展平后的<code>h_pool2_flat</code>与本层的<code>W_fc1</code>相乘（注意这个时候不是卷积了）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h_fc1=tf.nn.relu(tf.matmul(h_pool2_flat,W_fc1)+b_fc1)</span><br></pre></td></tr></table></figure>
+<p>如果我们考虑过拟合问题，可以加一个dropout的处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h_fc1_drop=tf.nn.dropout(h_fc1,keep_prob)</span><br></pre></td></tr></table></figure>
+<p>接下来我们就可以进行最后一层的构建了，好激动啊, 输入是1024，最后的输出是10个 (因为mnist数据集就是[0-9]十个类)，prediction就是我们最后的预测值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">W_fc2=weight_variable([1024,10]) b_fc2=bias_variable([10])</span><br></pre></td></tr></table></figure>
+<p>然后呢我们用softmax分类器（多分类，输出是各个类的概率）,对我们的输出进行分类</p>
+<ul>
+<li><a href="https://tensorflow.google.cn/versions/r1.4/api_docs/python/tf/nn/softmax" target="_blank" rel="noopener">tf.nn.softmax()</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prediction=tf.nn.softmax(tf.matmul(h_fc1_drop,W_fc2)+b_fc2)</span><br></pre></td></tr></table></figure>
+<h2 id="选优化方法"><a href="#选优化方法" class="headerlink" title="选优化方法"></a>选优化方法</h2><p>接着呢我们利用交叉熵损失函数来定义我们的cost function</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cross_entropy=tf.reduce_mean(</span><br><span class="line">    -tf.reduce_sum(ys*tf.log(prediction),</span><br><span class="line">    reduction_indices=[1]))</span><br></pre></td></tr></table></figure>
+<p>我们用<code>tf.train.AdamOptimizer()</code>作为我们的优化器进行优化，使我们的<code>cross_entropy</code>最小</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_step=tf.train.AdamOptimizer(1e-4).minimize(cross_entropy)</span><br></pre></td></tr></table></figure>
+<p> 定义准确度计算函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def compute_accuracy(v_xs,v_ys):</span><br><span class="line">    global prediction</span><br><span class="line">    # 预测值</span><br><span class="line">    y_pre = sess.run(prediction,feed_dict=&#123;xs:v_xs,keep_prob:1&#125;)</span><br><span class="line">    # 检查预测与是否符合事实，输出一个布尔的列表</span><br><span class="line">    correct_prediction = tf.equal(tf.argmax(y_pre,1),tf.argmax(v_ys,1))</span><br><span class="line">    # 取平均值变成准确率</span><br><span class="line">    accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))</span><br><span class="line">    # 传参并run一下</span><br><span class="line">    result = sess.run(accuracy,feed_dict=&#123;xs:v_xs,ys:v_ys,keep_prob:1&#125;)</span><br><span class="line">    tf.summary.scalar(&apos;compute_accuracy&apos;,result)</span><br><span class="line">    return result</span><br></pre></td></tr></table></figure>
+<h2 id="初始化指针"><a href="#初始化指针" class="headerlink" title="初始化指针"></a>初始化指针</h2><p>初始化变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">init = tf.global_variables_initializer()</span><br></pre></td></tr></table></figure>
+<p>接着呢就是和之前一样 定义<code>Session</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sess=tf.Session()</span><br><span class="line">sess.run(init)</span><br></pre></td></tr></table></figure>
+<h2 id="循环训练"><a href="#循环训练" class="headerlink" title="循环训练"></a>循环训练</h2><p>接着就是训练数据了，我们假定训练<code>1000</code>步，每<code>50</code>步输出一下准确率， 注意<code>sess.run()</code>时记得要用<code>feed_dict</code>给我们的众多 <code>placeholder</code> 传数据.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for i in range(1000):</span><br><span class="line">    batch_xs, batch_ys = mnist.train.next_batch(100)</span><br><span class="line">    sess.run(train_step,feed_dict=&#123;xs:batch_xs,ys:batch_ys,keep_prob:1&#125;)</span><br><span class="line">    if i % 50 == 0:</span><br><span class="line">        print(compute_accuracy(mnist.test.images,mnist.test.labels))</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -744,7 +823,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CNN卷积神经网络"><span class="nav-number">2.</span> <span class="nav-text">CNN卷积神经网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CNN神经网络架构"><span class="nav-number">3.</span> <span class="nav-text">CNN神经网络架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Convolutional-Layer（卷积层）"><span class="nav-number">3.1.</span> <span class="nav-text">Convolutional Layer（卷积层）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#卷积演示"><span class="nav-number">3.1.1.</span> <span class="nav-text">卷积演示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#摘要"><span class="nav-number">3.1.2.</span> <span class="nav-text">摘要</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pooling-Layer（池化层）"><span class="nav-number">3.2.</span> <span class="nav-text">Pooling Layer（池化层）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#摘要-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">摘要</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fully-connected-layer（全连接层）"><span class="nav-number">3.3.</span> <span class="nav-text">Fully-connected layer（全连接层）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CNN卷积神经网络"><span class="nav-number">2.</span> <span class="nav-text">CNN卷积神经网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CNN神经网络架构"><span class="nav-number">3.</span> <span class="nav-text">CNN神经网络架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Convolutional-Layer（卷积层）"><span class="nav-number">3.1.</span> <span class="nav-text">Convolutional Layer（卷积层）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#卷积演示"><span class="nav-number">3.1.1.</span> <span class="nav-text">卷积演示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#摘要"><span class="nav-number">3.1.2.</span> <span class="nav-text">摘要</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pooling-Layer（池化层）"><span class="nav-number">3.2.</span> <span class="nav-text">Pooling Layer（池化层）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#摘要-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">摘要</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fully-connected-layer（全连接层）"><span class="nav-number">3.3.</span> <span class="nav-text">Fully-connected layer（全连接层）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#案例演示"><span class="nav-number">4.</span> <span class="nav-text">案例演示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义卷积层的-weight-amp-bias"><span class="nav-number">4.1.</span> <span class="nav-text">定义卷积层的 weight&bias</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-pooling"><span class="nav-number">4.2.</span> <span class="nav-text">定义 pooling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-placeholder"><span class="nav-number">4.3.</span> <span class="nav-text">定义 placeholder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立卷积层"><span class="nav-number">4.4.</span> <span class="nav-text">建立卷积层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立全连接层"><span class="nav-number">4.5.</span> <span class="nav-text">建立全连接层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选优化方法"><span class="nav-number">4.6.</span> <span class="nav-text">选优化方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化指针"><span class="nav-number">4.7.</span> <span class="nav-text">初始化指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环训练"><span class="nav-number">4.8.</span> <span class="nav-text">循环训练</span></a></li></ol></li></ol></div>
             
 
           </div>
