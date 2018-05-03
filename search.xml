@@ -3,9 +3,34 @@
   
     
     <entry>
+      <title>如何制作一个理想的椎间盘模型</title>
+      <link href="/2018/05/04/%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E7%90%86%E6%83%B3%E7%9A%84%E6%A4%8E%E9%97%B4%E7%9B%98%E6%A8%A1%E5%9E%8B/"/>
+      <url>/2018/05/04/%E5%A6%82%E4%BD%95%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E7%90%86%E6%83%B3%E7%9A%84%E6%A4%8E%E9%97%B4%E7%9B%98%E6%A8%A1%E5%9E%8B/</url>
+      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>椎体终板构成了椎间盘的上下边界，位于椎体中心的松质骨和椎间盘之间。是由厚约0.5mm的软骨下骨和厚度相同的覆盖其上的软骨组成。主要作用是防止椎间盘髓核组织嵌入椎体，同时具有平衡分散应力的作用。</p><p>在这里，我用一个L3-L4椎间盘病例，讲一下如何通过mimics进行椎体复位，并且制作一个理想的椎间盘模型，包括髓核、纤维环、上下终板，欢迎讨论。</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E9%97%B4%E7%9B%98%E5%AF%BC%E6%9D%BF.png" alt=""></p><a id="more"></a><hr><h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>进行一切处理之前，提前要和主治医生沟通清楚，确定目标椎体和复位角度等相关要求。</p><p>在mimics中提取骨骼Mask，利用<code>Split Mask</code>工具分别将目标椎体L3和L4分离出来，然后适当进行<code>smooth</code>处理（基础操作不详述）。</p><p>得到目标椎体模型：</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimics%E5%88%86%E7%A6%BB%E8%85%B0%E6%A4%8E.png" alt=""></p><h1 id="L3-L4椎体复位"><a href="#L3-L4椎体复位" class="headerlink" title="L3-L4椎体复位"></a>L3-L4椎体复位</h1><p>这一步在mimics中进行。目标：以L4作为基准，调整L3位置以及俯仰角度，达到复位效果。</p><p>先将3D视图窗口调至侧视图，选中 L3 Parts ，使用<code>Move</code>和<code>Rotate</code>工具调整模型位置。</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%B9%B3%E7%A7%BBand%E6%97%8B%E8%BD%AC.png" alt=""></p><p>先使用<code>Rotate</code>工具，通过拖动旋转球调整L3的俯仰角度：</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/round.png" alt=""></p><p>再使用<code>Move</code>工具，通过拖动XYZ坐标轴将L3与L4对齐：</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/move.png" alt=""></p><p>与主治医生确认复位无误后，将复位后的L3和L4 Parts<code>Export</code>到3-matic中打开，之后的操作都在3-matic中进行。</p><h1 id="获得加厚基底"><a href="#获得加厚基底" class="headerlink" title="获得加厚基底"></a>获得加厚基底</h1><p>这一步详细步骤可参考我之前的文章进行：<a href="https://hahajoker.github.io/2018/05/03/%E5%9F%BA%E4%BA%8E3-matic%E7%9A%84%E8%85%B0%E6%A4%8EL2%E5%AF%BC%E6%9D%BF%E5%BB%BA%E7%AB%8B/" target="_blank" rel="noopener">基于3-matic的腰椎L2导板建立</a></p><p>这里讲下大致步骤：</p><p>使用<code>mark</code>–&gt;<code>Wave Brush Mark</code>（画刷标记）和<code>Smooth Marking Border</code>工具，获取L3和L4 椎体光滑表面。</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%8E%A5%E8%A7%A6%E9%9D%A2.png" alt=""></p><p>使用<code>Design</code>–&gt;<code>Uniform Offset</code>将基底的厚度拉伸出来。</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E9%97%B4%E7%9B%98%E6%8B%89%E4%BC%B8%E5%9F%BA%E5%BA%95.png" alt=""></p><p>然后使用<code>Finish</code>–&gt;<code>Fillet</code>工具，对基底进行圆角处理。</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E9%97%B4%E7%9B%98%E5%9C%86%E8%A7%92%E5%9F%BA%E5%BA%9511111.png" alt=""></p><h1 id="制作椎间盘支撑"><a href="#制作椎间盘支撑" class="headerlink" title="制作椎间盘支撑"></a>制作椎间盘支撑</h1><p>椎间盘支撑，我们先通过草图画出支撑轮廓，再通过拉伸工具将草图拉伸成实体。</p><p>首先我们建立草图基准面，使用<code>Sketch</code>–&gt;<code>New Sketch</code>，<code>Midplane</code>(中段平面)模式，将草图基准面建立在两片基底之间。</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/jinalicaotupingmian.png" alt=""></p><p>转到顶视图，使用<code>Sketch</code>–&gt;<code>Create Spline</code>（样条曲线）工具，绘制椎间盘支撑轮廓线。</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/huizhizhichenglunkuoxian.png" alt=""></p><p>利用草图轮廓拉伸生成体模型，先打开<code>Expert mode</code>（专家模式），使用<code>Design</code>–&gt;<code>Extrude</code>（拉伸）工具：</p><ul><li><code>Entities</code>选择上一步我们绘制出的草图。</li><li>通过<code>Direction</code>设置拉伸的方向。</li><li>修改<code>Depth option</code>（深度设置）为<code>Up to selection</code>（到某零件）模式</li><li><code>Depth selection</code>选择我们之前获得的基底模型。</li></ul><p>最后点击<code>Apply</code>确认，得到<code>支撑1</code>模型。</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E9%97%B4%E7%9B%98%E6%8B%89%E4%BC%B8%E8%AE%BE%E7%BD%AE.png" alt=""></p><p>同理，更换方向，一样的操作，得到<code>支撑2</code>模型。</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%94%AF%E6%92%911%E6%94%AF%E6%92%912.png" alt=""></p><p><strong>这一步最合理的方法其实应该是：在拉伸设置中，打开<code>direction 2</code>(方向2)，设置两个方向的<code>Depth option</code>为<code>Up to selection</code>，然后同时拉伸，一次性得到椎间盘支撑模型。但是这种操作一直出现错误，无法得到预期模型，如果有人知道解决方法，希望您能在文末的评论区告诉我。</strong></p><p>最后，我们同时选中基底&amp;支撑1&amp;支撑2模型，使用<code>Merge</code>将模型融合在一起，形成椎间盘模型。</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E9%97%B4%E7%9B%98%E5%AF%BC%E6%9D%BF.png" alt=""></p>]]></content>
+      
+      <categories>
+          
+          <category> 3D打印 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 3-matic </tag>
+            
+            <tag> 导板 </tag>
+            
+            <tag> mimics </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>基于3-matic的腰椎L2导板建立</title>
-      <link href="/2018/05/03/%E5%9F%BA%E4%BA%8E3-matic%E7%9A%84%E8%85%B0%E6%A4%8EL2%E5%AF%BC%E6%9D%BF%E5%BB%BA%E7%AB%8B/"/>
-      <url>/2018/05/03/%E5%9F%BA%E4%BA%8E3-matic%E7%9A%84%E8%85%B0%E6%A4%8EL2%E5%AF%BC%E6%9D%BF%E5%BB%BA%E7%AB%8B/</url>
+      <link href="/2018/04/03/%E5%9F%BA%E4%BA%8E3-matic%E7%9A%84%E8%85%B0%E6%A4%8EL2%E5%AF%BC%E6%9D%BF%E5%BB%BA%E7%AB%8B/"/>
+      <url>/2018/04/03/%E5%9F%BA%E4%BA%8E3-matic%E7%9A%84%E8%85%B0%E6%A4%8EL2%E5%AF%BC%E6%9D%BF%E5%BB%BA%E7%AB%8B/</url>
       <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>带有固定支架的分页式L2导板建立，参考了骨科大神zyqazyq的设计方法，步骤简单清晰，欢迎讨论。</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E8%85%B0%E6%A4%8EL2%E5%AF%BC%E6%9D%BF.png" alt=""></p><a id="more"></a><hr><h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>准备工作：提前使用mimics提取一个具有良好表面光滑程度的骨骼模型，在这里我准备的是L2男性腰椎模型。</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E8%85%B0%E6%A4%8E%E6%A8%A1%E5%9E%8B.png" alt=""></p><h1 id="取得目标光滑表面"><a href="#取得目标光滑表面" class="headerlink" title="取得目标光滑表面"></a>取得目标光滑表面</h1><p>先在3-matic中将模型打开，我们之后的操作都在3-matic中进行。</p><p>使用<code>mark</code>–&gt;<code>Wave Brush Mark</code>（画刷标记）工具将目标面选择出来（按住Ctrl键可以反选）</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E9%80%89%E6%8B%A9%E5%85%89%E6%BB%91%E9%9D%A2.png" alt=""></p><p>然后我们点击<code>Smooth Marking Border</code>获取光滑边缘：</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%85%89%E6%BB%91%E8%BE%B9%E7%BC%98.png" alt=""></p><p>按住Ctrl键选中刚刚获取的两个面，然后将他们分离出来</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%88%86%E7%A6%BB%E5%87%BA%E6%9D%A5.png" alt=""></p><h1 id="设计导板加厚基底"><a href="#设计导板加厚基底" class="headerlink" title="设计导板加厚基底"></a>设计导板加厚基底</h1><p>使用<code>Design</code>–&gt;<code>Uniform Offset</code>（类似拉伸工具）将基底的厚度拉伸出来，<code>Distancs</code>选择2.8即可，注意将<code>Solid</code>勾选打开，否则不会生成体三维，点击<code>Apply</code>确认。</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%8B%89%E4%BC%B8%E5%9F%BA%E5%BA%95.png" alt=""></p><p>对基底进行圆角处理，使用<code>Finish</code>–&gt;<code>Fillet</code>工具，选择一条边，半径选择和上一步的拉伸壁厚有关，这里选择1mm，点击<code>Apply</code>确认。</p><p>剩下三条边同理。</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%9C%86%E8%A7%92%E5%9F%BA%E5%BA%95.png" alt=""></p><h1 id="设计导板固定支架"><a href="#设计导板固定支架" class="headerlink" title="设计导板固定支架"></a>设计导板固定支架</h1><p>经过上面的步骤我们已经完成了导板基底的设计，下面一步就是导板固定支架的设计，这一步我们要用一些工业设计的内容。</p><p>首先我们建立草图基准面，转到右视图，建立草图<code>Sketch</code>–&gt;<code>New Sketch</code>，<code>Midplane</code>(中段平面)模式建立草图基准面。</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E5%BB%BA%E7%AB%8B%E8%8D%89%E5%9B%BE%E5%9F%BA%E5%87%86%E9%9D%A2.png" alt=""></p><p>使用<code>import references</code>工具，<code>intersection</code>选择我们上步获得的导板基底模型，点击<code>Apply</code>确认。</p><p>点击<code>Sketch-001</code>进入草图视图。</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E8%8D%89%E5%9B%BE%E8%A7%86%E5%9B%BE.png" alt=""></p><p>绘制固定支架轮廓线，使用<code>Sketch</code>–&gt;<code>Line sequence</code>工具，注意这里画出的轮廓线是实线，若为虚线将前面的<code>Toggle construction by default</code>开关关上即可。</p><p>（注意绘制时要随时切到三维模式下观察是否和其他模型发生干涉）</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E7%BB%98%E5%88%B6%E8%BD%AE%E5%BB%93%E7%BA%BF%28%E5%AE%9E%E7%BA%BF%29.png" alt=""></p><p>绘制圆角，使用<code>Sketch</code>–&gt;<code>Round</code>工具。（点选两边绘制，半径任意）</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E7%BB%98%E5%88%B6%E5%9C%86%E8%A7%92%EF%BC%88%E5%AE%9E%E7%BA%BF%EF%BC%89.png" alt=""></p><p>利用草图轮廓拉伸生成体模型，先打开<code>Expert mode</code>（专家模式），使用<code>Design</code>–&gt;<code>Extrude</code>（拉伸）工具，选择上一步我们绘制出的草图，打开<code>direction 2</code>(方向2)，设置两个方向的<code>depth</code>(拉伸深度)，点击<code>Apply</code>确认。</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%8B%89%E4%BC%B8%E5%9B%BA%E5%AE%9A%E6%94%AF%E6%9E%B6.png" alt=""></p><p>完成上一步之后，我们可以对固定支架进行圆角处理，和之前圆角基底的处理步骤一样，在这里我们不进行处理。</p><p>现在可以为我们的导板加上标签，使用<code>Finish</code>–&gt;<code>Quick Lable</code>工具。</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%B7%BB%E5%8A%A0%E7%AD%BE%E5%90%8D11111.png" alt=""></p><p>最后我们选中基底和固定支架使用<code>Merge</code>将模型融合在一起，形成导板模型。</p><p><img src="http://p0cgjzhqf.bkt.clouddn.com/L2%E5%AF%BC%E6%9D%BF%E8%9E%8D%E5%90%88.png" alt=""></p><h1 id="设计导孔"><a href="#设计导孔" class="headerlink" title="设计导孔"></a>设计导孔</h1><p>设计导孔的步骤请移步我之前的文章：<a href="https://hahajoker.github.io/2017/10/27/%E5%9F%BA%E4%BA%8Emimics%E7%9A%84%E6%A4%8E%E5%BC%93%E6%A0%B9%E9%92%89%E5%AF%BC%E6%9D%BF%E5%BB%BA%E7%AB%8B/" target="_blank" rel="noopener">基于mimics的椎弓根钉导板建立</a></p><p>注意，最后融合导板所有部分之后，要布尔减去骨骼才能得到最终模型。</p>]]></content>
       
       <categories>
@@ -201,9 +226,9 @@
             
             <tag> 3D打印 </tag>
             
-            <tag> face ID </tag>
-            
             <tag> 人脸识别 </tag>
+            
+            <tag> face ID </tag>
             
         </tags>
       
