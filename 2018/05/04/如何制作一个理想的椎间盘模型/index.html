@@ -78,7 +78,7 @@
 
 
 
-  <meta name="keywords" content="3-matic,导板,mimics," />
+  <meta name="keywords" content="3-matic,mimics,导板," />
 
 
 
@@ -92,7 +92,7 @@
 
 
 <meta name="description" content="前言椎体终板构成了椎间盘的上下边界，位于椎体中心的松质骨和椎间盘之间。是由厚约0.5mm的软骨下骨和厚度相同的覆盖其上的软骨组成。主要作用是防止椎间盘髓核组织嵌入椎体，同时具有平衡分散应力的作用。 在这里，我用一个L3-L4椎间盘病例，讲一下如何通过mimics进行椎体复位，并且制作一个理想的椎间盘模型，包括髓核、纤维">
-<meta name="keywords" content="3-matic,导板,mimics">
+<meta name="keywords" content="3-matic,mimics,导板">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何制作一个理想的椎间盘模型">
 <meta property="og:url" content="http://yoursite.com/2018/05/04/如何制作一个理想的椎间盘模型/index.html">
@@ -112,7 +112,7 @@
 <meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E9%97%B4%E7%9B%98%E6%8B%89%E4%BC%B8%E8%AE%BE%E7%BD%AE.png">
 <meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E6%94%AF%E6%92%911%E6%94%AF%E6%92%912.png">
 <meta property="og:image" content="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E9%97%B4%E7%9B%98%E5%AF%BC%E6%9D%BF.png">
-<meta property="og:updated_time" content="2018-05-03T17:55:20.568Z">
+<meta property="og:updated_time" content="2018-05-03T18:01:13.734Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何制作一个理想的椎间盘模型">
 <meta name="twitter:description" content="前言椎体终板构成了椎间盘的上下边界，位于椎体中心的松质骨和椎间盘之间。是由厚约0.5mm的软骨下骨和厚度相同的覆盖其上的软骨组成。主要作用是防止椎间盘髓核组织嵌入椎体，同时具有平衡分散应力的作用。 在这里，我用一个L3-L4椎间盘病例，讲一下如何通过mimics进行椎体复位，并且制作一个理想的椎间盘模型，包括髓核、纤维环、上下终板，欢迎讨论。">
@@ -417,7 +417,7 @@
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E9%97%B4%E7%9B%98%E5%AF%BC%E6%9D%BF.png" alt=""></p>
 <a id="more"></a>
 <hr>
-<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>进行一切处理之前，提前要和主治医生沟通清楚，确定目标椎体和复位角度等相关要求。</p>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>进行一切处理之前，要和主治医生沟通清楚，确定目标椎体和复位角度等相关要求。</p>
 <p>在mimics中提取骨骼Mask，利用<code>Split Mask</code>工具分别将目标椎体L3和L4分离出来，然后适当进行<code>smooth</code>处理（基础操作不详述）。</p>
 <p>得到目标椎体模型：</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/mimics%E5%88%86%E7%A6%BB%E8%85%B0%E6%A4%8E.png" alt=""></p>
@@ -453,7 +453,7 @@
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E9%97%B4%E7%9B%98%E6%8B%89%E4%BC%B8%E8%AE%BE%E7%BD%AE.png" alt=""></p>
 <p>同理，更换方向，一样的操作，得到<code>支撑2</code>模型。</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%94%AF%E6%92%911%E6%94%AF%E6%92%912.png" alt=""></p>
-<p><strong>这一步最合理的方法其实应该是：在拉伸设置中，打开<code>direction 2</code>(方向2)，设置两个方向的<code>Depth option</code>为<code>Up to selection</code>，然后同时拉伸，一次性得到椎间盘支撑模型。但是这种操作一直出现错误，无法得到预期模型，如果有人知道解决方法，希望您能在文末的评论区告诉我。</strong></p>
+<p><strong>这一步最合理的方法应该是：在拉伸设置中，打开<code>direction 2</code>(方向2)，设置两个方向的<code>Depth option</code>为<code>Up to selection</code>，然后同时拉伸，一次性得到椎间盘支撑模型。但是这种操作一直出现错误，无法得到预期模型，如果有人知道解决方法，希望您能在文末的评论区告诉我。</strong></p>
 <p>最后，我们同时选中基底&amp;支撑1&amp;支撑2模型，使用<code>Merge</code>将模型融合在一起，形成椎间盘模型。</p>
 <p><img src="http://p0cgjzhqf.bkt.clouddn.com/%E6%A4%8E%E9%97%B4%E7%9B%98%E5%AF%BC%E6%9D%BF.png" alt=""></p>
 
@@ -499,9 +499,9 @@
           
             <a href="/tags/3-matic/" rel="tag"><i class="fa fa-tag"></i> 3-matic</a>
           
-            <a href="/tags/导板/" rel="tag"><i class="fa fa-tag"></i> 导板</a>
-          
             <a href="/tags/mimics/" rel="tag"><i class="fa fa-tag"></i> mimics</a>
+          
+            <a href="/tags/导板/" rel="tag"><i class="fa fa-tag"></i> 导板</a>
           
         </div>
       
